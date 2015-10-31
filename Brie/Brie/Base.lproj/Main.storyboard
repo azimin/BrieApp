@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -88,7 +88,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eon-9T-K9G">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eon-9T-K9G">
                                                     <rect key="frame" x="13" y="16" width="579" height="38"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -220,7 +220,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3R4-HF-C6U" customClass="UCRoundedView">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3R4-HF-C6U" customClass="UCRoundedView">
                                                     <rect key="frame" x="562" y="27" width="22" height="22"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="0.56862745100000001" green="0.77647058820000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -259,6 +259,7 @@
                                         <animations/>
                                         <connections>
                                             <outlet property="categorySwitch" destination="s8F-al-fC4" id="DLh-YE-XCg"/>
+                                            <outlet property="roundView" destination="3R4-HF-C6U" id="evi-C8-p9e"/>
                                             <outlet property="selectedValueLabel" destination="gGO-U6-Szj" id="1ug-7C-2ou"/>
                                             <outlet property="titleLabel" destination="exA-O1-9G6" id="ulW-Zz-60W"/>
                                         </connections>
@@ -350,7 +351,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-Zc-B1h">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-Zc-B1h">
                                                     <rect key="frame" x="16" y="16" width="512" height="15"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -384,7 +385,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="30 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbH-CP-SQe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbH-CP-SQe">
                                                     <rect key="frame" x="16" y="39" width="63" height="22"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>

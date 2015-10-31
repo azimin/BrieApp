@@ -25,6 +25,9 @@
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 #import "AbstractActionSheetPicker.h"
 #import "SWActionSheet.h"
 #import <objc/message.h>
@@ -731,6 +734,9 @@ CG_INLINE BOOL isIPhone4() {
     CGPoint location = [gestureRecognizer locationInView:self.toolbar];
     return !CGRectContainsPoint(self.toolbar.bounds, location);
 }
+
+#pragma GCC diagnostic pop
+
 
 @end
 

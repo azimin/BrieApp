@@ -65,6 +65,11 @@ static const enum UIViewAnimationOptions options = UIViewAnimationOptionCurveEas
     self.presented = NO;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+  [self dismissWithClickedButtonIndex:0 animated:true];
+}
+
 - (void)destroyWindow
 {
     if (SWActionSheetWindow)

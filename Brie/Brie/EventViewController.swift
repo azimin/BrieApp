@@ -8,6 +8,7 @@
 
 import UIKit
 import Timepiece
+import MapKit
 
 class EventViewController: UIViewController {
   
@@ -112,30 +113,51 @@ extension EventViewController: UITableViewDataSource {
       cell.showTopIfNeeded(indexPath)
       return cell
     } else if indexPath.section == 1 {
+      let cell: EventFieldTableViewCell
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Date"
             cell.selectedValueLabel.text = "1 November"
-            cell.showTopIfNeeded(indexPath)
-            return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Time"
             cell.selectedValueLabel.text = "12:30"
-            cell.showTopIfNeeded(indexPath)
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+        default:
+            cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Duration"
             cell.selectedValueLabel.text = "2:00"
-            cell.showTopIfNeeded(indexPath)
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
-            cell.showTopIfNeeded(indexPath)
-            return cell
         }
+      
+      cell.showTopIfNeeded(indexPath)
+      
+      return cell
+      
+    } else if indexPath.section == 2 {
+      let cell: EventFieldTableViewCell
+      switch indexPath.row {
+      case 0:
+        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+        cell.titleLabel.text = "Type"
+        cell.selectedValueLabel.text = CalendarType.values.first!.rawValue
+        cell.selectedValueLabel.textColor = CalendarType.values.first!.color
+        cell.roundView.backgroundColor = CalendarType.values.first!.color
+        cell.roundView.hidden = false
+      case 1:
+        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+        cell.titleLabel.text = "Location"
+        cell.selectedValueLabel.text = "Not selected"
+        cell.selectedValueLabel.textColor = UIColor(hexString: "666666")
+      default:
+        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+        cell.titleLabel.text = "Privacy"
+        cell.selectedValueLabel.text = "Event is private"
+        cell.categorySwitch.hidden = false
+      }
+      
+      cell.showTopIfNeeded(indexPath)
+      
+      return cell
     }
     
     let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
@@ -178,6 +200,18 @@ extension EventViewController: UITableViewDelegate {
       } else {
         if indexPath.row == 0 {
           showTypePicker()
+        } else if indexPath.row == 1 {
+          let placePicker = LocationPickerViewController()
+          let location = CLLocation(latitude: 59.9358, longitude: 30.3256)
+          let initialLocation = Location(name: "VK Office", location: location, placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: [:]))
+          placePicker.location = initialLocation
+          
+          placePicker.completion = {
+            (locations) in 
+            print(locations)
+          }
+          
+          self.navigationController?.pushViewController(placePicker, animated: true)//(, animated: true, completion: nil)
         }
       }
     }
@@ -199,16 +233,10 @@ extension EventViewController: UITableViewDelegate {
         }, cancelBlock: { (picker) -> Void in
             
         }, origin: self.view)
-
-    //    ActionSheetDatePicker.showPickerWithTitle("Select Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate().endOfYear, doneBlock: { (picker, value, sender) -> Void in
-//      
-//      }, cancelBlock: { (picker) -> Void in
-//        
-//      }, origin: self.view)
   }
   
   func showDatePicker() {
-    ActionSheetDatePicker.showPickerWithTitle("Select Date", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(), minimumDate: NSDate.yesterday(), maximumDate: NSDate.tomorrow(), doneBlock: { (picker, value, sender) -> Void in
+    ActionSheetDatePicker.showPickerWithTitle("Select Date", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate.tomorrow().endOfYear, doneBlock: { (picker, value, sender) -> Void in
       
       }, cancelBlock: { (picker) -> Void in
         

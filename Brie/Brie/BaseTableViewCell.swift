@@ -64,4 +64,12 @@ class BaseTableViewCell: UITableViewCell {
       self.backgroundColor = backgroundColorCache
     }
   }
+  
+  override func setSelected(selected: Bool, animated: Bool) {
+    if selected {
+      self.backgroundColor = UIColor(hexString: "E6E6E6")
+    } else {
+      self.backgroundColor = backgroundColorCache
+    }
+  }
 }
