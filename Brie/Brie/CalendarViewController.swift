@@ -18,9 +18,11 @@ class CalendarViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    events = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
+    
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 45
-    tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     
     self.navigationController?.navigationBarHidden = true
     
@@ -42,7 +44,6 @@ class CalendarViewController: UIViewController {
     if !flag {
       flag = true
       view.layoutIfNeeded()
-//      collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 5000, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: true)
       collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 5000, inSection: 0), animated: false, scrollPosition: .CenteredHorizontally)
     }
     
@@ -64,16 +65,32 @@ extension CalendarViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if indexPath.row % 4 == 0 {
-      let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
-      cell.showTopIfNeeded(indexPath)
-      return cell
-    }
+//    if indexPath.row % 4 == 0 {
+//      let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
+//      cell.showTopIfNeeded(indexPath)
+//      return cell
+//    }
     
     let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
-    cell.leftButtons = [MGSwipeButton(title: "Test", backgroundColor: UIColor(hexString: "91C696"), insets: UIEdgeInsetsMake(0, 16, 0, 16))]
     
+    
+    let event = events[indexPath.row]
+    
+    cell.mainLabel.text = "\(event.date.hour):\(event.date.minute)"
+    cell.secondLabel.text = event.name
+    cell.type = event.typeValue
+    
+    cell.showTopIfNeeded(indexPath)
     cell.delegate = self
+    
+    if let provider = event.provider {
+      cell.leftButtons = [MGSwipeButton(title: provider.rawValue, backgroundColor: provider.color, insets: UIEdgeInsetsMake(0, 16, 0, 16))]
+      cell.actionWidthConstraint.constant = 28
+      cell.actionView.backgroundColor = provider.color
+    } else {
+      cell.leftButtons = nil
+      cell.actionWidthConstraint.constant = 0
+    }
     
     return cell
   }
@@ -150,7 +167,11 @@ extension CalendarViewController: UICollectionViewDelegate {
 }
 
 extension CalendarViewController {
-  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    let eventViewController = segue.destinationViewController as? EventViewController
+    eventViewController?.entity = EventEntity(name: "", date: NSDate(), duration: 60, type: 0, location: nil, isPrivate: true)
+  }
 }
 
 

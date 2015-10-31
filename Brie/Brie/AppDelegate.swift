@@ -23,14 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UberKit.sharedInstance().handleLoginRedirectFromUrl(url, sourceApplication: sourceApplication)
         }
       
-      loadTestEvents()
-      
         return true
         
     }
     
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    loadTestEvents()
+    
     return true
   }
 
