@@ -177,8 +177,6 @@ class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   var provider: PopUpProviderType? {
     let value = Int.random(0..<4)
     
-    print(value)
-    
     if value == 0 {
       return .Iiko
     } else if value == 1 {
