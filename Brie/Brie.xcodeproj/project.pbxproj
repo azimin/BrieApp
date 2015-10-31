@@ -11,6 +11,7 @@
 		820088941BE4C34F00D9CE83 /* VKSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820088901BE4C25E00D9CE83 /* VKSdk.framework */; };
 		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
 		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
+		826663281BE551950010643F /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826663271BE551950010643F /* TextAnalyzer.swift */; settings = {ASSET_TAGS = (); }; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
 		9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* CalendarViewController.swift */; };
 		9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* FriendsViewController.swift */; };
@@ -68,6 +69,7 @@
 		820088911BE4C25E00D9CE83 /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = "vk-ios-sdk-master/VKSdkResources.bundle"; sourceTree = "<group>"; };
 		8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksAuthViewController.swift; sourceTree = "<group>"; };
+		826663271BE551950010643F /* TextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAnalyzer.swift; sourceTree = "<group>"; };
 		920406841BE4B12500B5D337 /* Brie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920406871BE4B12500B5D337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		920406891BE4B12500B5D337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		92F0A8C31BE519C800EFCBFD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				826663271BE551950010643F /* TextAnalyzer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				92F0A8BE1BE514F600EFCBFD /* Location.swift in Sources */,
 				92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */,
 				92F0A8BF1BE514F600EFCBFD /* LocationPickerViewController.swift in Sources */,
+				826663281BE551950010643F /* TextAnalyzer.swift in Sources */,
 				92F0A8EF1BE541D200EFCBFD /* PopUpTableViewController.swift in Sources */,
 				92F0A8C11BE514F600EFCBFD /* SearchHistoryManager.swift in Sources */,
 				92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */,
