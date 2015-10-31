@@ -3,7 +3,7 @@
 //
 
 #import "UIView+AZViewFromNib.h"
-//#import <FrameAccessor/FrameAccessor.h>#import <FrameAccessor/FrameAccessor.h>
+#import <VKSdk/VKSdk.h>
 #import <ChameleonFramework/Chameleon.h>
 #import <InfinitePagingView/InfinitePagingView.h>
 #import <pop/POP.h>
