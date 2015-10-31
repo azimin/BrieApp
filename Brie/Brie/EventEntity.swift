@@ -23,6 +23,12 @@ extension NSDate {
         return components.month
     }
     
+    func getHoursInt() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Hour, .Month, .Year], fromDate: self)
+        return components.hour
+    }
+    
     func getYearInt() -> Int {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Day, .Month, .Year], fromDate: self)
@@ -97,20 +103,35 @@ class SpaceEntity: CalendarEventType, Comparable {
     class func findSpacesBetweenEvents(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
         var results = [CalendarEventType]()
         events.sortInPlace()
-        var i = 7 // Start time
+        let today = date.createDate(7)
         if events.count == 0 {
-            let today = date.createDate(i)
             results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00
         } else {
-            for event in events {
-                let duration = round(Double(event.duration) / 60.0 - Double(i))
-                if duration > 1 {
-                    let today = NSDate.from(year: date.getYearInt(), month: date.getMonthInt(), day: date.getDayInt(), hour: i)
-                    results.append(SpaceEntity(date: today, duration: Int(duration) * 60)) // Till 23:00
+            for i in 0..<events.count {
+                var duration = 0
+                if i == 0 {
+                    duration = events[i].date.hoursFrom(today) * 60
+                    if duration > 59 {
+                        results.append(SpaceEntity(date: today, duration: Int(duration) * 60)) // Till 23:00
+                    }
+                    results.append(events[i])
+                } else {
+                    duration = events[i].date.hoursFrom(events[i - 1].date) * 60
+                    if duration > 59 {
+                        let count = Int(round(Double(events[i - 1].duration) / 60.0))
+                        let time = date.createDate(events[i - 1].date.getHoursInt()).increaseByHours(count)
+                        results.append(SpaceEntity(date: time, duration: Int(duration) * 60)) // Till 23:00
+                    }
+                    results.append(events[i])
                 }
-                i += Int(duration)
-                results.append(event)
             }
+            let evening = date.createDate(23)
+            let count = Int(round(Double(events[events.count - 1].duration) / 60.0))
+            let finishedLast = date.createDate(events[events.count - 1].date.getHoursInt()).increaseByHours(count)
+            if evening.hoursFrom(finishedLast) >= 1 {
+                results.append(SpaceEntity(date: finishedLast, duration: evening.hoursFrom(finishedLast) * 60))
+            }
+
         }
         return results
     }

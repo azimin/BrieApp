@@ -90,7 +90,8 @@ extension CalendarViewController: UITableViewDataSource {
       return eventCell(eventItself, tableView: tableView, cellForRowAtIndexPath: indexPath)
     } else {
       let spaceEntity = event as? SpaceEntity
-      
+        print(spaceEntity?.date)
+        print(spaceEntity?.duration)
       let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
       cell.showTopIfNeeded(indexPath)
       
@@ -203,5 +204,3 @@ extension CalendarViewController {
     eventViewController!.entity = EventEntity(name: "", date: NSDate(), duration: 60, type: 0, location: nil, isPrivate: true)
   }
 }
-
-
