@@ -99,15 +99,72 @@ class SpaceEntity: CalendarEventType, Comparable {
         let startHour = date.hour
         let endHour = date.increaseByHours(duration / 60).hour
         
-        return "\(startHour) — \(endHour)"
+      print("\(startHour), \(endHour)")
+      return "\(parseToString(startHour, minutes: 0)) — \(parseToString(endHour, minutes: 0))"
     }
     
     init(date: NSDate, duration: Int) {
         self.date = date
         self.duration = duration
     }
+  
+  class func findSpacesBetweenEvents(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
+    var results = [CalendarEventType]()
+    events.sortInPlace()
+    let today = date.createDate(7)
     
-    class func findSpacesBetweenEvents(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
+    if (events.count == 0) {
+      results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00
+      return results
+    }
+    
+    if (events.count > 0 && events.last!.date.hour <= 7) {
+      for element in events {
+        results.append(element)
+      }
+      results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00
+      return results
+    }
+    
+    if events.count == 1 && events.first!.date.hour > 7 {
+      let event = events.first!
+      results.append(SpaceEntity(date: today, duration: (event.date.hour - 7) * 60)) // Till 23:00
+      results.append(event)
+      results.append(SpaceEntity(date: event.date.increaseByHours(1), duration: (23 - event.date.hour) * 60)) // Till 23:00
+      return results
+    }
+    
+    var preveousValue: EventEntity = events.first!
+    
+    if preveousValue.date.hour > 7 {
+      results.append(SpaceEntity(date: today, duration: (preveousValue.date.hour - 7) * 60)) // Till 23:00
+    }
+    
+    results.append(preveousValue)
+    
+    for event in events[1..<events.count] {
+      if event.date.hour <= 7 {
+        results.append(event)
+        preveousValue = event
+        continue
+      }
+      
+      if event.date.hour - preveousValue.date.hour > 1 {
+        results.append(SpaceEntity(date: preveousValue.date.increaseByHours(1), duration: (event.date.hour - preveousValue.date.hour - 1) * 60)) // Till 23:00
+      }
+      
+      results.append(event)
+      preveousValue = event
+    }
+    
+    if preveousValue.date.hour < 22 {
+      results.append(SpaceEntity(date: preveousValue.date.increaseByHours(1), duration: (22 - preveousValue.date.hour) * 60)) // Till 23:00
+    }
+    
+    return results
+  }
+    
+    class func findSpacesBetweenEvents2(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
         var results = [CalendarEventType]()
         events.sortInPlace()
         let today = date.createDate(7)

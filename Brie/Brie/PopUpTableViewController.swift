@@ -8,6 +8,8 @@
 
 import UIKit
 
+var providerType: PopUpProviderType = .Uber
+
 enum PopUpProviderType: String {
   case KudaGo
   case Uber
@@ -42,7 +44,7 @@ class PopUpTableViewController: UIViewController {
   @IBOutlet weak var templateLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   
-  var type: PopUpProviderType = .Uber
+  var type: PopUpProviderType = providerType
   
   var items: [PopUpItemType] = []
   

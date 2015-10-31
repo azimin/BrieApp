@@ -90,10 +90,9 @@ extension CalendarViewController: UITableViewDataSource {
       return eventCell(eventItself, tableView: tableView, cellForRowAtIndexPath: indexPath)
     } else {
       let spaceEntity = event as? SpaceEntity
-        print(spaceEntity?.date)
-        print(spaceEntity?.duration)
       let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
       cell.showTopIfNeeded(indexPath)
+      cell.timeLabel.text = spaceEntity?.timeValue ?? "--:--"
       
       return cell
     }
@@ -118,12 +117,23 @@ extension CalendarViewController: UITableViewDataSource {
       cell.actionWidthConstraint.constant = 0
     }
     
+    cell.entity = event
+    
     return cell
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    self.performSegueWithIdentifier("EventScreen", sender: nil)
+    
+    let event = events[indexPath.row] 
+    
+    if let eventItself = event as? EventEntity {
+      self.performSegueWithIdentifier("EventScreen", sender: eventItself)
+    } else if let space = event as? SpaceEntity  {
+      self.performSegueWithIdentifier("EventScreen", sender: space)
+    }
+    
+    
   }
 }
 
@@ -149,6 +159,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
   }
   
   func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+    providerType = (cell as! EventTableViewCell).entity.provider ?? .Uber
     TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
      return true
   }
@@ -198,6 +209,14 @@ extension CalendarViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
     let eventViewController = segue.destinationViewController as? EventViewController
-    eventViewController!.entity = EventEntity(name: "", date: NSDate(), duration: 60, type: 0, location: nil, isPrivate: true)
+    
+    if let space = sender as? SpaceEntity {
+      eventViewController!.entity = EventEntity(name: "", date: space.date, duration: 60, type: 0, location: nil, isPrivate: true)
+    } else if let entity = sender as? EventEntity {
+      eventViewController!.entity = entity
+      eventViewController!.isNew = false
+    }
+    
+    
   }
 }

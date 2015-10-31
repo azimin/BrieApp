@@ -17,6 +17,7 @@ class EventFieldTableViewCell: BaseTableViewCell {
   @IBOutlet weak var roundView: UCRoundedView!
   
   var entity: EventEntity!
+  var updateDelegate: EventNameFieldTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -40,6 +41,7 @@ class EventFieldTableViewCell: BaseTableViewCell {
   
   @IBAction func switcherAction(sender: UISwitch) {
     entity.isPrivate = sender.on
+    self.selectedValueLabel.text = sender.on ? "Event is private" : "Event is public"
   }
   
   override func prepareForReuse() {

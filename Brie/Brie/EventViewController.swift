@@ -14,6 +14,7 @@ class EventViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   var isKeyboardOnScreen: Bool = false
+  var isNew: Bool = true
   
   var selectedRowForType: Int = 0
   var entity: EventEntity!
@@ -34,14 +35,16 @@ class EventViewController: UIViewController {
     self.navigationController?.delegate = self
     self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     
-    self.title = "New event"
+    self.title = isNew ? "New event" : "Editing"
     
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Done, target: self, action: Selector("save"))
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: isNew ? "Add" : "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("save"))
     self.navigationItem.rightBarButtonItem?.enabled = entity.name.characters.count > 0
   }
   
   func save() {
-    DataContainer.sharedInstance.events.append(entity)
+    if isNew {
+      DataContainer.sharedInstance.events.append(entity)
+    }
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
   
@@ -124,6 +127,7 @@ extension EventViewController: UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("EventNameFieldCell", forIndexPath: indexPath) as! EventNameFieldTableViewCell
       cell.updateDelegate = self
       cell.entity = entity
+      cell.eventNameTextField.text = entity.name
       cell.showTopIfNeeded(indexPath)
       return cell
     } else if indexPath.section == 1 {
@@ -171,6 +175,7 @@ extension EventViewController: UITableViewDataSource {
       
       cell.entity = entity
       cell.showTopIfNeeded(indexPath)
+      
       
       return cell
     }
