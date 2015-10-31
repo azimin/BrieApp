@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Timepiece
 
 class EventViewController: UIViewController {
   
@@ -17,7 +18,6 @@ class EventViewController: UIViewController {
     super.viewDidLoad()
     
     az_tabBarController?.setHidden(true, animated: true)
-    self.navigationController?.navigationBarHidden = false
     
     var contentInsets: UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -60, 0.0)
     self.tableView.scrollIndicatorInsets = contentInsets
@@ -142,8 +142,51 @@ extension EventViewController: UITableViewDelegate {
     if isKeyboardOnScreen {
       NSNotificationCenter.defaultCenter().postNotificationName("HideClipboard", object: nil)
     } else {
-      
+      if indexPath.section == 1 {
+        if indexPath.row == 0 {
+          showDatePicker()
+        } else if indexPath.row == 1 {
+          showTimePicker()
+        } else {
+          showDurationPicker()
+        }
+      }
     }
+  }
+  
+  func showTimePicker() {
+    ActionSheetDatePicker.showPickerWithTitle("Select Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate().endOfYear, doneBlock: { (picker, value, sender) -> Void in
+      
+      }, cancelBlock: { (picker) -> Void in
+        
+      }, origin: self.view)
+  }
+  
+  func showDatePicker() {
+    ActionSheetDatePicker.showPickerWithTitle("Select Date", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(), minimumDate: NSDate.yesterday(), maximumDate: NSDate.tomorrow(), doneBlock: { (picker, value, sender) -> Void in
+      
+      }, cancelBlock: { (picker) -> Void in
+        
+      }, origin: self.view)
+  }
+  
+  func showDurationPicker() {
+    var hours: [String] =  []
+    var minutes: [String] = []
+    
+    for i in 0..<12 {
+      hours.append("\(i+1)")
+    }
+    
+    for i in 0..<4 {
+      minutes.append("\(i * 15)")
+    }
+    
+    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Duration", rows: [[""], hours, minutes, [""]], initialSelection: [0, 1, 0, 0], doneBlock: { (picker, result, sender) -> Void in
+        
+      }, cancelBlock: { (picker) -> Void in
+          
+      }, origin: self.view)
   }
 }
 
@@ -152,6 +195,9 @@ extension EventViewController: UINavigationControllerDelegate {
     if viewController is CalendarViewController {
       viewController.navigationController?.setNavigationBarHidden(true, animated: true)
       viewController.az_tabBarController?.setHidden(false, animated: true)
+    } else {
+      viewController.navigationController?.setNavigationBarHidden(false, animated: true)
     }
   }
+  
 }
