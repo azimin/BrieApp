@@ -8,8 +8,8 @@
 
 import UIKit
 
-enum CalendarType: String {
-  case Work
+enum CalendarType: Int {
+  case Work = 0
   case Leisure
   case Food
   case Sport
@@ -27,6 +27,21 @@ enum CalendarType: String {
       return UIColor(hexString: "91C696")
     case .Travel:
       return UIColor(hexString: "8F72E6")
+    }
+  }
+  
+  var stringValue: String {
+    switch self {
+    case .Work:
+      return "Work"
+    case .Leisure:
+      return "Leisure"
+    case .Food:
+      return "Food"
+    case .Sport:
+      return "Sport"
+    case .Travel:
+      return "Travel"
     }
   }
   

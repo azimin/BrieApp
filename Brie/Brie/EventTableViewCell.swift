@@ -12,9 +12,16 @@ class EventTableViewCell: BaseTableViewCell {
 
   @IBOutlet weak var mainLabel: UILabel!
   @IBOutlet weak var secondLabel: UILabel!
+  @IBOutlet weak var actionView: UIView!
   
   @IBOutlet weak var circleView: UCRoundedView!
   
   @IBOutlet weak var actionWidthConstraint: NSLayoutConstraint!
+  
+  var type: CalendarType = .Work {
+    didSet {
+      circleView.backgroundColor = type.color
+    }
+  }
   
 }

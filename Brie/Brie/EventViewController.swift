@@ -15,6 +15,8 @@ class EventViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var isKeyboardOnScreen: Bool = false
   
+  var entity: EventEntity!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -128,7 +130,7 @@ extension EventViewController: UITableViewDataSource {
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Duration"
-            cell.selectedValueLabel.text = "2:00"
+            cell.selectedValueLabel.text = entity.durationValue
         }
       
       cell.showTopIfNeeded(indexPath)
@@ -141,19 +143,20 @@ extension EventViewController: UITableViewDataSource {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Type"
-        cell.selectedValueLabel.text = CalendarType.values.first!.rawValue
-        cell.roundView.backgroundColor = CalendarType.values.first!.color
+        cell.selectedValueLabel.text = entity.typeValue.stringValue
+        cell.roundView.backgroundColor = entity.typeValue.color
         cell.roundView.hidden = false
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Location"
-        cell.selectedValueLabel.text = "Not selected"
+        cell.selectedValueLabel.text = entity.location == nil ? "Not selected" : entity.location?.name ?? "Location"
         cell.selectedValueLabel.textColor = UIColor(hexString: "CBCBCB")
       default:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Privacy"
-        cell.selectedValueLabel.text = "Event is private"
+        cell.selectedValueLabel.text = entity.isPrivate ? "Event is private" : "Event is public"
         cell.categorySwitch.hidden = false
+        cell.categorySwitch.on = entity.isPrivate
       }
       
       cell.showTopIfNeeded(indexPath)
@@ -307,7 +310,7 @@ extension EventViewController: UIPickerViewDataSource {
 extension EventViewController: UIPickerViewDelegate {
   func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     let value = CalendarType.values[row]
-    return NSAttributedString(string: value.rawValue, attributes: [NSForegroundColorAttributeName: value.color])
+    return NSAttributedString(string: value.stringValue, attributes: [NSForegroundColorAttributeName: value.color])
   }
 }
 

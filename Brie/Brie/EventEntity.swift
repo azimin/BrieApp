@@ -60,6 +60,25 @@ extension NSDate {
             toDate: self,
             options: NSCalendarOptions(rawValue: 0))!
     }
+    
+  func hoursFrom(date: NSDate) -> Int{
+    return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
+  }
+  
+  func increaseByHours(hours: Int) -> NSDate {
+    return NSCalendar.currentCalendar().dateByAddingUnit(
+      .Hour,
+      value: hours,
+      toDate: self,
+      options: NSCalendarOptions(rawValue: 0))!
+  }
+}
+
+func parseToString(hours: Int, minutes: Int) -> String {
+  let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
+  let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)" 
+  return "\(hoursString):\(minutesString)" 
+
 }
 
 class SpaceEntity: CalendarEventType, Comparable {
@@ -71,10 +90,10 @@ class SpaceEntity: CalendarEventType, Comparable {
         self.duration = duration
     }
     
-    class func findSpacesBetweenEvents(var events: [EventEntity]) -> [SpaceEntity] {
-        var results = [SpaceEntity]()
+    class func findSpacesBetweenEvents(var events: [EventEntity]) -> [CalendarEventType] {
+        var results = [CalendarEventType]()
         events.sortInPlace()
-        
+      
         for i in 1..<events.count {
             let spaceSize = (events[i].date.hoursFrom(events[i - 1].date)) - (events[i].duration) * 60 // Размер промежутка в часах между двумя датами
             if spaceSize > 1 {
@@ -89,7 +108,19 @@ class EventEntity: Comparable, CalendarEventType {
   var name: String
   var date: NSDate
   var duration: Int
+  
+  var durationValue: String {
+    let hours = duration / 60
+    let minutes = duration % 60
+    
+    return parseToString(hours, minutes: minutes) 
+  }
+  
   var type: Int
+  var typeValue: CalendarType {
+    return CalendarType(rawValue: type)!
+  }
+  
   var location: Location?
   var isPrivate: Bool
   
@@ -101,7 +132,22 @@ class EventEntity: Comparable, CalendarEventType {
     self.location = location
     self.isPrivate = isPrivate
   }
+  
+  var provider: PopUpProviderType? {
+    let value = Int.random(0..<4)
     
+    print(value)
+    
+    if value == 0 {
+      return .Iiko
+    } else if value == 1 {
+      return .Uber
+    } else if value == 2 {
+      return .KudaGo
+    } else {
+      return nil
+    }
+  }
 }
 
 func <(lhs: SpaceEntity, rhs: SpaceEntity) -> Bool {
