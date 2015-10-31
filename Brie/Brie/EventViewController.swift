@@ -150,6 +150,10 @@ extension EventViewController: UITableViewDelegate {
         } else {
           showDurationPicker()
         }
+      } else {
+        if indexPath.row == 0 {
+          showTypePicker()
+        }
       }
     }
   }
@@ -188,6 +192,10 @@ extension EventViewController: UITableViewDelegate {
           
       }, origin: self.view)
   }
+  
+  func showTypePicker() {
+    ActionSheetCustomPicker.showPickerWithTitle("Select Type", delegate: self, showCancelButton: true, origin: self.view)
+  }
 }
 
 extension EventViewController: UINavigationControllerDelegate {
@@ -201,3 +209,36 @@ extension EventViewController: UINavigationControllerDelegate {
   }
   
 }
+
+extension EventViewController: ActionSheetCustomPickerDelegate {
+  func actionSheetPicker(actionSheetPicker: AbstractActionSheetPicker!, configurePickerView pickerView: UIPickerView!) {
+    pickerView.delegate = self
+  }
+  
+  func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
+    
+  }
+  
+  func actionSheetPickerDidCancel(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
+    
+  }
+}
+
+extension EventViewController: UIPickerViewDataSource {
+  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return CalendarType.values.count
+  }
+}
+
+extension EventViewController: UIPickerViewDelegate {
+  func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    let value = CalendarType.values[row]
+    return NSAttributedString(string: value.rawValue, attributes: [NSForegroundColorAttributeName: value.color])
+  }
+}
+
+// ----

@@ -43,6 +43,7 @@
 		92F0A8AD1BE4FE3100EFCBFD /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8A21BE4FE3100EFCBFD /* ActionSheetStringPicker.m */; };
 		92F0A8AE1BE4FE3100EFCBFD /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8A41BE4FE3100EFCBFD /* DistancePickerView.m */; };
 		92F0A8AF1BE4FE3100EFCBFD /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8A61BE4FE3100EFCBFD /* SWActionSheet.m */; };
+		92F0A8B11BE5093A00EFCBFD /* CalendarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8B01BE5093A00EFCBFD /* CalendarType.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		92F0A8A41BE4FE3100EFCBFD /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
 		92F0A8A51BE4FE3100EFCBFD /* SWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWActionSheet.h; sourceTree = "<group>"; };
 		92F0A8A61BE4FE3100EFCBFD /* SWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWActionSheet.m; sourceTree = "<group>"; };
+		92F0A8B01BE5093A00EFCBFD /* CalendarType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarType.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				92F0A88B1BE4DB8F00EFCBFD /* TAWindowShower.swift */,
+				92F0A8B01BE5093A00EFCBFD /* CalendarType.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
 				92F0A8AB1BE4FE3100EFCBFD /* ActionSheetLocalePicker.m in Sources */,
 				92F0A88A1BE4DA6300EFCBFD /* EventViewController.swift in Sources */,
+				92F0A8B11BE5093A00EFCBFD /* CalendarType.swift in Sources */,
 				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
 				92442D4E1BE4C2BB005B29F0 /* EventTableViewCell.swift in Sources */,
 				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
