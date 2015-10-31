@@ -60,18 +60,6 @@ extension NSDate {
             toDate: self,
             options: NSCalendarOptions(rawValue: 0))!
     }
-    
-  func hoursFrom(date: NSDate) -> Int{
-    return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
-  }
-  
-  func increaseByHours(hours: Int) -> NSDate {
-    return NSCalendar.currentCalendar().dateByAddingUnit(
-      .Hour,
-      value: hours,
-      toDate: self,
-      options: NSCalendarOptions(rawValue: 0))!
-  }
 }
 
 func parseToString(hours: Int, minutes: Int) -> String {
@@ -90,14 +78,22 @@ class SpaceEntity: CalendarEventType, Comparable {
         self.duration = duration
     }
     
-    class func findSpacesBetweenEvents(var events: [EventEntity]) -> [CalendarEventType] {
+    class func findSpacesBetweenEvents(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
         var results = [CalendarEventType]()
         events.sortInPlace()
-      
-        for i in 1..<events.count {
-            let spaceSize = (events[i].date.hoursFrom(events[i - 1].date)) - (events[i].duration) * 60 // Размер промежутка в часах между двумя датами
-            if spaceSize > 1 {
-                results.append(SpaceEntity(date: events[i - 1].date.increaseByHours(events[i - 1].duration), duration: spaceSize))
+        var i = 7 // Start time
+        if events.count == 0 {
+            let today = NSDate.from(year: date.getYearInt(), month: date.getMonthInt(), day: date.getDayInt(), hour: i)
+            results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00
+        } else {
+            for event in events {
+                let duration = round(Double(event.duration) / 60.0 - Double(i))
+                if duration > 1 {
+                    let today = NSDate.from(year: date.getYearInt(), month: date.getMonthInt(), day: date.getDayInt(), hour: i)
+                    results.append(SpaceEntity(date: today, duration: Int(duration) * 60)) // Till 23:00
+                    i += Int(duration)
+                }
+                results.append(event)
             }
         }
         return results
