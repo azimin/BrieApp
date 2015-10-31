@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol EventNameFieldTableViewCellDelegate {
+  func needToCheckSaveButton()
+}
+
 class EventNameFieldTableViewCell: BaseTableViewCell {
+  
+  var entity: EventEntity!
+  var updateDelegate: EventNameFieldTableViewCellDelegate?
   
   @IBOutlet weak var mainLabel: UILabel!
   @IBOutlet weak var eventNameTextField: UITextField! {
@@ -21,6 +28,11 @@ class EventNameFieldTableViewCell: BaseTableViewCell {
     super.awakeFromNib()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("close"), name: "HideClipboard", object: nil)
     // Initialization code
+  }
+  
+  @IBAction func textFieldTextChanged(sender: UITextField) {
+    entity.name = sender.text ?? ""
+    updateDelegate?.needToCheckSaveButton()
   }
   
   func close() {

@@ -15,6 +15,7 @@ class EventViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var isKeyboardOnScreen: Bool = false
   
+  var selectedRowForType: Int = 0
   var entity: EventEntity!
   
   override func viewDidLoad() {
@@ -34,7 +35,14 @@ class EventViewController: UIViewController {
     self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     
     self.title = "New event"
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Done, target: self, action: Selector("save"))
+    self.navigationItem.rightBarButtonItem?.enabled = entity.name.characters.count > 0
+  }
+  
+  func save() {
+    DataContainer.sharedInstance.events.append(entity)
+    self.navigationController?.popToRootViewControllerAnimated(true)
   }
   
   override func didReceiveMemoryWarning() {
@@ -114,6 +122,8 @@ extension EventViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCellWithIdentifier("EventNameFieldCell", forIndexPath: indexPath) as! EventNameFieldTableViewCell
+      cell.updateDelegate = self
+      cell.entity = entity
       cell.showTopIfNeeded(indexPath)
       return cell
     } else if indexPath.section == 1 {
@@ -122,11 +132,11 @@ extension EventViewController: UITableViewDataSource {
         case 0:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Date"
-            cell.selectedValueLabel.text = "1 November"
+            cell.selectedValueLabel.text = entity.date.novemberize()
         case 1:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Time"
-            cell.selectedValueLabel.text = "12:30"
+            cell.selectedValueLabel.text = entity.timeValue
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
             cell.titleLabel.text = "Duration"
@@ -228,18 +238,29 @@ extension EventViewController: UITableViewDelegate {
     var minutes: [String] = []
     
     for i in 0..<24 {
-        hours.append("\(i)")
+        hours.append(twoSimbols(i))
     }
     
     for i in 0..<4 {
-        minutes.append("\(i * 15)")
+        minutes.append(twoSimbols(i * 15))
     }
     
     let closest = findCloses(entity.date)
     
     ActionSheetMultipleStringPicker.showPickerWithTitle("Select Time", rows: [[""], hours, minutes, [""]], initialSelection: [0, closest.hour, closest.minute, 0], doneBlock: { (picker, result, sender) -> Void in
+      
+      let resultValue = result as! [Int]
+      
+      let hour = Int(hours[resultValue[1]])
+      let minute = Int(minutes[resultValue[2]])
+      
+      var date = self.entity.date
+      date = date.change(year: nil, month: nil, day: nil, hour: hour, minute: minute, second: nil)
+      self.entity.date = date
+      self.tableView.reloadData()
+      
         }, cancelBlock: { (picker) -> Void in
-            
+
         }, origin: self.view)
   }
   
@@ -261,18 +282,32 @@ extension EventViewController: UITableViewDelegate {
     var minutes: [String] = []
     
     for i in 0..<12 {
-      hours.append("\(i+1)")
+      hours.append(twoSimbols(i))
     }
     
     for i in 0..<4 {
-      minutes.append("\(i * 15)")
+      minutes.append(twoSimbols(i * 15))
     }
     
-    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Duration", rows: [[""], hours, minutes, [""]], initialSelection: [0, 1, 0, 0], doneBlock: { (picker, result, sender) -> Void in
+    let closest = findClosesDuration(entity.duration)
+    
+    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Duration", rows: [[""], hours, minutes, [""]], initialSelection: [0, closest.hour, closest.minute, 0], doneBlock: { (picker, result, sender) -> Void in
         
+      let resultValue = result as! [Int]
+      
+      let hour = Int(hours[resultValue[1]])!
+      let minute = Int(minutes[resultValue[2]])!
+      
+      self.entity.duration = hour * 60 + minute
+      self.tableView.reloadData()
+      
       }, cancelBlock: { (picker) -> Void in
           
       }, origin: self.view)
+  }
+  
+  func findClosesDuration(value: Int) -> (hour: Int, minute: Int) {
+    return (value / 60, value % 60 / 15)
   }
   
   func showTypePicker() {
@@ -295,10 +330,13 @@ extension EventViewController: UINavigationControllerDelegate {
 extension EventViewController: ActionSheetCustomPickerDelegate {
   func actionSheetPicker(actionSheetPicker: AbstractActionSheetPicker!, configurePickerView pickerView: UIPickerView!) {
     pickerView.delegate = self
+    pickerView.selectRow(entity.type, inComponent: 0, animated: false)
   }
   
   func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
-    
+    print(selectedRowForType)
+    entity.type = selectedRowForType
+    tableView.reloadData()
   }
   
   func actionSheetPickerDidCancel(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
@@ -317,9 +355,20 @@ extension EventViewController: UIPickerViewDataSource {
 }
 
 extension EventViewController: UIPickerViewDelegate {
+  
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    selectedRowForType = row
+  }
+  
   func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
     let value = CalendarType.values[row]
     return NSAttributedString(string: value.stringValue, attributes: [NSForegroundColorAttributeName: value.color])
+  }
+}
+
+extension EventViewController: EventNameFieldTableViewCellDelegate {
+  func needToCheckSaveButton() {
+    self.navigationItem.rightBarButtonItem?.enabled = entity.name.characters.count > 0
   }
 }
 

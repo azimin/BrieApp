@@ -434,6 +434,9 @@
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldTextChanged:" destination="Yx4-kQ-TiL" eventType="editingChanged" id="6wM-tF-bN3"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <animations/>

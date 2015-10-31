@@ -47,6 +47,8 @@ class CalendarViewController: UIViewController {
       collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 5000, inSection: 0), animated: false, scrollPosition: .CenteredHorizontally)
     }
     
+    eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
+    self.tableView.reloadData()
   }
   
   var eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate()) {
@@ -66,7 +68,7 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return eventsItself.count
+    return events.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -76,12 +78,21 @@ extension CalendarViewController: UITableViewDataSource {
 //      return cell
 //    }
     
+    let event = events[indexPath.row] 
+    
+    if let eventItself = event as? EventEntity {
+      return eventCell(eventItself, tableView: tableView, cellForRowAtIndexPath: indexPath)
+    } else {
+      let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
+      cell.showTopIfNeeded(indexPath)
+      return cell
+    }
+  }
+  
+  func eventCell(event: EventEntity, tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
     
-    
-    let event = eventsItself[indexPath.row]
-    
-    cell.mainLabel.text = "\(event.date.hour):\(event.date.minute)"
+    cell.mainLabel.text = event.timeValue
     cell.secondLabel.text = event.name
     cell.type = event.typeValue
     
@@ -175,7 +186,7 @@ extension CalendarViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
     let eventViewController = segue.destinationViewController as? EventViewController
-    eventViewController?.entity = EventEntity(name: "", date: NSDate(), duration: 60, type: 0, location: nil, isPrivate: true)
+    eventViewController!.entity = EventEntity(name: "", date: NSDate(), duration: 60, type: 0, location: nil, isPrivate: true)
   }
 }
 

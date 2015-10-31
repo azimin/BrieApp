@@ -61,22 +61,26 @@ extension NSDate {
             options: NSCalendarOptions(rawValue: 0))!
     }
     
-  func hoursFrom(date: NSDate) -> Int{
-    return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
-  }
-  
-  func increaseByHours(hours: Int) -> NSDate {
-    return NSCalendar.currentCalendar().dateByAddingUnit(
-      .Hour,
-      value: hours,
-      toDate: self,
-      options: NSCalendarOptions(rawValue: 0))!
-  }
+//  func hoursFrom(date: NSDate) -> Int{
+//    return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
+//  }
+//  
+//  func increaseByHours(hours: Int) -> NSDate {
+//    return NSCalendar.currentCalendar().dateByAddingUnit(
+//      .Hour,
+//      value: hours,
+//      toDate: self,
+//      options: NSCalendarOptions(rawValue: 0))!
+//  }
+}
+
+func twoSimbols(value: Int) -> String {
+  return value > 9 ? "\(value)" : "0\(value)"
 }
 
 func parseToString(hours: Int, minutes: Int) -> String {
-  let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
-  let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)" 
+  let hoursString = twoSimbols(hours)
+  let minutesString = twoSimbols(minutes)
   return "\(hoursString):\(minutesString)" 
 
 }
@@ -108,6 +112,13 @@ class EventEntity: Comparable, CalendarEventType {
   var name: String
   var date: NSDate
   var duration: Int
+  
+  var timeValue: String {
+    let hours = date.hour
+    let minutes = date.minute
+    
+    return parseToString(hours, minutes: minutes) 
+  }
   
   var durationValue: String {
     let hours = duration / 60
