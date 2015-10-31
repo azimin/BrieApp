@@ -14,6 +14,9 @@ class FriendsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 45
     // Do any additional setup after loading the view, typically from a nib.
   }
 
