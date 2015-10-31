@@ -30,6 +30,8 @@ class BaseTableViewCell: UITableViewCell {
     topSeparatorView.hidden = true
     self.addSubview(topSeparatorView)
     
+    backgroundColorCache = self.backgroundColor
+    
     updateSeparatorView()
   }
   
@@ -51,5 +53,15 @@ class BaseTableViewCell: UITableViewCell {
   func updateSeparatorView() {
     separatorView.frame = CGRect(x: 0, y: self.bounds.size.height - 1, width: self.bounds.size.width, height: 1)
     topSeparatorView.frame = CGRect(x: 0, y: 0, width: self.bounds.size.width, height: 1)
+  }
+  
+  var backgroundColorCache: UIColor!
+  
+  override func setHighlighted(highlighted: Bool, animated: Bool) {
+    if highlighted {
+      self.backgroundColor = UIColor(hexString: "E6E6E6")
+    } else {
+      self.backgroundColor = backgroundColorCache
+    }
   }
 }
