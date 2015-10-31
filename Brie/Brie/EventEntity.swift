@@ -95,6 +95,13 @@ class SpaceEntity: CalendarEventType, Comparable {
     var date: NSDate
     var duration: Int
     
+    var timeValue: String {
+        let startHour = date.hour
+        let endHour = date.increaseByHours(duration / 60).hour
+        
+        return "\(startHour) — \(endHour)"
+    }
+    
     init(date: NSDate, duration: Int) {
         self.date = date
         self.duration = duration
