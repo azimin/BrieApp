@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UberKit.sharedInstance().redirectURL = "action"
             UberKit.sharedInstance().handleLoginRedirectFromUrl(url, sourceApplication: sourceApplication)
         }
+      
+      loadTestEvents()
+      
         return true
         
     }

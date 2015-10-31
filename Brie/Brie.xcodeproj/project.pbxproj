@@ -27,6 +27,7 @@
 		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
 		92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442D491BE4C1D1005B29F0 /* UCRoundedView.m */; };
 		92442D4E1BE4C2BB005B29F0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */; };
+		928934901BE550030053AB25 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9289348F1BE550030053AB25 /* EventEntity.swift */; };
 		92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */; };
 		92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */; };
 		92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		92F0A8F41BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */; };
 		92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */; };
 		92F0A8F91BE547B400EFCBFD /* PopUpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F81BE547B400EFCBFD /* PopUpItem.swift */; };
+		92F0A8FB1BE5518C00EFCBFD /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8FA1BE5518C00EFCBFD /* DataContainer.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,7 @@
 		92442D481BE4C1D1005B29F0 /* UCRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRoundedView.h; sourceTree = "<group>"; };
 		92442D491BE4C1D1005B29F0 /* UCRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRoundedView.m; sourceTree = "<group>"; };
 		92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		9289348F1BE550030053AB25 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
 		92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrindEventTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpInfoTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpActionTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A8F81BE547B400EFCBFD /* PopUpItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpItem.swift; sourceTree = "<group>"; };
+		92F0A8FA1BE5518C00EFCBFD /* DataContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -424,6 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				826663271BE551950010643F /* TextAnalyzer.swift */,
+				9289348F1BE550030053AB25 /* EventEntity.swift */,
+				92F0A8FA1BE5518C00EFCBFD /* DataContainer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -636,6 +642,7 @@
 				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
 				92F0A8ED1BE53E7200EFCBFD /* PopUpViewController.swift in Sources */,
 				92F0A8CA1BE5221400EFCBFD /* DayCollectionViewCell.swift in Sources */,
+				92F0A8FB1BE5518C00EFCBFD /* DataContainer.swift in Sources */,
 				92442D431BE4BF19005B29F0 /* Image.swift in Sources */,
 				92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
@@ -664,6 +671,7 @@
 				92F0A8C61BE51B3F00EFCBFD /* InfinityScrollDayItem.swift in Sources */,
 				92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */,
 				92F0A8A81BE4FE3100EFCBFD /* ActionSheetCustomPicker.m in Sources */,
+				928934901BE550030053AB25 /* EventEntity.swift in Sources */,
 				92F0A8871BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift in Sources */,
 				92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */,
 				92F0A8AA1BE4FE3100EFCBFD /* ActionSheetDistancePicker.m in Sources */,
