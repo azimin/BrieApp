@@ -15,6 +15,8 @@ class CalendarViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var collectionView: UICollectionView!
   
+  var selectedIndexPath = NSIndexPath(forItem: 5000, inSection: 0)
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -25,8 +27,7 @@ class CalendarViewController: UIViewController {
     tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     
     self.navigationController?.navigationBarHidden = true
-    
-    
+
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -37,17 +38,20 @@ class CalendarViewController: UIViewController {
   }
   
   var flag = false
-  var date = NSDate()
+  var date: NSDate {
+    return self.increaseByDays(NSDate(), days: selectedIndexPath.item - 5000) 
+  }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    if !flag {
-      flag = true
-      view.layoutIfNeeded()
-      collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 5000, inSection: 0), animated: false, scrollPosition: .CenteredHorizontally)
-    }
-    
+    view.layoutIfNeeded()
+    collectionView.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .CenteredHorizontally)
+    updateData()
+  }
+  
+  func updateData() {
+    print(date.day)
     eventsItself = DataContainer.sharedInstance.eventsOnTheDay(date)
     self.tableView.reloadData()
     DataContainer.sharedInstance.save()
@@ -85,8 +89,11 @@ extension CalendarViewController: UITableViewDataSource {
     if let eventItself = event as? EventEntity {
       return eventCell(eventItself, tableView: tableView, cellForRowAtIndexPath: indexPath)
     } else {
+      let spaceEntity = event as? SpaceEntity
+      
       let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
       cell.showTopIfNeeded(indexPath)
+      
       return cell
     }
   }
@@ -181,6 +188,8 @@ extension CalendarViewController: UICollectionViewDataSource {
 extension CalendarViewController: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+    selectedIndexPath = indexPath
+    updateData()
   }
 }
 

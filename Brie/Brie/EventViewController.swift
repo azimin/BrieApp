@@ -334,7 +334,6 @@ extension EventViewController: ActionSheetCustomPickerDelegate {
   }
   
   func actionSheetPickerDidSucceed(actionSheetPicker: AbstractActionSheetPicker!, origin: AnyObject!) {
-    print(selectedRowForType)
     entity.type = selectedRowForType
     tableView.reloadData()
   }
