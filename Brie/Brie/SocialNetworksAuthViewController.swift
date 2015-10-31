@@ -30,27 +30,27 @@ class SocialNetworksAuthViewController: UIViewController {
 
 extension SocialNetworksAuthViewController: VKSdkDelegate {
     func vkSdkNeedCaptchaEnter(captchaError: VKError) {
-        println("Need captcha")
+        print("Need captcha")
     }
     
     func vkSdkTokenHasExpired(expiredToken: VKAccessToken) {
-        println("Token has exp")
+        print("Token has exp")
     }
     
     func vkSdkUserDeniedAccess(authorizationError: VKError) {
-        println("Access denied")
+        print("Access denied")
     }
     
     func vkSdkShouldPresentViewController(controller: UIViewController) {
-        println("Should present VC")
+        print("Should present VC")
         presentViewController(controller, animated: true) { () -> Void in
-            println("Success!")
+            print("Success!")
         }
     }
     
     func vkSdkReceivedNewToken(newToken: VKAccessToken) {
-        println("Succesfully authorized! User ID:")
-        println(VKSdk.getAccessToken().userId)
+        print("Succesfully authorized! User ID:")
+        print(VKSdk.getAccessToken().userId)
         self.performSegueWithIdentifier("Are You Couch segue", sender: nil)
     }
 }

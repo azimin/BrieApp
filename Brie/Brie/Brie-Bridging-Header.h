@@ -3,5 +3,5 @@
 //
 
 #import "UIView+AZViewFromNib.h"
-#import <VKSdkFramework/VKSdk.h>
+#import <VKSdk/VKSdk.h>
 //#import <FrameAccessor/FrameAccessor.h>
