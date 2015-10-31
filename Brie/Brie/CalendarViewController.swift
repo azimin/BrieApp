@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return events.count
+    return eventsItself.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -79,7 +79,7 @@ extension CalendarViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
     
     
-    let event = events[indexPath.row]
+    let event = eventsItself[indexPath.row]
     
     cell.mainLabel.text = "\(event.date.hour):\(event.date.minute)"
     cell.secondLabel.text = event.name
