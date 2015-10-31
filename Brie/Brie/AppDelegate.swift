@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
       return true
-        return VKSdk.processOpenURL(url, fromApplication: sourceApplication)
+      //  return VKSdk.processOpenURL(url, fromApplication: sourceApplication)
     }
     
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

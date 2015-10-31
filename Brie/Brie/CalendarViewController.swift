@@ -33,3 +33,12 @@ class CalendarViewController: UIViewController {
 
 }
 
+extension CalendarViewController: UITableViewDataSource {
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 10
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    return tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
+  }
+}

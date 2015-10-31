@@ -8,3 +8,4 @@
 #import <InfinitePagingView/InfinitePagingView.h>
 #import <pop/POP.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "UCRoundedView.h"

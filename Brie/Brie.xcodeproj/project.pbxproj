@@ -22,6 +22,8 @@
 		92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D3A1BE4BD86005B29F0 /* Color.swift */; };
 		92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */; };
 		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
+		92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442D491BE4C1D1005B29F0 /* UCRoundedView.m */; };
+		92442D4E1BE4C2BB005B29F0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,9 @@
 		92442D3A1BE4BD86005B29F0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		92442D421BE4BF19005B29F0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		92442D481BE4C1D1005B29F0 /* UCRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRoundedView.h; sourceTree = "<group>"; };
+		92442D491BE4C1D1005B29F0 /* UCRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRoundedView.m; sourceTree = "<group>"; };
+		92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,9 +140,9 @@
 		9204069B1BE4B19C00B5D337 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				920406891BE4B12500B5D337 /* CalendarViewController.swift */,
-				9204068B1BE4B12500B5D337 /* FriendsViewController.swift */,
-				92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */,
+				92442D441BE4C068005B29F0 /* CalendarTab */,
+				92442D451BE4C06F005B29F0 /* FrinedsTab */,
+				92442D461BE4C074005B29F0 /* SettingsTab */,
 				8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */,
 			);
 			name = ViewControllers;
@@ -176,6 +181,7 @@
 			children = (
 				92442D421BE4BF19005B29F0 /* Image.swift */,
 				92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */,
+				92442D471BE4C1C1005B29F0 /* RoundView */,
 				920406A41BE4B34700B5D337 /* UIViewHelpers */,
 				92442D3A1BE4BD86005B29F0 /* Color.swift */,
 			);
@@ -215,6 +221,56 @@
 				920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */,
 			);
 			name = TabBarItem;
+			sourceTree = "<group>";
+		};
+		92442D441BE4C068005B29F0 /* CalendarTab */ = {
+			isa = PBXGroup;
+			children = (
+				92442D4B1BE4C2A7005B29F0 /* Calendar */,
+			);
+			name = CalendarTab;
+			sourceTree = "<group>";
+		};
+		92442D451BE4C06F005B29F0 /* FrinedsTab */ = {
+			isa = PBXGroup;
+			children = (
+				9204068B1BE4B12500B5D337 /* FriendsViewController.swift */,
+			);
+			name = FrinedsTab;
+			sourceTree = "<group>";
+		};
+		92442D461BE4C074005B29F0 /* SettingsTab */ = {
+			isa = PBXGroup;
+			children = (
+				92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */,
+			);
+			name = SettingsTab;
+			sourceTree = "<group>";
+		};
+		92442D471BE4C1C1005B29F0 /* RoundView */ = {
+			isa = PBXGroup;
+			children = (
+				92442D481BE4C1D1005B29F0 /* UCRoundedView.h */,
+				92442D491BE4C1D1005B29F0 /* UCRoundedView.m */,
+			);
+			name = RoundView;
+			sourceTree = "<group>";
+		};
+		92442D4B1BE4C2A7005B29F0 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				92442D4C1BE4C2AE005B29F0 /* Cell */,
+				920406891BE4B12500B5D337 /* CalendarViewController.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		92442D4C1BE4C2AE005B29F0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {
@@ -392,7 +448,9 @@
 				92442D431BE4BF19005B29F0 /* Image.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
 				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
+				92442D4E1BE4C2BB005B29F0 /* EventTableViewCell.swift in Sources */,
 				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
+				92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */,
 				9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */,
 				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
