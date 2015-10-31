@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
 		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
@@ -21,7 +19,12 @@
 		920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */; };
 		920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */; };
 		920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */; };
+		92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D3A1BE4BD86005B29F0 /* Color.swift */; };
+		92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */; };
+		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
+		92F71DEC1BE4BC920087E969 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */; };
+		92F71DED1BE4BCE10087E969 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 823BCD361BE4BC2F0048697D /* libVKSdk.a */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +73,9 @@
 		920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AZViewFromNib.m"; sourceTree = "<group>"; };
 		920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrieTabBarItem.swift; sourceTree = "<group>"; };
 		920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrieTabBarItem.xib; sourceTree = "<group>"; };
+		92442D3A1BE4BD86005B29F0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		92442D421BE4BF19005B29F0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F71DED1BE4BCE10087E969 /* libVKSdk.a in Frameworks */,
+				92F71DEC1BE4BC920087E969 /* VKSdkFramework.framework in Frameworks */,
 				D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,7 +178,10 @@
 		9204069F1BE4B2E700B5D337 /* Entension */ = {
 			isa = PBXGroup;
 			children = (
+				92442D421BE4BF19005B29F0 /* Image.swift */,
+				92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */,
 				920406A41BE4B34700B5D337 /* UIViewHelpers */,
+				92442D3A1BE4BD86005B29F0 /* Color.swift */,
 			);
 			name = Entension;
 			sourceTree = "<group>";
@@ -382,9 +393,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
+				92442D431BE4BF19005B29F0 /* Image.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
 				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
+				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
 				9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */,
+				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
 				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
 				9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */,
