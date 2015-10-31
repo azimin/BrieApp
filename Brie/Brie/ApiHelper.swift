@@ -11,6 +11,32 @@ import UberKit
 import Alamofire
 import SwiftyJSON
 
+//NSDate().getMonth().makeShortAndBeautiful()
+extension NSDate {
+    func getMonth() -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.dateFormat = "MMMM"
+        
+        return formatter.stringFromDate(self)
+    }
+}
+
+extension String {
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = self.startIndex.advancedBy(r.startIndex)
+            let endIndex = startIndex.advancedBy(r.endIndex - r.startIndex)
+            return self[Range(start: startIndex, end: endIndex)]
+        }
+    }
+    
+    func makeShortAndBeautiful() -> String {
+        return self[0..<3].uppercaseString
+    }
+}
+
+
 class VKAuth {
     class func addToList(id: String, ids: [Int]) -> VKRequest {
         return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
