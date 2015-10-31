@@ -50,6 +50,11 @@
 		92F0A8C11BE514F600EFCBFD /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8BD1BE514F600EFCBFD /* SearchHistoryManager.swift */; };
 		92F0A8C61BE51B3F00EFCBFD /* InfinityScrollDayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8C51BE51B3F00EFCBFD /* InfinityScrollDayItem.swift */; };
 		92F0A8C81BE51B9100EFCBFD /* InfinityScrollDayItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */; };
+		92F0A8CA1BE5221400EFCBFD /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8C91BE5221400EFCBFD /* DayCollectionViewCell.swift */; };
+		92F0A8ED1BE53E7200EFCBFD /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8EC1BE53E7200EFCBFD /* PopUpViewController.swift */; };
+		92F0A8EF1BE541D200EFCBFD /* PopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8EE1BE541D200EFCBFD /* PopUpTableViewController.swift */; };
+		92F0A8F41BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */; };
+		92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -118,6 +123,11 @@
 		92F0A8BD1BE514F600EFCBFD /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
 		92F0A8C51BE51B3F00EFCBFD /* InfinityScrollDayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfinityScrollDayItem.swift; sourceTree = "<group>"; };
 		92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfinityScrollDayItem.xib; sourceTree = "<group>"; };
+		92F0A8C91BE5221400EFCBFD /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
+		92F0A8EC1BE53E7200EFCBFD /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		92F0A8EE1BE541D200EFCBFD /* PopUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpTableViewController.swift; sourceTree = "<group>"; };
+		92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpInfoTableViewCell.swift; sourceTree = "<group>"; };
+		92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpActionTableViewCell.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +181,7 @@
 		9204069B1BE4B19C00B5D337 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				92F0A8EB1BE53BF300EFCBFD /* PopUp */,
 				92442D441BE4C068005B29F0 /* CalendarTab */,
 				92442D451BE4C06F005B29F0 /* FrinedsTab */,
 				92442D461BE4C074005B29F0 /* SettingsTab */,
@@ -307,6 +318,7 @@
 			children = (
 				92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */,
 				92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */,
+				92F0A8C91BE5221400EFCBFD /* DayCollectionViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -417,6 +429,41 @@
 				92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */,
 			);
 			name = InfinityScrollDayItem;
+			sourceTree = "<group>";
+		};
+		92F0A8EB1BE53BF300EFCBFD /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8F11BE541DA00EFCBFD /* Main */,
+				92F0A8F01BE541D500EFCBFD /* Table */,
+			);
+			name = PopUp;
+			sourceTree = "<group>";
+		};
+		92F0A8F01BE541D500EFCBFD /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8F21BE5428E00EFCBFD /* Cells */,
+				92F0A8EE1BE541D200EFCBFD /* PopUpTableViewController.swift */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		92F0A8F11BE541DA00EFCBFD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8EC1BE53E7200EFCBFD /* PopUpViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		92F0A8F21BE5428E00EFCBFD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */,
+				92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {
@@ -567,9 +614,13 @@
 				92F0A8BE1BE514F600EFCBFD /* Location.swift in Sources */,
 				92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */,
 				92F0A8BF1BE514F600EFCBFD /* LocationPickerViewController.swift in Sources */,
+				92F0A8EF1BE541D200EFCBFD /* PopUpTableViewController.swift in Sources */,
 				92F0A8C11BE514F600EFCBFD /* SearchHistoryManager.swift in Sources */,
+				92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */,
 				92F0A8A91BE4FE3100EFCBFD /* ActionSheetDatePicker.m in Sources */,
 				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
+				92F0A8ED1BE53E7200EFCBFD /* PopUpViewController.swift in Sources */,
+				92F0A8CA1BE5221400EFCBFD /* DayCollectionViewCell.swift in Sources */,
 				92442D431BE4BF19005B29F0 /* Image.swift in Sources */,
 				92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
@@ -584,6 +635,7 @@
 				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				92F0A8911BE4EE2300EFCBFD /* EventNameFieldTableViewCell.swift in Sources */,
 				92F0A8AD1BE4FE3100EFCBFD /* ActionSheetStringPicker.m in Sources */,
+				92F0A8F41BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
 				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
 				9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */,

@@ -10,3 +10,4 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "UCRoundedView.h"
 #import "ActionSheetPicker.h"
+#import <MGSwipeTableCell/MGSwipeTableCell.h>

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MGSwipeTableCell
 
 let defaultRules: (indexPath: NSIndexPath) -> (Bool) = {
   indexPath in
   return indexPath.row == 0
 }
 
-class BaseTableViewCell: UITableViewCell {
+class BaseTableViewCell: MGSwipeTableCell {
   
   var topSeparatorView = UIView()
   let separatorView = UIView()
