@@ -94,7 +94,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/Timepiece.framework"
   install_framework "Pods/UberKit.framework"
-  install_framework "Pods/VK_ios_sdk.framework"
   install_framework "Pods/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -108,6 +107,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/Timepiece.framework"
   install_framework "Pods/UberKit.framework"
-  install_framework "Pods/VK_ios_sdk.framework"
   install_framework "Pods/pop.framework"
 fi

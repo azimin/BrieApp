@@ -13,10 +13,11 @@ class SocialNetworksAuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VKSdk.initializeWithDelegate(self, andAppId: "5128197")
-        if VKSdk.wakeUpSession() {
-            print("")
-        }
+//      
+//        VKSdk.initializeWithDelegate(self, andAppId: "5128197")
+//        if VKSdk.wakeUpSession() {
+//            print("")
+//        }
     }
 
 }

@@ -15,7 +15,6 @@ pod 'InfinitePagingView'
 pod 'pop'
 pod 'FrameAccessor'
 pod 'OAuthSwift'
-pod 'VK-ios-sdk'
 
 #VADIM
 

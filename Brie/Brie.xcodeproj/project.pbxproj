@@ -80,6 +80,7 @@
 			children = (
 				9204068D1BE4B12500B5D337 /* Main.storyboard */,
 				920406871BE4B12500B5D337 /* AppDelegate.swift */,
+				8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */,
 				9204069D1BE4B2D200B5D337 /* Common */,
 				920406A01BE4B2FF00B5D337 /* View */,
 				9204069B1BE4B19C00B5D337 /* ViewControllers */,
@@ -309,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
 				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
 				9204068C1BE4B12500B5D337 /* SecondViewController.swift in Sources */,
