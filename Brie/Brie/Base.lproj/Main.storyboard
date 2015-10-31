@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -88,7 +88,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eon-9T-K9G">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eon-9T-K9G">
                                                     <rect key="frame" x="13" y="16" width="579" height="38"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -352,7 +352,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-Zc-B1h">
-                                                    <rect key="frame" x="16" y="16" width="512" height="15"/>
+                                                    <rect key="frame" x="16" y="16" width="512" height="0.0"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -385,25 +385,43 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbH-CP-SQe">
-                                                    <rect key="frame" x="16" y="39" width="63" height="22"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QY-O1-fD1">
+                                                    <rect key="frame" x="16" y="36" width="67" height="24"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="67" id="Cep-zj-COV"/>
+                                                    </constraints>
+                                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="20" image="ic_like">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12n-MX-33H">
+                                                    <rect key="frame" x="91" y="34" width="67" height="26"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="67" id="7Mm-g9-jQ2"/>
+                                                        <constraint firstAttribute="height" constant="26" id="qh4-uB-l9w"/>
+                                                    </constraints>
+                                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="20" image="ic_repost">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="PbH-CP-SQe" firstAttribute="leading" secondItem="5JL-Ye-ey5" secondAttribute="leadingMargin" constant="8" id="BT0-kG-zVr"/>
+                                                <constraint firstItem="8QY-O1-fD1" firstAttribute="top" secondItem="4J7-Zc-B1h" secondAttribute="bottom" constant="20" id="3GH-qB-cf2"/>
                                                 <constraint firstItem="4J7-Zc-B1h" firstAttribute="leading" secondItem="5JL-Ye-ey5" secondAttribute="leadingMargin" constant="8" id="D5x-gb-qg1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4J7-Zc-B1h" secondAttribute="trailing" constant="30" id="FBu-uJ-1EP"/>
                                                 <constraint firstItem="oW5-Q2-MiV" firstAttribute="leading" secondItem="4J7-Zc-B1h" secondAttribute="trailing" constant="16" id="Gxn-H3-7uU"/>
-                                                <constraint firstItem="PbH-CP-SQe" firstAttribute="top" secondItem="4J7-Zc-B1h" secondAttribute="bottom" constant="8" id="LdD-wJ-mUN"/>
+                                                <constraint firstItem="8QY-O1-fD1" firstAttribute="leading" secondItem="5JL-Ye-ey5" secondAttribute="leadingMargin" constant="8" id="JUM-Du-g2A"/>
                                                 <constraint firstItem="oW5-Q2-MiV" firstAttribute="centerY" secondItem="5JL-Ye-ey5" secondAttribute="centerY" id="bDr-Qh-SdW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="12n-MX-33H" secondAttribute="bottom" constant="8" id="cZF-oi-pUt"/>
                                                 <constraint firstItem="4J7-Zc-B1h" firstAttribute="top" secondItem="5JL-Ye-ey5" secondAttribute="topMargin" constant="8" id="dAj-vw-Q5s"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="PbH-CP-SQe" secondAttribute="bottom" constant="8" id="kha-zt-V6v"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8QY-O1-fD1" secondAttribute="bottom" constant="8" id="umb-TB-xKq"/>
+                                                <constraint firstItem="12n-MX-33H" firstAttribute="leading" secondItem="8QY-O1-fD1" secondAttribute="trailing" constant="8" id="vPy-kq-lIl"/>
                                                 <constraint firstItem="oW5-Q2-MiV" firstAttribute="trailing" secondItem="5JL-Ye-ey5" secondAttribute="trailingMargin" constant="-8" id="ykM-je-GLb"/>
                                             </constraints>
                                             <variation key="default">
@@ -614,5 +632,7 @@
     </scenes>
     <resources>
         <image name="ava_image" width="41" height="40"/>
+        <image name="ic_like" width="29" height="26"/>
+        <image name="ic_repost" width="28" height="32"/>
     </resources>
 </document>
