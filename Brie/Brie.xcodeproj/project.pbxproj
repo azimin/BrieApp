@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
 		9204068A1BE4B12500B5D337 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* FirstViewController.swift */; };
 		9204068C1BE4B12500B5D337 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* SecondViewController.swift */; };
@@ -24,6 +26,8 @@
 		26EB6B92B1AD7C6ADE159BEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7951E9A9D4C5487622B98E88 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		80A2D25865876349312B2083 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksAuthViewController.swift; sourceTree = "<group>"; };
 		920406841BE4B12500B5D337 /* Brie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920406871BE4B12500B5D337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		920406891BE4B12500B5D337 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			children = (
 				920406891BE4B12500B5D337 /* FirstViewController.swift */,
 				9204068B1BE4B12500B5D337 /* SecondViewController.swift */,
+				8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
 				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
 				9204068A1BE4B12500B5D337 /* FirstViewController.swift in Sources */,
+				8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
