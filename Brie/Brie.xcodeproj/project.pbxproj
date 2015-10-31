@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		823BCD6F1BE4BEC80048697D /* VKSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823BCD6D1BE4BEC80048697D /* VKSdk.framework */; settings = {ASSET_TAGS = (); }; };
-		823BCD701BE4BEC80048697D /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 823BCD6E1BE4BEC80048697D /* VKSdkResources.bundle */; settings = {ASSET_TAGS = (); }; };
-		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
+		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
-		9204068A1BE4B12500B5D337 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* FirstViewController.swift */; };
-		9204068C1BE4B12500B5D337 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* SecondViewController.swift */; };
+		9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* CalendarViewController.swift */; };
+		9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* FriendsViewController.swift */; };
 		9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9204068D1BE4B12500B5D337 /* Main.storyboard */; };
 		920406911BE4B12500B5D337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920406901BE4B12500B5D337 /* Assets.xcassets */; };
 		920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920406921BE4B12500B5D337 /* LaunchScreen.storyboard */; };
@@ -21,34 +19,48 @@
 		920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */; };
 		920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */; };
 		920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */; };
+		92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D3A1BE4BD86005B29F0 /* Color.swift */; };
+		92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */; };
+		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
+		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		823BCD6C1BE4BE760048697D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+/* Begin PBXContainerItemProxy section */
+		823BCD351BE4BC2F0048697D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3C7542D182133CC00964716;
+			remoteInfo = VKSdk;
 		};
-/* End PBXCopyFilesBuildPhase section */
+		823BCD371BE4BC2F0048697D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3BACC401865905B003158DA;
+			remoteInfo = VKSdkResources;
+		};
+		823BCD391BE4BC2F0048697D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F34670311B8B7C5A003EF74B;
+			remoteInfo = VKSdkFramework;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		26EB6B92B1AD7C6ADE159BEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7951E9A9D4C5487622B98E88 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		80A2D25865876349312B2083 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		823BCD6D1BE4BEC80048697D /* VKSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdk.framework; path = "Brie/vk-ios-sdk-master/VKSdk.framework"; sourceTree = "<group>"; };
-		823BCD6E1BE4BEC80048697D /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = "Brie/vk-ios-sdk-master/VKSdkResources.bundle"; sourceTree = "<group>"; };
+		823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "VK-ios-sdk.xcodeproj"; path = "vk-ios-sdk-master/VK-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksAuthViewController.swift; sourceTree = "<group>"; };
 		920406841BE4B12500B5D337 /* Brie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920406871BE4B12500B5D337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		920406891BE4B12500B5D337 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		9204068B1BE4B12500B5D337 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		920406891BE4B12500B5D337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		9204068B1BE4B12500B5D337 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		9204068E1BE4B12500B5D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		920406901BE4B12500B5D337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		920406931BE4B12500B5D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +71,10 @@
 		920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AZViewFromNib.m"; sourceTree = "<group>"; };
 		920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrieTabBarItem.swift; sourceTree = "<group>"; };
 		920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrieTabBarItem.xib; sourceTree = "<group>"; };
+		92442D3A1BE4BD86005B29F0 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		92442D421BE4BF19005B29F0 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				823BCD6F1BE4BEC80048697D /* VKSdk.framework in Frameworks */,
 				D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +89,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		823BCD2F1BE4BC2F0048697D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				823BCD361BE4BC2F0048697D /* libVKSdk.a */,
+				823BCD381BE4BC2F0048697D /* VKSdkResources.bundle */,
+				823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9204067B1BE4B12500B5D337 = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +135,9 @@
 		9204069B1BE4B19C00B5D337 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				920406891BE4B12500B5D337 /* FirstViewController.swift */,
-				9204068B1BE4B12500B5D337 /* SecondViewController.swift */,
+				920406891BE4B12500B5D337 /* CalendarViewController.swift */,
+				9204068B1BE4B12500B5D337 /* FriendsViewController.swift */,
+				92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */,
 				8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */,
 			);
 			name = ViewControllers;
@@ -148,7 +174,10 @@
 		9204069F1BE4B2E700B5D337 /* Entension */ = {
 			isa = PBXGroup;
 			children = (
+				92442D421BE4BF19005B29F0 /* Image.swift */,
+				92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */,
 				920406A41BE4B34700B5D337 /* UIViewHelpers */,
+				92442D3A1BE4BD86005B29F0 /* Color.swift */,
 			);
 			name = Entension;
 			sourceTree = "<group>";
@@ -200,8 +229,7 @@
 		B61DAC291226B5E117793F5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				823BCD6D1BE4BEC80048697D /* VKSdk.framework */,
-				823BCD6E1BE4BEC80048697D /* VKSdkResources.bundle */,
+				823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */,
 				80A2D25865876349312B2083 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -220,7 +248,6 @@
 				920406821BE4B12500B5D337 /* Resources */,
 				42CDA68215AFADB065896ACF /* Embed Pods Frameworks */,
 				90A8505A7B5B1370340B4DF4 /* Copy Pods Resources */,
-				823BCD6C1BE4BE760048697D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,6 +284,12 @@
 			mainGroup = 9204067B1BE4B12500B5D337;
 			productRefGroup = 920406851BE4B12500B5D337 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 823BCD2F1BE4BC2F0048697D /* Products */;
+					ProjectRef = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				920406831BE4B12500B5D337 /* Brie */,
@@ -264,13 +297,36 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		823BCD361BE4BC2F0048697D /* libVKSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVKSdk.a;
+			remoteRef = 823BCD351BE4BC2F0048697D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		823BCD381BE4BC2F0048697D /* VKSdkResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VKSdkResources.bundle;
+			remoteRef = 823BCD371BE4BC2F0048697D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VKSdkFramework.framework;
+			remoteRef = 823BCD391BE4BC2F0048697D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		920406821BE4B12500B5D337 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */,
-				823BCD701BE4BEC80048697D /* VKSdkResources.bundle in Resources */,
 				920406911BE4B12500B5D337 /* Assets.xcassets in Resources */,
 				9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */,
 				920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */,
@@ -333,13 +389,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
+				92442D431BE4BF19005B29F0 /* Image.swift in Sources */,
 				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
 				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
-				9204068C1BE4B12500B5D337 /* SecondViewController.swift in Sources */,
+				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
+				9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */,
+				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
 				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
-				9204068A1BE4B12500B5D337 /* FirstViewController.swift in Sources */,
+				9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */,
 				8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */,
+				92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,10 +512,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Brie/vk-ios-sdk-master",
-				);
 				INFOPLIST_FILE = Brie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,10 +528,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Brie/vk-ios-sdk-master",
-				);
 				INFOPLIST_FILE = Brie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class CalendarViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,7 +19,17 @@ class FirstViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController?.navigationBarHidden = true
+  }
 
+  override func az_tabBarItemContentView() -> AZTabBarItemView {
+    let cell = BrieTabBarItem().az_loadFromNibIfEmbeddedInDifferentNib()
+    cell.type = BrieTabBarItem.BrieTabBarItemType.Calendar
+    return cell
+  }
 
 }
 
