@@ -9,9 +9,9 @@
 import UIKit
 
 class AZTabBarItemView: UIView {
-  var height: CGFloat?
+  var heightValue: CGFloat?
   var preferedHeight: CGFloat {
-    return height ?? _preferedHeight
+    return heightValue ?? _preferedHeight
   }
   
   private var _preferedHeight: CGFloat = 49
@@ -97,7 +97,7 @@ class AZTabBarController: UITabBarController {
   }
   
   func setupViewOnItem(item: AZTabBarItem, index: Int) -> AZTabBarItemView {
-    let viewContainer = self.viewControllers![index].az_tabBarItemContentView()
+    let viewContainer = tabBarItemForViewController(self.viewControllers![index])
     viewContainer._preferedHeight = (self.tabBar as? AZTabBar)?.preferedHeight ?? 49
     
     viewContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -136,6 +136,13 @@ class AZTabBarController: UITabBarController {
     
     maxHeight = max(maxHeight, viewContainer.preferedHeight)
     return viewContainer
+  }
+  
+  func tabBarItemForViewController(viewController: UIViewController) -> AZTabBarItemView {
+    if let navigationController = viewController as? UINavigationController {
+      return navigationController.viewControllers.first?.az_tabBarItemContentView() ?? viewController.az_tabBarItemContentView()
+    }
+    return viewController.az_tabBarItemContentView()
   }
   
   private(set) var isHidden: Bool = false
