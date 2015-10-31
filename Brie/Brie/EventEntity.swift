@@ -99,7 +99,7 @@ class SpaceEntity: CalendarEventType, Comparable {
         events.sortInPlace()
         var i = 7 // Start time
         if events.count == 0 {
-            let today = NSDate.from(year: date.getYearInt(), month: date.getMonthInt(), day: date.getDayInt(), hour: i)
+            let today = date.createDate(i)
             results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00
         } else {
             for event in events {

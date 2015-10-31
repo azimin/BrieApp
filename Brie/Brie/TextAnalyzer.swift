@@ -10,9 +10,9 @@ import Parsimmon
 import Foundation
 
 class TextAnalyzer {
-    class func lemmatize() {
+    class func lemmatize(text: String) {
         let lemmatizer = ParsimmonLemmatizer()
-        let lemmatizedTokens = lemmatizer.lemmatizeWordsInText("Надо позвонить Саше и договориться встретиться в ресторане")
+        let lemmatizedTokens = lemmatizer.lemmatizeWordsInText(text)
         print(lemmatizedTokens)
     }
 }
