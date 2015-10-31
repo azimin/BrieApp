@@ -172,6 +172,7 @@ extension EventViewController: UITableViewDataSource {
       cell.entity = entity
       cell.showTopIfNeeded(indexPath)
       
+      
       return cell
     }
     

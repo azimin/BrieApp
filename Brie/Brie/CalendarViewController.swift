@@ -117,6 +117,8 @@ extension CalendarViewController: UITableViewDataSource {
       cell.actionWidthConstraint.constant = 0
     }
     
+    cell.entity = event
+    
     return cell
   }
   
@@ -148,6 +150,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
   }
   
   func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+    providerType = (cell as! EventTableViewCell).entity.provider ?? .Uber
     TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
      return true
   }

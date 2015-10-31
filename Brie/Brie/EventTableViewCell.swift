@@ -10,6 +10,7 @@ import UIKit
 
 class EventTableViewCell: BaseTableViewCell {
 
+  var entity: EventEntity!
   @IBOutlet weak var mainLabel: UILabel!
   @IBOutlet weak var secondLabel: UILabel!
   @IBOutlet weak var actionView: UIView!
