@@ -9,16 +9,31 @@
 import Foundation
 import Timepiece
 
+private let eventsKey = "eventsKey1"
+
 class DataContainer {
   static var sharedInstance = DataContainer()
   
-  var events: [EventEntity] = []
+  var events: [EventEntity] = {
+    return DataContainer.load()
+  }()
   
   func eventsOnTheDay(date: NSDate) -> [EventEntity] {
     return events.filter() {
       event in
       return event.date.day == date.day
     }
+  }
+  
+  static func load() -> [EventEntity] {
+    if let data = NSUserDefaults.standardUserDefaults().objectForKey(eventsKey) as? NSData  {
+      return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! [EventEntity]
+    }
+    return []
+  }
+  
+  func save() {
+    NSUserDefaults.standardUserDefaults().setObject(NSKeyedArchiver.archivedDataWithRootObject(events), forKey: eventsKey)
   }
 }
 

@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController {
   }
   
   var flag = false
+  var date = NSDate()
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -47,13 +48,14 @@ class CalendarViewController: UIViewController {
       collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 5000, inSection: 0), animated: false, scrollPosition: .CenteredHorizontally)
     }
     
-    eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
+    eventsItself = DataContainer.sharedInstance.eventsOnTheDay(date)
     self.tableView.reloadData()
+    DataContainer.sharedInstance.save()
   }
   
   var eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate()) {
     didSet {
-      events = SpaceEntity.findSpacesBetweenEvents(eventsItself)
+      events = SpaceEntity.findSpacesBetweenEvents(date, events: eventsItself)
     }
   }
   var events: [CalendarEventType] = []

@@ -107,8 +107,8 @@ class SpaceEntity: CalendarEventType, Comparable {
                 if duration > 1 {
                     let today = NSDate.from(year: date.getYearInt(), month: date.getMonthInt(), day: date.getDayInt(), hour: i)
                     results.append(SpaceEntity(date: today, duration: Int(duration) * 60)) // Till 23:00
-                    i += Int(duration)
                 }
+                i += Int(duration)
                 results.append(event)
             }
         }
@@ -116,7 +116,7 @@ class SpaceEntity: CalendarEventType, Comparable {
     }
 }
 
-class EventEntity: Comparable, CalendarEventType {
+class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   var name: String
   var date: NSDate
   var duration: Int
@@ -145,6 +145,23 @@ class EventEntity: Comparable, CalendarEventType {
     return location == nil ? "Location not selected" : location?.name ?? location?.address ?? "Location"
   }
   
+  internal func encodeWithCoder(aCoder: NSCoder) {
+    aCoder.encodeObject(self.name, forKey: "name")
+    aCoder.encodeObject(self.date, forKey: "date")
+    aCoder.encodeObject(self.duration, forKey: "duration")
+    aCoder.encodeObject(self.type, forKey: "type")
+    aCoder.encodeObject(self.location, forKey: "location")
+    aCoder.encodeObject(self.isPrivate, forKey: "isPrivate")
+  }
+  
+  required internal init(coder aDecoder: NSCoder) {
+    self.name = aDecoder.decodeObjectForKey("name") as! String
+    self.date = aDecoder.decodeObjectForKey("date") as! NSDate
+    self.duration = aDecoder.decodeObjectForKey("duration") as! Int
+    self.type = aDecoder.decodeObjectForKey("type") as! Int
+    self.location = aDecoder.decodeObjectForKey("location") as? Location
+    self.isPrivate = aDecoder.decodeObjectForKey("isPrivate") as! Bool
+  }
   
   var isPrivate: Bool
   

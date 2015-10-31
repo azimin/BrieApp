@@ -12,7 +12,7 @@ import CoreLocation
 import AddressBookUI
 
 // class because protocol
-public class Location: NSObject {
+public class Location: NSObject, NSCoding {
 	public let name: String?
 	
 	// difference from placemark location is that if location was reverse geocoded,
@@ -39,6 +39,18 @@ public class Location: NSObject {
 		self.location = location ?? placemark.location!
 		self.placemark = placemark
 	}
+  
+  public func encodeWithCoder(aCoder: NSCoder) {
+    aCoder.encodeObject(self.name, forKey: "name")
+    aCoder.encodeObject(self.location, forKey: "location")
+    aCoder.encodeObject(self.placemark, forKey: "placemark")
+  }
+  
+  required public init(coder aDecoder: NSCoder) {
+    self.name = aDecoder.decodeObjectForKey("name") as! String
+    self.location = aDecoder.decodeObjectForKey("location") as! CLLocation
+    self.placemark = aDecoder.decodeObjectForKey("placemark") as! CLPlacemark
+  }
 }
 
 import MapKit
