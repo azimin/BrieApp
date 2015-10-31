@@ -10,10 +10,47 @@ import Foundation
 
 protocol CalendarEventType { }
 
+extension NSDate {
+  func hoursFrom(date: NSDate) -> Int{
+    return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
+  }
+  
+  func increaseByHours(hours: Int) -> NSDate {
+    return NSCalendar.currentCalendar().dateByAddingUnit(
+      .Hour,
+      value: hours,
+      toDate: self,
+      options: NSCalendarOptions(rawValue: 0))!
+  }
+}
+
 func parseToString(hours: Int, minutes: Int) -> String {
   let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
   let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)" 
   return "\(hoursString):\(minutesString)" 
+}
+
+class SpaceEntity: CalendarEventType, Comparable {
+    var date: NSDate
+    var duration: Int
+    
+    init(date: NSDate, duration: Int) {
+        self.date = date
+        self.duration = duration
+    }
+    
+    class func findSpacesBetweenEvents(var events: [EventEntity]) -> [CalendarEventType] {
+        var results = [CalendarEventType]()
+        events.sortInPlace()
+      
+        for i in 1..<events.count {
+            let spaceSize = (events[i].date.hoursFrom(events[i - 1].date)) - (events[i].duration) * 60 // Размер промежутка в часах между двумя датами
+            if spaceSize > 1 {
+                results.append(SpaceEntity(date: events[i - 1].date.increaseByHours(events[i - 1].duration), duration: spaceSize))
+            }
+        }
+        return results
+    }
 }
 
 class EventEntity: Comparable, CalendarEventType {
@@ -60,6 +97,14 @@ class EventEntity: Comparable, CalendarEventType {
       return nil
     }
   }
+}
+
+func <(lhs: SpaceEntity, rhs: SpaceEntity) -> Bool {
+    return lhs.date < rhs.date
+}
+
+func ==(lhs: SpaceEntity, rhs: SpaceEntity) -> Bool {
+    return lhs.date == rhs.date
 }
 
 func <(lhs: EventEntity, rhs: EventEntity) -> Bool {

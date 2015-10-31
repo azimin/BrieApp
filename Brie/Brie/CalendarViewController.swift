@@ -18,7 +18,7 @@ class CalendarViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    events = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
+    eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
     
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 45
@@ -49,7 +49,12 @@ class CalendarViewController: UIViewController {
     
   }
   
-  var events = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
+  var eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate()) {
+    didSet {
+      events = SpaceEntity.findSpacesBetweenEvents(eventsItself)
+    }
+  }
+  var events: [CalendarEventType] = []
 
   override func az_tabBarItemContentView() -> AZTabBarItemView {
     let cell = BrieTabBarItem().az_loadFromNibIfEmbeddedInDifferentNib()
