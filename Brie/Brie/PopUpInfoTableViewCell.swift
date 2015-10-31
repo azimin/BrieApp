@@ -8,8 +8,11 @@
 
 import UIKit
 
-class PopUpInfoTableViewCell: UITableViewCell {
+class PopUpInfoTableViewCell: BaseTableViewCell {
 
+  @IBOutlet weak var infoTitleLabel: UILabel!
+  @IBOutlet weak var infoLabel: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

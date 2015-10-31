@@ -8,8 +8,10 @@
 
 import UIKit
 
-class PopUpActionTableViewCell: UITableViewCell {
+class PopUpActionTableViewCell: BaseTableViewCell {
 
+  @IBOutlet weak var buttonTitleLabel: UILabel!
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

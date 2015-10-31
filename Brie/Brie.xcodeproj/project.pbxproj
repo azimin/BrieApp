@@ -55,6 +55,7 @@
 		92F0A8EF1BE541D200EFCBFD /* PopUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8EE1BE541D200EFCBFD /* PopUpTableViewController.swift */; };
 		92F0A8F41BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */; };
 		92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */; };
+		92F0A8F91BE547B400EFCBFD /* PopUpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8F81BE547B400EFCBFD /* PopUpItem.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		92F0A8EE1BE541D200EFCBFD /* PopUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpTableViewController.swift; sourceTree = "<group>"; };
 		92F0A8F31BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpInfoTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A8F51BE546B700EFCBFD /* PopUpActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpActionTableViewCell.swift; sourceTree = "<group>"; };
+		92F0A8F81BE547B400EFCBFD /* PopUpItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpItem.swift; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +219,7 @@
 		9204069E1BE4B2DF00B5D337 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				92F0A8F71BE547AA00EFCBFD /* PopUpItem */,
 				92F0A88B1BE4DB8F00EFCBFD /* TAWindowShower.swift */,
 				92F0A8B01BE5093A00EFCBFD /* CalendarType.swift */,
 			);
@@ -466,6 +469,14 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		92F0A8F71BE547AA00EFCBFD /* PopUpItem */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8F81BE547B400EFCBFD /* PopUpItem.swift */,
+			);
+			name = PopUpItem;
+			sourceTree = "<group>";
+		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +650,7 @@
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
 				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
 				9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */,
+				92F0A8F91BE547B400EFCBFD /* PopUpItem.swift in Sources */,
 				8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */,
 				92F0A8AF1BE4FE3100EFCBFD /* SWActionSheet.m in Sources */,
 				92F0A8C01BE514F600EFCBFD /* LocationSearchResultsViewController.swift in Sources */,
