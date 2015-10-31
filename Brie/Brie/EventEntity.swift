@@ -11,6 +11,56 @@ import Foundation
 protocol CalendarEventType { }
 
 extension NSDate {
+    func getDayInt() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day, .Month, .Year], fromDate: self)
+        return components.day
+    }
+
+    func getMonthInt() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day, .Month, .Year], fromDate: self)
+        return components.month
+    }
+    
+    func getYearInt() -> Int {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day, .Month, .Year], fromDate: self)
+        return components.year
+    }
+    
+    func createDate(hour: Int) -> NSDate {
+        return NSDate.from(year: self.getYearInt(), month: self.getMonthInt(), day: self.getDayInt(), hour: hour)
+    }
+    
+    class func from(year year: Int, month: Int, day: Int, hour: Int) -> NSDate {
+        let c = NSDateComponents()
+        c.year = year
+        c.month = month
+        c.day = day
+        c.hour = hour
+        
+        let gregorian = NSCalendar(identifier:NSCalendarIdentifierGregorian)
+        let date = gregorian!.dateFromComponents(c)
+        return date!
+    }
+    
+    func novemberize() -> String {
+        return "\(self.getDayInt()) \(self.getMonth())"
+    }
+    
+    func hoursFrom(date: NSDate) -> Int{
+        return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
+    }
+    
+    func increaseByHours(hours: Int) -> NSDate {
+        return NSCalendar.currentCalendar().dateByAddingUnit(
+            .Hour,
+            value: hours,
+            toDate: self,
+            options: NSCalendarOptions(rawValue: 0))!
+    }
+    
   func hoursFrom(date: NSDate) -> Int{
     return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: NSCalendarOptions(rawValue: 0)).hour
   }
@@ -28,6 +78,7 @@ func parseToString(hours: Int, minutes: Int) -> String {
   let hoursString = hours > 9 ? "\(hours)" : "0\(hours)"
   let minutesString = minutes > 9 ? "\(minutes)" : "0\(minutes)" 
   return "\(hoursString):\(minutesString)" 
+
 }
 
 class SpaceEntity: CalendarEventType, Comparable {
