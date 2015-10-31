@@ -47,6 +47,8 @@ class CalendarViewController: UIViewController {
     }
     
   }
+  
+  var events = DataContainer.sharedInstance.eventsOnTheDay(NSDate())
 
   override func az_tabBarItemContentView() -> AZTabBarItemView {
     let cell = BrieTabBarItem().az_loadFromNibIfEmbeddedInDifferentNib()
@@ -58,7 +60,7 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return events.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
