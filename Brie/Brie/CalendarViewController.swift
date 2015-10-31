@@ -18,6 +18,8 @@ class CalendarViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 45
     tableView.contentInset = UIEdgeInsets(top: -4, left: 0, bottom: 0, right: 0)
+    
+    self.navigationController?.navigationBarHidden = true
     // Do any additional setup after loading the view, typically from a nib.
   }
 
@@ -28,7 +30,7 @@ class CalendarViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    self.navigationController?.navigationBarHidden = true
+    
   }
 
   override func az_tabBarItemContentView() -> AZTabBarItemView {
@@ -52,5 +54,10 @@ extension CalendarViewController: UITableViewDataSource {
     }
     
     return tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
+  }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    self.performSegueWithIdentifier("EventScreen", sender: nil)
   }
 }

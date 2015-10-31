@@ -10,11 +10,11 @@ import Foundation
 
 extension UIColor {
   static var appBlueColor: UIColor {
-    return UIColor(hexString: "515CBD")
+    return UIColor(hexString: "515BB9")
   }
   
   static var navigationBarColor: UIColor {
-    return UIColor(hexString: "515CBD")
+    return UIColor(hexString: "515BB9")
   }
   
   static var navigationBarTextColor: UIColor {

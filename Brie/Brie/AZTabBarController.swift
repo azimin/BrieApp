@@ -55,6 +55,10 @@ extension UIViewController {
   func az_tabBarItemContentView() -> AZTabBarItemView {
     fatalError("Must be implemented in subclass")
   }
+  
+  var az_tabBarController: AZTabBarController? {
+    return self.tabBarController as? AZTabBarController
+  }
 }
 
 class AZTabBarController: UITabBarController {
@@ -151,7 +155,6 @@ class AZTabBarController: UITabBarController {
     self.isHidden = hidden
     
     for contraint in view.constraints {
-      print(contraint.firstAttribute.rawValue)
       if contraint.firstAttribute == NSLayoutAttribute.Bottom, let item = contraint.firstItem as? AZTabBarItemView {
         contraint.constant = hidden ? item.preferedHeight : 0
       }
@@ -159,6 +162,14 @@ class AZTabBarController: UITabBarController {
     
     UIView.animateWithDuration(animated ? 0.35 : 0) { () -> Void in
       self.view.layoutIfNeeded()
+    }
+  }
+  
+  func setHiddenProgress(value: CGFloat) {
+    for contraint in view.constraints {
+      if contraint.firstAttribute == NSLayoutAttribute.Bottom, let item = contraint.firstItem as? AZTabBarItemView {
+        contraint.constant = item.preferedHeight * (1 - value)
+      }
     }
   }
   

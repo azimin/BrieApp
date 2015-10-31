@@ -25,7 +25,7 @@ class BrieTabBarItem: AZTabBarItemView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.backgroundColor = UIColor(hexString: "515CBD")
+    self.backgroundColor = UIColor.appBlueColor
   }
   
   @IBOutlet weak var iconImageView: UIImageView!
