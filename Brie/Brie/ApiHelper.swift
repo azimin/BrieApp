@@ -11,6 +11,20 @@ import UberKit
 import Alamofire
 import SwiftyJSON
 
+extension String {
+    subscript (r: Range<Int>) -> String {
+        get {
+            let startIndex = advance(self.startIndex, r.startIndex)
+            let endIndex = advance(startIndex, r.endIndex - r.startIndex)
+            return self[Range(start: startIndex, end: endIndex)]
+        }
+    }
+    
+    func makeShortAndBeautiful(self) {
+        return self[0..<3].uppercaseString
+    }
+}
+
 class VKAuth {
     class func addToList(id: String, ids: [Int]) -> VKRequest {
         return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
