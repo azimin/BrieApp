@@ -149,8 +149,8 @@ extension EventViewController: UITableViewDataSource {
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Location"
-        cell.selectedValueLabel.text = entity.location == nil ? "Not selected" : entity.location?.name ?? "Location"
-        cell.selectedValueLabel.textColor = UIColor(hexString: "CBCBCB")
+        cell.selectedValueLabel.text = entity.locationValue
+        cell.selectedValueLabel.textColor = entity.location == nil ? UIColor(hexString: "CBCBCB") : UIColor.blackColor()
       default:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Privacy"
@@ -159,6 +159,7 @@ extension EventViewController: UITableViewDataSource {
         cell.categorySwitch.on = entity.isPrivate
       }
       
+      cell.entity = entity
       cell.showTopIfNeeded(indexPath)
       
       return cell
@@ -207,12 +208,13 @@ extension EventViewController: UITableViewDelegate {
         } else if indexPath.row == 1 {
           let placePicker = LocationPickerViewController()
           let location = CLLocation(latitude: 59.9358, longitude: 30.3256)
-          let initialLocation = Location(name: "VK Office", location: location, placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: [:]))
+          let initialLocation = entity.location ?? Location(name: "VK Office", location: location, placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: [:]))
           placePicker.location = initialLocation
           
           placePicker.completion = {
-            (locations) in 
-            print(locations)
+            (value: Location?) in 
+            self.entity.location = value
+            self.tableView.reloadData()
           }
           
           self.navigationController?.pushViewController(placePicker, animated: true)//(, animated: true, completion: nil)
@@ -233,15 +235,22 @@ extension EventViewController: UITableViewDelegate {
         minutes.append("\(i * 15)")
     }
     
-    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Time", rows: [[""], hours, minutes, [""]], initialSelection: [0, 12, 2, 0], doneBlock: { (picker, result, sender) -> Void in
+    let closest = findCloses(entity.date)
+    
+    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Time", rows: [[""], hours, minutes, [""]], initialSelection: [0, closest.hour, closest.minute, 0], doneBlock: { (picker, result, sender) -> Void in
         }, cancelBlock: { (picker) -> Void in
             
         }, origin: self.view)
   }
   
+  func findCloses(date: NSDate) -> (hour: Int, minute: Int) {
+    return (date.hour, date.minute / 15)
+  }
+  
   func showDatePicker() {
-    ActionSheetDatePicker.showPickerWithTitle("Select Date", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate.tomorrow().endOfYear, doneBlock: { (picker, value, sender) -> Void in
-      
+    ActionSheetDatePicker.showPickerWithTitle("Select Date", datePickerMode: UIDatePickerMode.Date, selectedDate: entity.date, minimumDate: NSDate().beginningOfYear, maximumDate: NSDate.tomorrow().endOfYear, doneBlock: { (picker, value, sender) -> Void in
+        self.entity.date = value as! NSDate
+        self.tableView.reloadData()
       }, cancelBlock: { (picker) -> Void in
         
       }, origin: self.view)
