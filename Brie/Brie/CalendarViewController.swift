@@ -102,6 +102,11 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
       cell.layoutIfNeeded()
     }
   }
+  
+  func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+    TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
+     return true
+  }
 }
 
 extension CalendarViewController: UICollectionViewDataSource {
@@ -141,3 +146,9 @@ extension CalendarViewController: UICollectionViewDelegate {
     collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
   }
 }
+
+extension CalendarViewController {
+  
+}
+
+
