@@ -71,6 +71,11 @@ class EventEntity: Comparable, CalendarEventType {
   }
   
   var location: Location?
+  var locationValue: String {
+    return location == nil ? "Location not selected" : location?.name ?? location?.address ?? "Location"
+  }
+  
+  
   var isPrivate: Bool
   
   init(name: String, date: NSDate, duration: Int, type: Int, location: Location?, isPrivate: Bool) {

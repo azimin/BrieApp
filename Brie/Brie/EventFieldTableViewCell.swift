@@ -16,6 +16,8 @@ class EventFieldTableViewCell: BaseTableViewCell {
   @IBOutlet weak var categorySwitch: UISwitch!
   @IBOutlet weak var roundView: UCRoundedView!
   
+  var entity: EventEntity!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -34,6 +36,10 @@ class EventFieldTableViewCell: BaseTableViewCell {
     }
     
     // Configure the view for the selected state
+  }
+  
+  @IBAction func switcherAction(sender: UISwitch) {
+    entity.isPrivate = sender.on
   }
   
   override func prepareForReuse() {
