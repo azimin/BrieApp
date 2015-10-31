@@ -8,6 +8,7 @@
 
 import UIKit
 import Timepiece
+import MGSwipeTableCell
 
 class CalendarViewController: UIViewController {
 
@@ -67,12 +68,39 @@ extension CalendarViewController: UITableViewDataSource {
       return cell
     }
     
-    return tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! EventTableViewCell
+    cell.leftButtons = [MGSwipeButton(title: "Test", backgroundColor: UIColor(hexString: "91C696"), insets: UIEdgeInsetsMake(0, 16, 0, 16))]
+    
+    cell.delegate = self
+    
+    return cell
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     self.performSegueWithIdentifier("EventScreen", sender: nil)
+  }
+}
+
+extension CalendarViewController: MGSwipeTableCellDelegate {
+  func swipeTableCellWillBeginSwiping(cell: MGSwipeTableCell!) {
+    guard let cell = cell as? EventTableViewCell else {
+      return
+    }
+    cell.actionWidthConstraint.constant = 0
+    UIView.animateWithDuration(0.2) { () -> Void in
+      cell.layoutIfNeeded()
+    }
+  }
+  
+  func swipeTableCellWillEndSwiping(cell: MGSwipeTableCell!) {
+    guard let cell = cell as? EventTableViewCell else {
+      return
+    }
+    cell.actionWidthConstraint.constant = 28
+    UIView.animateWithDuration(0.2) { () -> Void in
+      cell.layoutIfNeeded()
+    }
   }
 }
 
@@ -87,7 +115,7 @@ extension CalendarViewController: UICollectionViewDataSource {
     let date = increaseByDays(NSDate(), days: indexPath.row - 5000)
     
     cell.dayLabel.text = "\(date.day)"
-    cell.monthLabel.text = "\(date.month)"
+    cell.monthLabel.text = "\(date.getMonth().makeShortAndBeautiful())"
     
     cell.updateApperance()
     
@@ -109,5 +137,7 @@ extension CalendarViewController: UICollectionViewDataSource {
 
 
 extension CalendarViewController: UICollectionViewDelegate {
-  
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+  }
 }

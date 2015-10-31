@@ -15,6 +15,6 @@ class EventTableViewCell: BaseTableViewCell {
   
   @IBOutlet weak var circleView: UCRoundedView!
   
-  
+  @IBOutlet weak var actionWidthConstraint: NSLayoutConstraint!
   
 }

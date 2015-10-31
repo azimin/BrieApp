@@ -31,14 +31,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="08:30" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NG-Wm-Cd2">
-                                                    <rect key="frame" x="16" y="16" width="546" height="13.5"/>
+                                                    <rect key="frame" x="44" y="16" width="518" height="13.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cold shower" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uc3-F2-493">
-                                                    <rect key="frame" x="16" y="37" width="530" height="21.5"/>
+                                                    <rect key="frame" x="44" y="37" width="502" height="21.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,6 +59,22 @@
                                                         </mask>
                                                     </variation>
                                                 </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyx-CA-xYp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="76"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_button" translatesAutoresizingMaskIntoConstraints="NO" id="q3o-Ex-ego">
+                                                            <rect key="frame" x="8.5" y="29" width="11" height="18"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.56862745100000001" green="0.77647058820000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="44U-bp-hla"/>
+                                                        <constraint firstItem="q3o-Ex-ego" firstAttribute="centerX" secondItem="pyx-CA-xYp" secondAttribute="centerX" id="A2U-cz-jag"/>
+                                                        <constraint firstItem="q3o-Ex-ego" firstAttribute="centerY" secondItem="pyx-CA-xYp" secondAttribute="centerY" id="JcO-H7-Tsx"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -66,16 +82,28 @@
                                                 <constraint firstItem="0NG-Wm-Cd2" firstAttribute="top" secondItem="xSl-hN-J0v" secondAttribute="topMargin" constant="8" id="7TE-rD-mRB"/>
                                                 <constraint firstItem="Uc3-F2-493" firstAttribute="leading" secondItem="xSl-hN-J0v" secondAttribute="leadingMargin" constant="8" id="E6X-Mx-8ro"/>
                                                 <constraint firstItem="Uc3-F2-493" firstAttribute="top" secondItem="0NG-Wm-Cd2" secondAttribute="bottom" constant="8" id="Hg8-sl-o7S"/>
+                                                <constraint firstAttribute="bottom" secondItem="pyx-CA-xYp" secondAttribute="bottom" id="OpM-0t-WhI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0NG-Wm-Cd2" secondAttribute="trailing" constant="30" id="PFO-jI-8Aa"/>
                                                 <constraint firstItem="0NG-Wm-Cd2" firstAttribute="leading" secondItem="xSl-hN-J0v" secondAttribute="leadingMargin" constant="8" id="asz-1p-8fd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Uc3-F2-493" secondAttribute="bottom" constant="9.5" id="bbm-Cl-n8O"/>
                                                 <constraint firstItem="A6g-hh-K25" firstAttribute="leading" secondItem="Uc3-F2-493" secondAttribute="trailing" constant="16" id="dgO-3m-Vv7"/>
+                                                <constraint firstItem="0NG-Wm-Cd2" firstAttribute="leading" secondItem="pyx-CA-xYp" secondAttribute="trailing" constant="16" id="f5a-cZ-QGa"/>
+                                                <constraint firstItem="Uc3-F2-493" firstAttribute="leading" secondItem="pyx-CA-xYp" secondAttribute="trailing" constant="16" id="hP6-nZ-WiG"/>
+                                                <constraint firstItem="pyx-CA-xYp" firstAttribute="top" secondItem="xSl-hN-J0v" secondAttribute="top" id="k7w-n2-r4Y"/>
                                                 <constraint firstItem="A6g-hh-K25" firstAttribute="centerY" secondItem="xSl-hN-J0v" secondAttribute="centerY" id="toz-Gc-lrn"/>
                                                 <constraint firstItem="A6g-hh-K25" firstAttribute="trailing" secondItem="xSl-hN-J0v" secondAttribute="trailingMargin" constant="-8" id="yEh-kj-auC"/>
+                                                <constraint firstItem="pyx-CA-xYp" firstAttribute="leading" secondItem="xSl-hN-J0v" secondAttribute="leading" id="yoH-Kp-TpQ"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="asz-1p-8fd"/>
+                                                    <exclude reference="E6X-Mx-8ro"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
+                                            <outlet property="actionWidthConstraint" destination="44U-bp-hla" id="cnp-q1-tak"/>
                                             <outlet property="circleView" destination="A6g-hh-K25" id="4Ix-kB-BoY"/>
                                             <outlet property="mainLabel" destination="0NG-Wm-Cd2" id="en3-M8-goA"/>
                                             <outlet property="secondLabel" destination="Uc3-F2-493" id="ISy-Ec-s7Y"/>
@@ -753,5 +781,6 @@
         <image name="ava_image" width="41" height="40"/>
         <image name="ic_like" width="29" height="26"/>
         <image name="ic_repost" width="28" height="32"/>
+        <image name="img_back_button" width="11" height="18"/>
     </resources>
 </document>
