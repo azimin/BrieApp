@@ -13,6 +13,10 @@
 		9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9204068D1BE4B12500B5D337 /* Main.storyboard */; };
 		920406911BE4B12500B5D337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920406901BE4B12500B5D337 /* Assets.xcassets */; };
 		920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920406921BE4B12500B5D337 /* LaunchScreen.storyboard */; };
+		920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406A21BE4B33F00B5D337 /* AZTabBarController.swift */; };
+		920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */; };
+		920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */; };
+		920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,12 @@
 		920406901BE4B12500B5D337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		920406931BE4B12500B5D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		920406951BE4B12500B5D337 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		920406A21BE4B33F00B5D337 /* AZTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZTabBarController.swift; sourceTree = "<group>"; };
+		920406A51BE4B35000B5D337 /* Brie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Brie-Bridging-Header.h"; sourceTree = "<group>"; };
+		920406A61BE4B35100B5D337 /* UIView+AZViewFromNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AZViewFromNib.h"; sourceTree = "<group>"; };
+		920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AZViewFromNib.m"; sourceTree = "<group>"; };
+		920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrieTabBarItem.swift; sourceTree = "<group>"; };
+		920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrieTabBarItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +55,8 @@
 		9204067B1BE4B12500B5D337 = {
 			isa = PBXGroup;
 			children = (
-				920406861BE4B12500B5D337 /* Brie */,
+				920406861BE4B12500B5D337 /* Sources */,
+				9204069C1BE4B1A700B5D337 /* Resources */,
 				920406851BE4B12500B5D337 /* Products */,
 				9B1EEC5943F295A0F71C6CAD /* Pods */,
 				B61DAC291226B5E117793F5B /* Frameworks */,
@@ -60,14 +71,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		920406861BE4B12500B5D337 /* Brie */ = {
+		920406861BE4B12500B5D337 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				9204068D1BE4B12500B5D337 /* Main.storyboard */,
 				920406871BE4B12500B5D337 /* AppDelegate.swift */,
+				9204069D1BE4B2D200B5D337 /* Common */,
+				920406A01BE4B2FF00B5D337 /* View */,
 				9204069B1BE4B19C00B5D337 /* ViewControllers */,
-				9204069C1BE4B1A700B5D337 /* Support Files */,
 			);
+			name = Sources;
 			path = Brie;
 			sourceTree = "<group>";
 		};
@@ -80,14 +93,75 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		9204069C1BE4B1A700B5D337 /* Support Files */ = {
+		9204069C1BE4B1A700B5D337 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				920406A51BE4B35000B5D337 /* Brie-Bridging-Header.h */,
 				920406901BE4B12500B5D337 /* Assets.xcassets */,
 				920406921BE4B12500B5D337 /* LaunchScreen.storyboard */,
 				920406951BE4B12500B5D337 /* Info.plist */,
 			);
-			name = "Support Files";
+			name = Resources;
+			path = Brie;
+			sourceTree = "<group>";
+		};
+		9204069D1BE4B2D200B5D337 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9204069F1BE4B2E700B5D337 /* Entension */,
+				9204069E1BE4B2DF00B5D337 /* Classes */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		9204069E1BE4B2DF00B5D337 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		9204069F1BE4B2E700B5D337 /* Entension */ = {
+			isa = PBXGroup;
+			children = (
+				920406A41BE4B34700B5D337 /* UIViewHelpers */,
+			);
+			name = Entension;
+			sourceTree = "<group>";
+		};
+		920406A01BE4B2FF00B5D337 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				920406A91BE4B36B00B5D337 /* TabBarItem */,
+				920406A11BE4B33800B5D337 /* TabBar */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		920406A11BE4B33800B5D337 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				920406A21BE4B33F00B5D337 /* AZTabBarController.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		920406A41BE4B34700B5D337 /* UIViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				920406A61BE4B35100B5D337 /* UIView+AZViewFromNib.h */,
+				920406A71BE4B35100B5D337 /* UIView+AZViewFromNib.m */,
+			);
+			name = UIViewHelpers;
+			sourceTree = "<group>";
+		};
+		920406A91BE4B36B00B5D337 /* TabBarItem */ = {
+			isa = PBXGroup;
+			children = (
+				920406AA1BE4B38000B5D337 /* BrieTabBarItem.swift */,
+				920406AC1BE4B38600B5D337 /* BrieTabBarItem.xib */,
+			);
+			name = TabBarItem;
 			sourceTree = "<group>";
 		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {
@@ -171,6 +245,7 @@
 				920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */,
 				920406911BE4B12500B5D337 /* Assets.xcassets in Resources */,
 				9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */,
+				920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,8 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				920406AB1BE4B38000B5D337 /* BrieTabBarItem.swift in Sources */,
+				920406A81BE4B35100B5D337 /* UIView+AZViewFromNib.m in Sources */,
 				9204068C1BE4B12500B5D337 /* SecondViewController.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
+				920406A31BE4B33F00B5D337 /* AZTabBarController.swift in Sources */,
 				9204068A1BE4B12500B5D337 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,10 +421,14 @@
 			baseConfigurationReference = 26EB6B92B1AD7C6ADE159BEC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Brie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.700km.Brie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Brie/Brie-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -355,10 +437,13 @@
 			baseConfigurationReference = 7951E9A9D4C5487622B98E88 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Brie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.700km.Brie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Brie/Brie-Bridging-Header.h";
 			};
 			name = Release;
 		};
