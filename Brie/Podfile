@@ -1,0 +1,23 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+use_frameworks!
+
+#ALEX
+
+pod 'FrameAccessor'
+pod 'Timepiece'
+pod 'ChameleonFramework'
+pod 'SVProgressHUD'
+pod 'MGSwipeTableCell'
+pod 'InfinitePagingView'
+pod 'pop'
+pod 'FrameAccessor'
+pod 'OAuthSwift'
+pod 'VK-ios-sdk'
+
+#VADIM
+
+pod 'Alamofire'
+pod 'SwiftyJSON'
+pod 'UberKit'
