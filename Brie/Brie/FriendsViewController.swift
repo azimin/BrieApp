@@ -10,6 +10,8 @@ import UIKit
 
 class FriendsViewController: UIViewController {
 
+  @IBOutlet weak var tableView: UITableView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -30,7 +32,36 @@ class FriendsViewController: UIViewController {
     cell.type = BrieTabBarItem.BrieTabBarItemType.Friends
     return cell
   }
-
-  
 }
 
+extension FriendsViewController: UITableViewDataSource {
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 3
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 3
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("FriendEventCell", forIndexPath: indexPath) as! FrindEventTableViewCell
+    
+    if indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 && indexPath.section != tableView.numberOfSections - 1 {
+      cell.separatorView.hidden = true
+    } else {
+      cell.separatorView.hidden = false
+    }
+    
+    return cell
+  }
+}
+
+extension FriendsViewController: UITableViewDelegate {
+  func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return FriendEventTimeHeaderFooterView()
+  }
+  
+  func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 42
+  }
+}

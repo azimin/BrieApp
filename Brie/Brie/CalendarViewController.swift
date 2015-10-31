@@ -10,8 +10,14 @@ import UIKit
 
 class CalendarViewController: UIViewController {
 
+  @IBOutlet weak var tableView: UITableView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 45
+    tableView.contentInset = UIEdgeInsets(top: -4, left: 0, bottom: 0, right: 0)
     // Do any additional setup after loading the view, typically from a nib.
   }
 
@@ -39,6 +45,12 @@ extension CalendarViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    if indexPath.row % 4 == 0 {
+      let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
+      cell.showTopIfNeeded(indexPath)
+      return cell
+    }
+    
     return tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath)
   }
 }

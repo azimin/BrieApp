@@ -10,4 +10,7 @@
 
 @interface UCRoundedView : UIView
 
+@property (nonatomic) IBInspectable UIColor *borderColor;
+@property (nonatomic) IBInspectable CGFloat borderWidth;
+
 @end

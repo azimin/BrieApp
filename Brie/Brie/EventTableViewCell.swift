@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventTableViewCell: UITableViewCell {
+class EventTableViewCell: BaseTableViewCell {
 
   @IBOutlet weak var mainLabel: UILabel!
   @IBOutlet weak var secondLabel: UILabel!
