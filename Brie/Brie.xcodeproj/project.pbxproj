@@ -155,6 +155,7 @@
 				9204068D1BE4B12500B5D337 /* Main.storyboard */,
 				920406871BE4B12500B5D337 /* AppDelegate.swift */,
 				8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */,
+				92F0A8C31BE519C800EFCBFD /* Model */,
 				9204069D1BE4B2D200B5D337 /* Common */,
 				920406A01BE4B2FF00B5D337 /* View */,
 				9204069B1BE4B19C00B5D337 /* ViewControllers */,
@@ -395,6 +396,13 @@
 				92F0A8BD1BE514F600EFCBFD /* SearchHistoryManager.swift */,
 			);
 			name = LocationPicker;
+			sourceTree = "<group>";
+		};
+		92F0A8C31BE519C800EFCBFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {

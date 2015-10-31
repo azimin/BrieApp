@@ -30,6 +30,8 @@ class EventViewController: UIViewController {
     
     self.navigationController?.delegate = self
     self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+    
+    self.title = "New event"
     // Do any additional setup after loading the view.
   }
   
@@ -140,14 +142,13 @@ extension EventViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Type"
         cell.selectedValueLabel.text = CalendarType.values.first!.rawValue
-        cell.selectedValueLabel.textColor = CalendarType.values.first!.color
         cell.roundView.backgroundColor = CalendarType.values.first!.color
         cell.roundView.hidden = false
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Location"
         cell.selectedValueLabel.text = "Not selected"
-        cell.selectedValueLabel.textColor = UIColor(hexString: "666666")
+        cell.selectedValueLabel.textColor = UIColor(hexString: "CBCBCB")
       default:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Privacy"
