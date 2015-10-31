@@ -14,6 +14,8 @@
 {
   [super awakeFromNib];
   self.layer.masksToBounds = YES;
+  self.layer.borderWidth = self.borderWidth;
+  self.layer.borderColor = self.borderColor.CGColor;
 }
 
 - (void)layoutSubviews {
