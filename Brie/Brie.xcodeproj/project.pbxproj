@@ -23,8 +23,6 @@
 		92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D401BE4BE7B005B29F0 /* BaseNavigationController.swift */; };
 		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
-		92F71DEC1BE4BC920087E969 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */; };
-		92F71DED1BE4BCE10087E969 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 823BCD361BE4BC2F0048697D /* libVKSdk.a */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92F71DED1BE4BCE10087E969 /* libVKSdk.a in Frameworks */,
-				92F71DEC1BE4BC920087E969 /* VKSdkFramework.framework in Frameworks */,
 				D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
