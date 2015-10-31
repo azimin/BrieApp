@@ -36,8 +36,53 @@ class VKAuth {
 }
 
 class UberAuth {
-    func setUp() {
+    
+    class func openApp(latitude: Float, longitude: Float, dropOffName: String) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(dropOffName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
+    }
+    
+    class func ETATOLocation(location: CLLocation) {
+        UberKit.sharedInstance().getTimeForProductArrivalWithLocation(location) { (products, response, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(products)
+                for product in products {
+                    if let product = product as? UberTime {
+                        print("ID: \(product.productID)")
+                        print("Name: \(product.displayName)")
+                        print("Estimate: \(product.estimate)")
+                        print("—————")
+                    }
+                }
+            }
+        }
+    }
+    
+    class func getAllProducts(myCoord: CLLocation) {
+        UberKit.sharedInstance().getProductsForLocation(myCoord) { (products, response, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                print(products)
+                for product in products {
+                    if let product = product as? UberProduct {
+                        print("ID: \(product.product_id)")
+                        print("Description: \(product.product_description)")
+                        print("Name: \(product.display_name)")
+                        print("Capacity: \(product.capacity)")
+                        print("—————")
+                    }
+                }
+            }
+        }
+    }
+    
+    class func setUp() {
         UberKit.sharedInstance().serverToken = "ZyyBICknWEusJGQOr3T-P7wbWeACAf_MD2RxlY69"
+        UberKit.sharedInstance().clientID =     "ubPe139HnMrEUyrBpFVYnpQPp2yAgcqS"
+        UberKit.sharedInstance().clientSecret = "c7r-gKbGscAZ7zNEfAGSUaibUr3EU6UNDnHZSsVC"
+        UberKit.sharedInstance().applicationName = "com.700km.Brie"
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UberKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        
-        VKSdk.processOpenURL(url, fromApplication: sourceApplication)
+        print(url)
+        print(sourceApplication)
+        if sourceApplication != nil {
+            VKSdk.processOpenURL(url, fromApplication: sourceApplication)
+            UberKit.sharedInstance().redirectURL = "action"
+            UberKit.sharedInstance().handleLoginRedirectFromUrl(url, sourceApplication: sourceApplication)
+        }
         return true
         
     }
