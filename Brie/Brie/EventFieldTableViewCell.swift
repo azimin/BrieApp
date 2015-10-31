@@ -10,6 +10,11 @@ import UIKit
 
 class EventFieldTableViewCell: BaseTableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var selectedValueLabel: UILabel!
+    
+    @IBOutlet weak var categorySwitch: UISwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

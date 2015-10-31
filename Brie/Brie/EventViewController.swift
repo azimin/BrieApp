@@ -111,6 +111,31 @@ extension EventViewController: UITableViewDataSource {
       let cell = tableView.dequeueReusableCellWithIdentifier("EventNameFieldCell", forIndexPath: indexPath) as! EventNameFieldTableViewCell
       cell.showTopIfNeeded(indexPath)
       return cell
+    } else if indexPath.section == 1 {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell.titleLabel.text = "Date"
+            cell.selectedValueLabel.text = "1 November"
+            cell.showTopIfNeeded(indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell.titleLabel.text = "Time"
+            cell.selectedValueLabel.text = "12:30"
+            cell.showTopIfNeeded(indexPath)
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell.titleLabel.text = "Duration"
+            cell.selectedValueLabel.text = "2:00"
+            cell.showTopIfNeeded(indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+            cell.showTopIfNeeded(indexPath)
+            return cell
+        }
     }
     
     let cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
@@ -155,11 +180,27 @@ extension EventViewController: UITableViewDelegate {
   }
   
   func showTimePicker() {
-    ActionSheetDatePicker.showPickerWithTitle("Select Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate().endOfYear, doneBlock: { (picker, value, sender) -> Void in
-      
-      }, cancelBlock: { (picker) -> Void in
-        
-      }, origin: self.view)
+    var hours: [String] =  []
+    var minutes: [String] = []
+    
+    for i in 0..<24 {
+        hours.append("\(i)")
+    }
+    
+    for i in 0..<4 {
+        minutes.append("\(i * 15)")
+    }
+    
+    ActionSheetMultipleStringPicker.showPickerWithTitle("Select Time", rows: [[""], hours, minutes, [""]], initialSelection: [0, 12, 2, 0], doneBlock: { (picker, result, sender) -> Void in
+        }, cancelBlock: { (picker) -> Void in
+            
+        }, origin: self.view)
+
+    //    ActionSheetDatePicker.showPickerWithTitle("Select Time", datePickerMode: UIDatePickerMode.Time, selectedDate: NSDate(), minimumDate: NSDate().beginningOfYear, maximumDate: NSDate().endOfYear, doneBlock: { (picker, value, sender) -> Void in
+//      
+//      }, cancelBlock: { (picker) -> Void in
+//        
+//      }, origin: self.view)
   }
   
   func showDatePicker() {
