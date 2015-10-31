@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820088931BE4C25E00D9CE83 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 820088911BE4C25E00D9CE83 /* VKSdkResources.bundle */; settings = {ASSET_TAGS = (); }; };
+		820088941BE4C34F00D9CE83 /* VKSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820088901BE4C25E00D9CE83 /* VKSdk.framework */; };
 		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
 		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
@@ -26,35 +28,12 @@
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		823BCD351BE4BC2F0048697D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F3C7542D182133CC00964716;
-			remoteInfo = VKSdk;
-		};
-		823BCD371BE4BC2F0048697D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F3BACC401865905B003158DA;
-			remoteInfo = VKSdkResources;
-		};
-		823BCD391BE4BC2F0048697D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F34670311B8B7C5A003EF74B;
-			remoteInfo = VKSdkFramework;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		26EB6B92B1AD7C6ADE159BEC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7951E9A9D4C5487622B98E88 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		80A2D25865876349312B2083 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "VK-ios-sdk.xcodeproj"; path = "vk-ios-sdk-master/VK-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
+		820088901BE4C25E00D9CE83 /* VKSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdk.framework; path = "vk-ios-sdk-master/VKSdk.framework"; sourceTree = "<group>"; };
+		820088911BE4C25E00D9CE83 /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = "vk-ios-sdk-master/VKSdkResources.bundle"; sourceTree = "<group>"; };
 		8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksAuthViewController.swift; sourceTree = "<group>"; };
 		920406841BE4B12500B5D337 /* Brie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820088941BE4C34F00D9CE83 /* VKSdk.framework in Frameworks */,
 				D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,16 +69,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		823BCD2F1BE4BC2F0048697D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				823BCD361BE4BC2F0048697D /* libVKSdk.a */,
-				823BCD381BE4BC2F0048697D /* VKSdkResources.bundle */,
-				823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9204067B1BE4B12500B5D337 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +116,8 @@
 		9204069C1BE4B1A700B5D337 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				820088901BE4C25E00D9CE83 /* VKSdk.framework */,
+				820088911BE4C25E00D9CE83 /* VKSdkResources.bundle */,
 				920406A51BE4B35000B5D337 /* Brie-Bridging-Header.h */,
 				920406901BE4B12500B5D337 /* Assets.xcassets */,
 				920406921BE4B12500B5D337 /* LaunchScreen.storyboard */,
@@ -229,7 +201,6 @@
 		B61DAC291226B5E117793F5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */,
 				80A2D25865876349312B2083 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -284,12 +255,6 @@
 			mainGroup = 9204067B1BE4B12500B5D337;
 			productRefGroup = 920406851BE4B12500B5D337 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 823BCD2F1BE4BC2F0048697D /* Products */;
-					ProjectRef = 823BCD2E1BE4BC2F0048697D /* VK-ios-sdk.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				920406831BE4B12500B5D337 /* Brie */,
@@ -297,36 +262,13 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		823BCD361BE4BC2F0048697D /* libVKSdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libVKSdk.a;
-			remoteRef = 823BCD351BE4BC2F0048697D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		823BCD381BE4BC2F0048697D /* VKSdkResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VKSdkResources.bundle;
-			remoteRef = 823BCD371BE4BC2F0048697D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		823BCD3A1BE4BC2F0048697D /* VKSdkFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = VKSdkFramework.framework;
-			remoteRef = 823BCD391BE4BC2F0048697D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		920406821BE4B12500B5D337 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */,
+				820088931BE4C25E00D9CE83 /* VKSdkResources.bundle in Resources */,
 				920406911BE4B12500B5D337 /* Assets.xcassets in Resources */,
 				9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */,
 				920406AD1BE4B38600B5D337 /* BrieTabBarItem.xib in Resources */,
@@ -512,6 +454,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Brie/vk-ios-sdk-master",
+				);
 				INFOPLIST_FILE = Brie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -528,6 +474,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Brie/vk-ios-sdk-master",
+				);
 				INFOPLIST_FILE = Brie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
