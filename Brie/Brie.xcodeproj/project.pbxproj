@@ -48,6 +48,8 @@
 		92F0A8BF1BE514F600EFCBFD /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8BB1BE514F600EFCBFD /* LocationPickerViewController.swift */; };
 		92F0A8C01BE514F600EFCBFD /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8BC1BE514F600EFCBFD /* LocationSearchResultsViewController.swift */; };
 		92F0A8C11BE514F600EFCBFD /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8BD1BE514F600EFCBFD /* SearchHistoryManager.swift */; };
+		92F0A8C61BE51B3F00EFCBFD /* InfinityScrollDayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8C51BE51B3F00EFCBFD /* InfinityScrollDayItem.swift */; };
+		92F0A8C81BE51B9100EFCBFD /* InfinityScrollDayItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */; };
 		92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */; };
 		D09FE76AF55C56DB42380CE8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2D25865876349312B2083 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,8 @@
 		92F0A8BB1BE514F600EFCBFD /* LocationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		92F0A8BC1BE514F600EFCBFD /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
 		92F0A8BD1BE514F600EFCBFD /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
+		92F0A8C51BE51B3F00EFCBFD /* InfinityScrollDayItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfinityScrollDayItem.swift; sourceTree = "<group>"; };
+		92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfinityScrollDayItem.xib; sourceTree = "<group>"; };
 		92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,7 @@
 				9204068D1BE4B12500B5D337 /* Main.storyboard */,
 				920406871BE4B12500B5D337 /* AppDelegate.swift */,
 				8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */,
+				92F0A8C31BE519C800EFCBFD /* Model */,
 				9204069D1BE4B2D200B5D337 /* Common */,
 				920406A01BE4B2FF00B5D337 /* View */,
 				9204069B1BE4B19C00B5D337 /* ViewControllers */,
@@ -221,6 +226,7 @@
 		920406A01BE4B2FF00B5D337 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92F0A8C41BE51B3600EFCBFD /* InfinityScrollDayItem */,
 				920406A91BE4B36B00B5D337 /* TabBarItem */,
 				920406A11BE4B33800B5D337 /* TabBar */,
 			);
@@ -397,6 +403,22 @@
 			name = LocationPicker;
 			sourceTree = "<group>";
 		};
+		92F0A8C31BE519C800EFCBFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		92F0A8C41BE51B3600EFCBFD /* InfinityScrollDayItem */ = {
+			isa = PBXGroup;
+			children = (
+				92F0A8C51BE51B3F00EFCBFD /* InfinityScrollDayItem.swift */,
+				92F0A8C71BE51B9100EFCBFD /* InfinityScrollDayItem.xib */,
+			);
+			name = InfinityScrollDayItem;
+			sourceTree = "<group>";
+		};
 		9B1EEC5943F295A0F71C6CAD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F0A8C81BE51B9100EFCBFD /* InfinityScrollDayItem.xib in Resources */,
 				920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */,
 				820088931BE4C25E00D9CE83 /* VKSdkResources.bundle in Resources */,
 				920406911BE4B12500B5D337 /* Assets.xcassets in Resources */,
@@ -570,6 +593,7 @@
 				92F0A8AE1BE4FE3100EFCBFD /* DistancePickerView.m in Sources */,
 				92F0A8A71BE4FE3100EFCBFD /* AbstractActionSheetPicker.m in Sources */,
 				92F0A88C1BE4DB8F00EFCBFD /* TAWindowShower.swift in Sources */,
+				92F0A8C61BE51B3F00EFCBFD /* InfinityScrollDayItem.swift in Sources */,
 				92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */,
 				92F0A8A81BE4FE3100EFCBFD /* ActionSheetCustomPicker.m in Sources */,
 				92F0A8871BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift in Sources */,
