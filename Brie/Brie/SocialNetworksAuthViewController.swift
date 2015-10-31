@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import MapKit
 import SwiftyJSON
+import Foundation
+import UberKit
 
 class SocialNetworksAuthViewController: UIViewController {
 
@@ -109,10 +112,8 @@ class SocialNetworksAuthViewController: UIViewController {
         cell.type = BrieTabBarItem.BrieTabBarItemType.Setting
         return cell
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
+    
+    func processVK() {
         VKSdk.initializeWithDelegate(self, andAppId: "5128197")
         if VKSdk.wakeUpSession() {
             print("AUTHORIZED AND READY TO GO")
@@ -120,8 +121,44 @@ class SocialNetworksAuthViewController: UIViewController {
             print("LET'S AUTHORIZE")
             VKAuthtorize()
         }
+    }
+    
+    func processKudaGO() {
+//        eventsInRange(NSDate(), end: increaseByHours(NSDate(), hours: 2))
+    }
+    
+    
+    func processUber() {
+        UberAuth.setUp()
+        UberKit.sharedInstance().delegate = self
         
-        eventsInRange(NSDate(), end: increaseByHours(NSDate(), hours: 2))
+        let myCoord = CLLocation(latitude: 59.95064370000001, longitude: 30.291187599999997)
+        UberAuth.ETATOLocation(myCoord)
+        UberAuth.openApp(59.9358, longitude: 30.3256, dropOffName: "VK+Office")
+    }
+    
+    func startUberActivity() {
+        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        processVK()
+        processKudaGO()
+        processUber()
+    }
+}
+
+extension SocialNetworksAuthViewController: UberKitDelegate {
+    func uberKit(uberKit: UberKit!, didReceiveAccessToken accessToken: String!) {
+        print("Success!")
+        NSUserDefaults.standardUserDefaults().setObject(accessToken, forKey: "uberAccessToken")
+        startUberActivity()
+    }
+    
+    func uberKit(uberKit: UberKit!, loginFailedWithError error: NSError!) {
+        print("Uber Auth failed with \(error.localizedDescription)")
     }
 }
 
