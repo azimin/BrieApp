@@ -1,6 +1,6 @@
-// Enumerator.swift
-//
-// Copyright (c) 2015 Ayaka Nonaka
+// ParsimmonTokenizer.m
+// 
+// Copyright (c) 2013 Ayaka Nonaka
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -8,10 +8,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,29 +20,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+#import "ParsimmonTokenizer.h"
 
-typealias Pair = (String, String)
+@implementation ParsimmonTokenizer
 
-protocol Analyzer {
-    var seed: Seed { get }
-    var scheme: String { get }
+- (NSArray *)tokenizeWordsInText:(NSString *)text
+{
+    return [self tokenizeText:text options:self.defaultLinguisticTaggerOptions];
 }
 
-internal func analyze(analyzer: Analyzer, text: String, options: NSLinguisticTaggerOptions?) -> [Pair] {
-    var pairs: [Pair] = []
-
-    let range = NSRange(location: 0, length: count(text))
-    let options = options ?? analyzer.seed.linguisticTaggerOptions
-    let tagger = analyzer.seed.linguisticTaggerWithOptions(options)
-
-    tagger.string = text
-    tagger.enumerateTagsInRange(range, scheme: analyzer.scheme, options: options) { (tag: String?, tokenRange, range, stop) in
-        if let tag = tag {
-            let token = (text as NSString).substringWithRange(tokenRange)
-            let pair = (token, tag)
-            pairs.append(pair)
-        }
-    }
-    return pairs
+- (NSArray *)tokenizeText:(NSString *)text options:(NSLinguisticTaggerOptions)options
+{
+    NSMutableArray *tokens = [NSMutableArray array];
+    NSLinguisticTagger *tagger = [self linguisticTaggerWithOptions:options];
+    tagger.string = text;
+    [tagger enumerateTagsInRange:NSMakeRange(0, [text length])
+                          scheme:NSLinguisticTagSchemeNameTypeOrLexicalClass
+                         options:options
+                      usingBlock:^(NSString *tag, NSRange tokenRange, NSRange sentenceRange, BOOL *stop) {
+                          NSString *token = [text substringWithRange:tokenRange];
+                          [tokens addObject:token];
+                      }
+    ];
+    return tokens;
 }
+
+@end

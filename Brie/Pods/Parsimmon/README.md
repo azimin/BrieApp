@@ -1,13 +1,14 @@
-# Parsimmon
+Parsimmon
+=========
 
 [![Build Status](https://travis-ci.org/ayanonagon/Parsimmon.svg?branch=master)](https://travis-ci.org/ayanonagon/Parsimmon)
-[![Coverage Status](https://coveralls.io/repos/ayanonagon/Parsimmon/badge.svg?branch=master)](https://coveralls.io/r/ayanonagon/Parsimmon?branch=master)
+[![Coverage Status](https://coveralls.io/repos/ayanonagon/Parsimmon/badge.png?branch=master)](https://coveralls.io/r/ayanonagon/Parsimmon?branch=master)
 
-Parsimmon is a wee linguistics toolkit for iOS written in Swift.
+Parsimmon is a wee Objective-C linguistics toolkit for iOS.
 
 
-## Toolkit
-
+Toolkit
+----
 Currently available tools:
 - Tokenizer
 - Tagger
@@ -16,7 +17,8 @@ Currently available tools:
 - Decision Tree (alpha)
 
 
-## Installation
+Installation
+----
 
 The easiest way to get started is to use [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
 
@@ -24,21 +26,21 @@ The easiest way to get started is to use [CocoaPods](http://cocoapods.org/). Jus
 pod 'Parsimmon', '~> 0.3'
 ```
 
-
-## Examples
+Examples
+----
 
 To start using Parsimmon:
-```swift
-import Parsimmon
+```obj-c
+#import <Parsimmon/Parsimmon.h>
 ```
 
 
-### Tokenizer
+###Tokenizer
 
-```swift
-let tokenizer = Tokenizer()
-let tokens = tokenizer.tokenize("The quick brown fox jumps over the lazy dog")
-println(tokens)
+```obj-c
+ParsimmonTokenizer *tokenizer = [[ParsimmonTokenizer alloc] init];
+NSArray *tokens = [tokenizer tokenizeWordsInText:@"The quick brown fox jumps over the lazy dog"];
+NSLog(@"%@", tokens);
 ```
 
 ```
@@ -58,10 +60,10 @@ dog
 
 ### Tagger
 
-```swift
-let tagger = Tagger()
-let taggedTokens = tagger.tagWordsInText("The quick brown fox jumps over the lazy dog")
-println(taggedTokens)
+```obj-c
+ParsimmonTagger *tagger = [[ParsimmonTagger alloc] init];
+NSArray *taggedTokens = [tagger tagWordsInText:@"The quick brown fox jumps over the lazy dog"];
+NSLog(@"%@", taggedTokens);
 ```
 
 ```
@@ -81,10 +83,10 @@ println(taggedTokens)
 
 ### Lemmatizer
 
-```swift
-let lemmatizer = Lemmatizer()
-let lemmatizedTokens = lemmatizer.lemmatizeWordsInText("Diane, I'm holding in my hand a small box of chocolate bunnies.")
-println(lemmatizedTokens)
+```obj-c
+ParsimmonLemmatizer *lemmatizer = [[ParsimmonLemmatizer alloc] init];
+NSArray *lemmatizedTokens = [lemmatizer lemmatizeWordsInText:@"Diane, I'm holding in my hand a small box of chocolate bunnies."];
+NSLog(@"%@", lemmatizedTokens);
 ```
 
 ```
@@ -107,26 +109,25 @@ bunny
 
 ### Naive Bayes Classifier
 
-```swift
-let classifier = NaiveBayesClassifier()
+```obj-c
+ParsimmonNaiveBayesClassifier *classifier = [[ParsimmonNaiveBayesClassifier alloc] init];
 
 // Train the classifier with some ham examples.
-classifier.trainWithText("nom nom ham", category: "ham")
-classifier.trainWithText("make sure to get the ham", category: "ham")
-classifier.trainWithText("please put the eggs in the fridge", category: "ham")
+[classifier trainWithText:@"nom nom ham" category:@"ham"];
+[classifier trainWithText:@"make sure to get the ham" category:@"ham"];
+[classifier trainWithText:@"please put the eggs in the fridge" category:@"ham"];
 
 // Train the classifier with some spam examples.
-classifier.trainWithText("spammy spam spam", category: "spam")
-classifier.trainWithText("what does the fox say?", category: "spam")
-classifier.trainWithText("and fish go blub", category: "spam")
+[classifier trainWithText:@"spammy spam spam" category:@"spam"];
+[classifier trainWithText:@"what does the fox say?" category:@"spam"];
+[classifier trainWithText:@"and fish go blub" category:@"spam"];
 
 // Classify some new text. Is it ham or spam?
 // In practice, you'd want to train with more examples first.
-let firstExample = "use the eggs in the fridge."
-let secondExample = "what does the fish say?"
-
-println("\(firstExample) => \(classifier.classify(firstExample))")
-println("\(secondExample) => \(classifier.classify(secondExample))")
+NSString *firstExample = @"use the eggs in the fridge.";
+NSString *secondExample = @"what does the fish say?";
+NSLog(@"'%@' => %@", firstExample, [classifier classify:firstExample]);
+NSLog(@"'%@' => %@", secondExample, [classifier classify:secondExample]);
 ```
 
 ```

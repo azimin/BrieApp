@@ -55,6 +55,8 @@ extension FriendsViewController: UITableViewDataSource {
       cell.separatorView.hidden = false
     }
     
+    cell.userInteractionEnabled = false
+    
     return cell
   }
 }

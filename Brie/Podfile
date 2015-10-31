@@ -19,6 +19,6 @@ pod 'OAuthSwift'
 #VADIM
 
 pod 'Alamofire'
-pod 'Parsimmon', '~> 0.4.0'
+pod 'Parsimmon', '~> 0.3.4'
 pod 'SwiftyJSON'
 pod 'UberKit'

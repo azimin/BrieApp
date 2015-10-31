@@ -1,6 +1,6 @@
-// Functions.swift
-//
-// Copyright (c) 2015 Ayaka Nonaka
+// ParsimmonSeed.m
+// 
+// Copyright (c) 2013 Ayaka Nonaka
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -8,10 +8,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,11 +20,40 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+#import "ParsimmonSeed.h"
 
-func argmax<T, U: Comparable>(elements: [(T, U)]) -> T? {
-    if let start = elements.first {
-        return elements.reduce(start) { $0.1 > $1.1 ? $0 : $1 }.0
-    }
-    return nil
+@interface ParsimmonSeed ()
+@property (copy, nonatomic) NSString *language;
+@end
+
+@implementation ParsimmonSeed
+
+- (instancetype)init
+{
+    return [self initWithLanguage:@"en"];
 }
+
+- (instancetype)initWithLanguage:(NSString *)language
+{
+    self = [super init];
+    if (self) {
+        self.language = language;
+    }
+    return self;
+}
+
+- (NSLinguisticTagger *)linguisticTaggerWithOptions:(NSLinguisticTaggerOptions)options
+{
+    return [[NSLinguisticTagger alloc] initWithTagSchemes:[NSLinguisticTagger availableTagSchemesForLanguage:self.language]
+                                                  options:options];
+}
+
+- (NSLinguisticTaggerOptions)defaultLinguisticTaggerOptions
+{
+    if (!_linguisticTaggerOptions) {
+        _linguisticTaggerOptions = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerOmitOther;
+    }
+    return _linguisticTaggerOptions;
+}
+
+@end
