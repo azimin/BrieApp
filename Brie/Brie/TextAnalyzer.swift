@@ -36,7 +36,7 @@ class TextAnalyzer {
         }
     }
     
-    static let stopWords = ["душ", "Душ", "велик", "Велосипед", "Бег", "велосипед", "сделать", "помедитировать", "Помедитировать"]
+    static let stopWords = ["душ", "Душ", "велик", "Велосипед", "Бег", "бежать", "пробежка", "Пробежка", "велосипед", "сделать", "помедитировать", "Помедитировать", "Гулять", "Прогулка"]
     
     static let classifier = ParsimmonNaiveBayesClassifier()
     
@@ -58,7 +58,17 @@ class TextAnalyzer {
         classifier.trainWithText("Переехать в Ленинград", category: "uber")
         classifier.trainWithText("Поехать домой", category: "uber")
         classifier.trainWithText("Выставка \"Алекс из свэг\"", category: "uber")
-        classifier.trainWithText("выставка \"Алекс из свэг\"", category: "uber")
+        classifier.trainWithText("выставка картин", category: "uber")
+        
+        classifier.trainWithText("Забрать пакеты", category: "uber")
+        classifier.trainWithText("Встретить друга", category: "uber")
+        classifier.trainWithText("Встреча на вокзале", category: "uber")
+        classifier.trainWithText("Доехать до озера", category: "uber")
+        classifier.trainWithText("Выехать из дома", category: "uber")
+        classifier.trainWithText("Поезд в Магадан", category: "uber")
+        classifier.trainWithText("Съездить в лес", category: "uber")
+        classifier.trainWithText("Переехать из дома", category: "uber")
+        classifier.trainWithText("Поехать на машине", category: "uber")
         
         // Train the classifier with some Food examples.
         classifier.trainWithText("Пообедать с друзьями", category: "food")
@@ -70,5 +80,14 @@ class TextAnalyzer {
         classifier.trainWithText("Позавтракать с Аней", category: "food")
         classifier.trainWithText("Забронировать ресторан", category: "food")
         classifier.trainWithText("Заказать пиццу", category: "food")
+        
+        classifier.trainWithText("Пообедать после вуза", category: "food")
+        classifier.trainWithText("Обед с друзьями", category: "food")
+        classifier.trainWithText("Ланч летом", category: "food")
+        classifier.trainWithText("Пообедать в баре", category: "food")
+        classifier.trainWithText("Ужин с кошками", category: "food")
+        classifier.trainWithText("Кофе на вынос", category: "food")
+        classifier.trainWithText("Позавтракать пельменями", category: "food")
+        classifier.trainWithText("Заказать вок", category: "food")
     }
 }
