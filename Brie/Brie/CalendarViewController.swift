@@ -186,11 +186,18 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
   func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
 
     if let entity = (cell as? EventTableViewCell)?.entity {
-      if let location = entity.location {
-        UberAuth.priceForRide(myCoord, to: CLLocation(latitude: location.coordinate.latitude ?? 0.0, longitude: location.coordinate.longitude ?? 0.0), isEndLocation: true)
+      
+      if entity.provider == .Uber {
+        if let location = entity.location {
+          UberAuth.priceForRide(myCoord, to: CLLocation(latitude: location.coordinate.latitude ?? 0.0, longitude: location.coordinate.longitude ?? 0.0), isEndLocation: true)
+        } else {
+          UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
+        }
       } else {
-        UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
+        PopUpHelper.sharedInstance.type = .Iiko
+        PopUpHelper.sharedInstance.item = PopUpProviderItem()
       }
+      
       
       TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
       return true
