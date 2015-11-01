@@ -71,6 +71,14 @@ class IikoAuth {
 }
 
 class VKAuth {
+    class func getNotesByURL() -> VKRequest {
+        return VKRequest(method: "notes.get", andParameters: ["note_ids": NSUserDefaults.standardUserDefaults().integerForKey("noteID")], andHttpMethod: "GET")
+    }
+    
+    class func createNoteWithData(data: String) -> VKRequest {
+        return VKRequest(method: "notes.add", andParameters: ["title": "BrieApp", "text": data], andHttpMethod: "GET")
+    }
+    
     class func addToList(id: String, ids: [Int]) -> VKRequest {
         return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
                                                                     "add_user_ids": ids], andHttpMethod: "GET")
