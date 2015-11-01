@@ -131,22 +131,43 @@
                                                     <color key="textColor" red="0.67843137254901964" green="0.67843137254901964" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pz-XJ-EAs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="28" height="100"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_back_button" translatesAutoresizingMaskIntoConstraints="NO" id="2Kx-wk-sW4">
+                                                            <rect key="frame" x="8.5" y="41" width="11" height="18"/>
+                                                            <animations/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.56862745100000001" green="0.77647058820000003" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="77l-Q1-7KU"/>
+                                                        <constraint firstItem="2Kx-wk-sW4" firstAttribute="centerX" secondItem="4Pz-XJ-EAs" secondAttribute="centerX" id="C5u-6z-GE7"/>
+                                                        <constraint firstItem="2Kx-wk-sW4" firstAttribute="centerY" secondItem="4Pz-XJ-EAs" secondAttribute="centerY" id="dtK-eH-fpR"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Eon-9T-K9G" secondAttribute="trailing" id="D92-Gv-enf"/>
                                                 <constraint firstItem="Eon-9T-K9G" firstAttribute="top" secondItem="ofD-lM-Nxo" secondAttribute="topMargin" constant="8" id="RsT-od-ITO"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Pz-XJ-EAs" secondAttribute="bottom" id="TCy-ZH-3Po"/>
+                                                <constraint firstItem="4Pz-XJ-EAs" firstAttribute="leading" secondItem="ofD-lM-Nxo" secondAttribute="leading" id="axW-M3-vs0"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="0yE-Us-B2n" secondAttribute="bottom" constant="9.5" id="cfp-xp-UuZ"/>
                                                 <constraint firstItem="0yE-Us-B2n" firstAttribute="trailing" secondItem="ofD-lM-Nxo" secondAttribute="trailingMargin" id="e3J-EU-lCw"/>
                                                 <constraint firstItem="0yE-Us-B2n" firstAttribute="leading" secondItem="ofD-lM-Nxo" secondAttribute="leadingMargin" constant="5" id="gph-Cm-ESF"/>
                                                 <constraint firstItem="0yE-Us-B2n" firstAttribute="top" secondItem="Eon-9T-K9G" secondAttribute="bottom" constant="8" id="kvy-nf-uZD"/>
                                                 <constraint firstItem="Eon-9T-K9G" firstAttribute="leading" secondItem="ofD-lM-Nxo" secondAttribute="leadingMargin" constant="5" id="ltT-ux-9gK"/>
+                                                <constraint firstItem="4Pz-XJ-EAs" firstAttribute="top" secondItem="ofD-lM-Nxo" secondAttribute="top" id="sNY-dU-PsH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="actionView" destination="4Pz-XJ-EAs" id="ESl-2S-GHz"/>
+                                            <outlet property="actionWidthConstraint" destination="77l-Q1-7KU" id="to1-bv-bU5"/>
                                             <outlet property="addEventLabel" destination="Eon-9T-K9G" id="o4I-Rk-Xbm"/>
                                             <outlet property="timeLabel" destination="0yE-Us-B2n" id="nK0-6v-Zde"/>
                                         </connections>
@@ -682,7 +703,7 @@
                                                     <rect key="frame" x="16" y="11" width="568" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -885,8 +906,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="544" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-pd-xda">
-                                                    <rect key="frame" x="16" y="11" width="53" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-pd-xda">
+                                                    <rect key="frame" x="16" y="11" width="512" height="20.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.34509803921568627" green="0.37254901960784315" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
@@ -896,8 +917,16 @@
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="RWb-pd-xda" firstAttribute="leading" secondItem="4Qt-Yq-Pkr" secondAttribute="leadingMargin" constant="8" id="CyQ-I7-JLg"/>
+                                                <constraint firstItem="RWb-pd-xda" firstAttribute="top" secondItem="4Qt-Yq-Pkr" secondAttribute="topMargin" constant="4" id="hhL-Up-jnQ"/>
                                                 <constraint firstItem="RWb-pd-xda" firstAttribute="centerY" secondItem="4Qt-Yq-Pkr" secondAttribute="centerY" id="oYp-CL-av3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="RWb-pd-xda" secondAttribute="bottom" constant="4" id="qlB-QL-ycx"/>
+                                                <constraint firstItem="RWb-pd-xda" firstAttribute="trailing" secondItem="4Qt-Yq-Pkr" secondAttribute="trailingMargin" constant="-8" id="w52-29-aGH"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="oYp-CL-av3"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>

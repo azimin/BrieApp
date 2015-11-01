@@ -31,6 +31,7 @@ class CalendarViewController: UIViewController {
     
     PopUpHelper.sharedInstance.type = .Uber
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "UpdateEvents", object: nil)
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -68,6 +69,8 @@ class CalendarViewController: UIViewController {
   }
   var events: [CalendarEventType] = []
 
+  var interestinEventIndexPath: NSIndexPath?
+  
   override func az_tabBarItemContentView() -> AZTabBarItemView {
     let cell = BrieTabBarItem().az_loadFromNibIfEmbeddedInDifferentNib()
     cell.type = BrieTabBarItem.BrieTabBarItemType.Calendar
@@ -78,6 +81,7 @@ class CalendarViewController: UIViewController {
 
 extension CalendarViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    interestinEventIndexPath = nil
     return events.count
   }
   
@@ -93,10 +97,23 @@ extension CalendarViewController: UITableViewDataSource {
     if let eventItself = event as? EventEntity {
       return eventCell(eventItself, tableView: tableView, cellForRowAtIndexPath: indexPath)
     } else {
-      let spaceEntity = event as? SpaceEntity
+      let spaceEntity = event as! SpaceEntity
       let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
       cell.showTopIfNeeded(indexPath)
-      cell.timeLabel.text = spaceEntity?.timeValue ?? "--:--"
+      cell.timeLabel.text = spaceEntity.timeValue ?? "--:--"
+      
+      if (interestinEventIndexPath == nil && spaceEntity.date.increaseByHours(spaceEntity.duration / 60).hour > 17) || interestinEventIndexPath == indexPath {
+        cell.leftButtons = [MGSwipeButton(title: PopUpProviderType.KudaGo.rawValue, backgroundColor: PopUpProviderType.KudaGo.color, insets: UIEdgeInsetsMake(0, 16, 0, 16))]
+        interestinEventIndexPath = indexPath
+        cell.actionWidthConstraint.constant = 28
+        cell.actionView.backgroundColor = PopUpProviderType.KudaGo.color
+      } else {
+        cell.leftButtons = nil
+        cell.actionWidthConstraint.constant = 0
+      }
+      
+      cell.delegate = self
+      cell.entity = spaceEntity
       
       return cell
     }
@@ -143,20 +160,24 @@ extension CalendarViewController: UITableViewDataSource {
 
 extension CalendarViewController: MGSwipeTableCellDelegate {
   func swipeTableCellWillBeginSwiping(cell: MGSwipeTableCell!) {
-    guard let cell = cell as? EventTableViewCell else {
-      return
+    if let cell = cell as? EventTableViewCell {
+      cell.actionWidthConstraint.constant = 0
+    } else if let cell = cell as? AddEventTableViewCell {
+      cell.actionWidthConstraint.constant = 0
     }
-    cell.actionWidthConstraint.constant = 0
+    
     UIView.animateWithDuration(0.2) { () -> Void in
       cell.layoutIfNeeded()
     }
   }
   
   func swipeTableCellWillEndSwiping(cell: MGSwipeTableCell!) {
-    guard let cell = cell as? EventTableViewCell else {
-      return
+    if let cell = cell as? EventTableViewCell {
+      cell.actionWidthConstraint.constant = 28
+    } else if let cell = cell as? AddEventTableViewCell {
+      cell.actionWidthConstraint.constant = 28
     }
-    cell.actionWidthConstraint.constant = 28
+
     UIView.animateWithDuration(0.2) { () -> Void in
       cell.layoutIfNeeded()
     }
@@ -164,16 +185,53 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
   
   func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
 
-    let entity = (cell as! EventTableViewCell).entity
-    
-    if let location = entity.location {
-      UberAuth.priceForRide(myCoord, to: CLLocation(latitude: location.coordinate.latitude ?? 0.0, longitude: location.coordinate.longitude ?? 0.0), isEndLocation: true)
-    } else {
-      UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
+    if let entity = (cell as? EventTableViewCell)?.entity {
+      if let location = entity.location {
+        UberAuth.priceForRide(myCoord, to: CLLocation(latitude: location.coordinate.latitude ?? 0.0, longitude: location.coordinate.longitude ?? 0.0), isEndLocation: true)
+      } else {
+        UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
+      }
+      
+      TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
+      return true
+    } else if let entity = (cell as? AddEventTableViewCell)?.entity {
+      PopUpHelper.sharedInstance.type = .KudaGo
+      
+      let startUnix = nsdateToUnix(entity.date)
+      let endUnix = nsdateToUnix(entity.date.increaseByHours(entity.duration / 60))
+      
+      let kudaGo = PopUpProviderItem()
+      PopUpHelper.sharedInstance.item = kudaGo
+      
+      helperValue = entity
+      
+      KudaGoAuth.eventsInRange(startUnix, end: endUnix) { (json) -> Void in
+        print(json)
+        
+        
+//        var infos: [String: String] = [:]
+//        
+//        for element in json["results"].arrayValue {
+//          infos[element["title"].stringValue] = "4.4"
+//        }
+//        
+//        kudaGo.infoDictionary = infos
+        
+        var action: [String] = []
+        
+        for element in json["results"].arrayValue {
+          action.append(element["title"].stringValue)
+        }
+        
+        kudaGo.actions = action
+        kudaGo.isLoading = false
+      }
+      
+      TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
+      return true
     }
     
-    TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
-     return true
+    return true
   }
 }
 

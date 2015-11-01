@@ -8,6 +8,8 @@
 
 import Foundation
 
+var helperValue: AnyObject?
+
 enum PopUpProviderType: String {
   case KudaGo
   case Uber
