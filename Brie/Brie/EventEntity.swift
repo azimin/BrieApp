@@ -260,14 +260,12 @@ class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   }
   
   var provider: PopUpProviderType? {
-    let value = Int.random(0..<4)
+    let type = TextAnalyzer.checkText(self.name)
     
-    if value == 0 {
-      return .Iiko
-    } else if value == 1 {
+    if type == .Uber {
       return .Uber
-    } else if value == 2 {
-      return .KudaGo
+    } else if type == .Food {
+      return .Iiko
     } else {
       return nil
     }

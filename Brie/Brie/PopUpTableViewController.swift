@@ -21,16 +21,6 @@ class PopUpTableViewController: UIViewController {
     return PopUpHelper.sharedInstance.type
   }
   
-  var items: [PopUpItemType] = []
-  
-  var actionItems: [PopUpItemAction] {
-    return items.filter() { $0 is PopUpItemAction } as? [PopUpItemAction] ?? []
-  }
-  
-  var infoItems: [PopUpItemInfo] {
-    return items.filter() { $0 is PopUpItemInfo } as? [PopUpItemInfo] ?? []
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -60,15 +50,10 @@ class PopUpTableViewController: UIViewController {
   }
 
   func updateItems() {
-    items = []
-    for (key, value) in item.infoDictionary {
-      items.append(PopUpItemInfo(title: key, info: value))
-    }
+    values = []
     
-    for value in item.actions {
-      items.append(PopUpItemAction(title: value, action: { () -> () in
-        print(value)
-      }))
+    for (key, dicValue) in item.infoDictionary {
+      values.append((key, dicValue))
     }
     
     print(item.isLoading)
@@ -84,6 +69,7 @@ class PopUpTableViewController: UIViewController {
   }
 
 
+  var values: [(key: String, value: String)] = []
 }
 
 
@@ -97,27 +83,26 @@ extension PopUpTableViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
-      return actionItems.count
+      return item.actions.count
     } else {
-      return infoItems.count
+      return item.infoDictionary.count
     }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCellWithIdentifier("ActionCell", forIndexPath: indexPath) as! PopUpActionTableViewCell
-      let actionItem = actionItems[indexPath.row]
       
-      cell.buttonTitleLabel.text = actionItem.title
+      cell.buttonTitleLabel.text = item.actions[indexPath.row]
       cell.showTopIfNeeded(indexPath)
       
       return cell
     } else {
       let cell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath: indexPath) as! PopUpInfoTableViewCell
-      let infoItem = infoItems[indexPath.row]
-      
-      cell.infoTitleLabel.text = infoItem.title
-      cell.infoLabel.text = infoItem.info
+      //let infoItem = infoItems[indexPath.row]
+
+      cell.infoTitleLabel.text = values[indexPath.row].key
+      cell.infoLabel.text = values[indexPath.row].value
       cell.showTopIfNeeded(indexPath)
       cell.userInteractionEnabled = false
       
@@ -142,7 +127,12 @@ extension PopUpTableViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     
-    let actionItem = actionItems[indexPath.row]
-    actionItem.action()
+    if type == .KudaGo {
+      let entity = EventEntity(name: item.actions[indexPath.row], date: (helperValue as! SpaceEntity).date, duration: 60, type: 1, location: nil, isPrivate: true)
+      DataContainer.sharedInstance.events.append(entity)
+      NSNotificationCenter.defaultCenter().postNotificationName("UpdateEvents", object: nil)
+    }
+    
+    TAWindowShower.sharedInstance.closeTopWindow()
   }
 }

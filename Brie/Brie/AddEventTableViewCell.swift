@@ -9,6 +9,12 @@
 import UIKit
 
 class AddEventTableViewCell: BaseTableViewCell {
+  
+  var entity: SpaceEntity!
+  
+  @IBOutlet weak var actionView: UIView!
+  @IBOutlet weak var actionWidthConstraint: NSLayoutConstraint!
+  
   @IBOutlet weak var addEventLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
 }

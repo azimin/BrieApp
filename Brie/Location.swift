@@ -47,7 +47,7 @@ public class Location: NSObject, NSCoding {
   }
   
   required public init(coder aDecoder: NSCoder) {
-    self.name = aDecoder.decodeObjectForKey("name") as! String
+    self.name = aDecoder.decodeObjectForKey("name") as? String
     self.location = aDecoder.decodeObjectForKey("location") as! CLLocation
     self.placemark = aDecoder.decodeObjectForKey("placemark") as! CLPlacemark
   }

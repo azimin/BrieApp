@@ -36,7 +36,7 @@ class TextAnalyzer {
         }
     }
     
-    static let stopWords = ["душ", "велик", "велосипед", "сделать", "помедитировать"]
+    static let stopWords = ["душ", "Душ", "велик", "Велосипед", "Бег", "велосипед", "сделать", "помедитировать", "Помедитировать"]
     
     static let classifier = ParsimmonNaiveBayesClassifier()
     
@@ -56,6 +56,9 @@ class TextAnalyzer {
         classifier.trainWithText("Поезд в Питер", category: "uber")
         classifier.trainWithText("Съездить в Магадан", category: "uber")
         classifier.trainWithText("Переехать в Ленинград", category: "uber")
+        classifier.trainWithText("Поехать домой", category: "uber")
+        classifier.trainWithText("Выставка \"Алекс из свэг\"", category: "uber")
+        classifier.trainWithText("выставка \"Алекс из свэг\"", category: "uber")
         
         // Train the classifier with some Food examples.
         classifier.trainWithText("Пообедать с друзьями", category: "food")

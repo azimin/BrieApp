@@ -12,6 +12,11 @@ import SwiftyJSON
 import Foundation
 import UberKit
 
+func nsdateToUnix(date: NSDate) -> Int {
+  return Int(date.timeIntervalSince1970)
+}
+
+//let myCoord = CLLocation(latitude: 37.7833, longitude: -122.4167)
 let myCoord = CLLocation(latitude: 59.95064370000001, longitude: 30.291187599999997)
 
 class SocialNetworksAuthViewController: UIViewController {
@@ -77,10 +82,6 @@ class SocialNetworksAuthViewController: UIViewController {
         })
     }
     
-    func nsdateToUnix(date: NSDate) -> Int {
-        return Int(date.timeIntervalSince1970)
-    }
-    
     func increaseByHours(date: NSDate, hours: Int) -> NSDate {
         return NSCalendar.currentCalendar().dateByAddingUnit(
             .Hour,
@@ -128,7 +129,7 @@ class SocialNetworksAuthViewController: UIViewController {
     }
     
     func processKudaGO() {
-//        eventsInRange(NSDate(), end: increaseByHours(NSDate(), hours: 2))
+        eventsInRange(NSDate(), end: increaseByHours(NSDate(), hours: 2))
     }
     
     
@@ -137,7 +138,7 @@ class SocialNetworksAuthViewController: UIViewController {
         UberKit.sharedInstance().delegate = self
         
         
-        UberAuth.ETATOLocation(myCoord)
+        //UberAuth.ETATOLocation(myCoord)
         UberAuth.openApp(59.9358, longitude: 30.3256, dropOffName: "VK+Office")
     }
     
