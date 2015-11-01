@@ -30,6 +30,7 @@
 		926A59571BE58B4800B910DB /* PopUpProviderUber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A59561BE58B4800B910DB /* PopUpProviderUber.swift */; };
 		926A59591BE58DD200B910DB /* PopUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A59581BE58DD200B910DB /* PopUpHelper.swift */; };
 		928934901BE550030053AB25 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9289348F1BE550030053AB25 /* EventEntity.swift */; };
+		92E884AE1BE5BA2600FC3BD6 /* StatisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E884AD1BE5BA2600FC3BD6 /* StatisViewController.swift */; };
 		92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */; };
 		92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */; };
 		92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */; };
@@ -98,6 +99,7 @@
 		926A59561BE58B4800B910DB /* PopUpProviderUber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpProviderUber.swift; sourceTree = "<group>"; };
 		926A59581BE58DD200B910DB /* PopUpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHelper.swift; sourceTree = "<group>"; };
 		9289348F1BE550030053AB25 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
+		92E884AD1BE5BA2600FC3BD6 /* StatisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisViewController.swift; sourceTree = "<group>"; };
 		92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrindEventTableViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		92442D441BE4C068005B29F0 /* CalendarTab */ = {
 			isa = PBXGroup;
 			children = (
+				92E884AC1BE5BA1500FC3BD6 /* Stats */,
 				92F0A8881BE4DA5300EFCBFD /* Event */,
 				92442D4B1BE4C2A7005B29F0 /* Calendar */,
 			);
@@ -338,6 +341,14 @@
 				92F0A8C91BE5221400EFCBFD /* DayCollectionViewCell.swift */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		92E884AC1BE5BA1500FC3BD6 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				92E884AD1BE5BA2600FC3BD6 /* StatisViewController.swift */,
+			);
+			name = Stats;
 			sourceTree = "<group>";
 		};
 		92F0A87E1BE4C71D00EFCBFD /* Base */ = {
@@ -647,6 +658,7 @@
 				92F0A8EF1BE541D200EFCBFD /* PopUpTableViewController.swift in Sources */,
 				92F0A8C11BE514F600EFCBFD /* SearchHistoryManager.swift in Sources */,
 				92F0A8F61BE546B700EFCBFD /* PopUpActionTableViewCell.swift in Sources */,
+				92E884AE1BE5BA2600FC3BD6 /* StatisViewController.swift in Sources */,
 				92F0A8A91BE4FE3100EFCBFD /* ActionSheetDatePicker.m in Sources */,
 				8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */,
 				92F0A8ED1BE53E7200EFCBFD /* PopUpViewController.swift in Sources */,

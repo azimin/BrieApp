@@ -496,11 +496,52 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="nvH-Yt-dB7" id="xra-zs-Th0"/>
+                        <segue destination="aI1-IY-ElT" kind="show" identifier="ShowStats" id="4ya-Iy-QLW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLx-sp-6qU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2282" y="-320"/>
+        </scene>
+        <!--Statis View Controller-->
+        <scene sceneID="yO4-tB-q3Z">
+            <objects>
+                <viewController id="aI1-IY-ElT" customClass="StatisViewController" customModule="Brie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T7F-Fo-jZJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="cxw-62-Opr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gEe-El-S5y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tf9-Qc-fWe">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Template" id="Qbz-of-syJ">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="112"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                </imageView>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tf9-Qc-fWe" firstAttribute="top" secondItem="gEe-El-S5y" secondAttribute="top" id="CSQ-hQ-T9x"/>
+                            <constraint firstAttribute="trailing" secondItem="Tf9-Qc-fWe" secondAttribute="trailing" id="PEI-VI-WIu"/>
+                            <constraint firstAttribute="bottom" secondItem="Tf9-Qc-fWe" secondAttribute="bottom" id="khR-hH-s77"/>
+                            <constraint firstItem="Tf9-Qc-fWe" firstAttribute="leading" secondItem="gEe-El-S5y" secondAttribute="leading" id="zi2-q5-S5Y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="templateImageView" destination="Qbz-of-syJ" id="2Cl-kq-8pt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJf-L9-fa9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2990" y="-320"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -906,8 +947,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="544" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-pd-xda">
-                                                    <rect key="frame" x="16" y="11" width="512" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-pd-xda">
+                                                    <rect key="frame" x="16" y="12" width="512" height="19.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.34509803921568627" green="0.37254901960784315" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
@@ -1014,6 +1055,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Template" width="376" height="112"/>
         <image name="ava_image" width="41" height="40"/>
         <image name="ic_like" width="29" height="26"/>
         <image name="ic_repost" width="28" height="32"/>

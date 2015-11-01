@@ -116,7 +116,7 @@ extension EventViewController: UITableViewDataSource {
     case 1:
       return 3
     case 2:
-      return 3
+      return 4
     default:
       return 0
     }
@@ -165,12 +165,17 @@ extension EventViewController: UITableViewDataSource {
         cell.titleLabel.text = "Location"
         cell.selectedValueLabel.text = entity.locationValue
         cell.selectedValueLabel.textColor = entity.location == nil ? UIColor(hexString: "CBCBCB") : UIColor.blackColor()
-      default:
+      case 2:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Privacy"
         cell.selectedValueLabel.text = entity.isPrivate ? "Event is private" : "Event is public"
         cell.categorySwitch.hidden = false
         cell.categorySwitch.on = entity.isPrivate
+      default:
+        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
+        cell.titleLabel.text = "Statistic"
+        cell.selectedValueLabel.text = entity.name.hasPrefix("Принимать") || entity.name.hasSuffix("shower") ? "3 interactions" : "0 interactions"
+        cell.alpha = entity.isPrivate ? 0.5 : 1.0
       }
       
       cell.entity = entity
@@ -233,9 +238,16 @@ extension EventViewController: UITableViewDelegate {
           }
           
           self.navigationController?.pushViewController(placePicker, animated: true)//(, animated: true, completion: nil)
+        } else if indexPath.row == 3 {
+          self.performSegueWithIdentifier("ShowStats", sender: nil)
         }
       }
     }
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let destination = segue.destinationViewController as? StatisViewController
+    destination?.event = entity
   }
   
   func showTimePicker() {
