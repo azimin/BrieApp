@@ -51,14 +51,17 @@ class PopUpTableViewController: UIViewController {
   }
   
   var hudView: MBProgressHUD?
+  var item: PopUpProviderItemType {
+    return PopUpHelper.sharedInstance.item
+  }
 
   func updateItems() {
     items = []
-    for (key, value) in PopUpHelper.sharedInstance.item.infoDictionary {
+    for (key, value) in item.infoDictionary {
       items.append(PopUpItemInfo(title: key, info: value))
     }
     
-    for value in PopUpHelper.sharedInstance.item.actions {
+    for value in item.actions {
       items.append(PopUpItemAction(title: value, action: { () -> () in
         print(value)
       }))
@@ -84,6 +87,9 @@ extension PopUpTableViewController: PopUpProviderItemTypeDelegate {
 
 extension PopUpTableViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if item.isLoading {
+      return 0
+    }
     return 2
   }
   
