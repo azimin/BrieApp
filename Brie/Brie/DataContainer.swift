@@ -20,7 +20,11 @@ class DataContainer {
     }() {
     didSet {
       save()
-      saveNote(events.last?.name ?? "")
+      
+      if !(events.last?.isPrivate ?? true) {
+        saveNote(events.last?.name ?? "")
+      }
+      
     }
   }
   

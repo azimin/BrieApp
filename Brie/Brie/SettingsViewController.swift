@@ -70,6 +70,15 @@ extension SettingsViewController: UITableViewDataSource {
     let label = cell.viewWithTag(10) as! UILabel
     label.text = title(indexPath)
     
+    if indexPath.row == 0 && indexPath.section == 0 {
+      label.alpha = 1.0
+      cell.userInteractionEnabled = true
+    } else {
+      label.alpha = 0.5
+      cell.userInteractionEnabled = false
+    }
+    
+    
     if indexPath.row == tableView.numberOfRowsInSection(indexPath.section) - 1 && indexPath.section != tableView.numberOfSections - 1 {
       cell.separatorView.hidden = true
     } else {
@@ -83,7 +92,7 @@ extension SettingsViewController: UITableViewDataSource {
     if indexPath.section == 0 {
       switch indexPath.row {
       case 0:
-        return "Vk"
+        return "VK"
       case 1:
         return "Twitter"
       default:
@@ -161,6 +170,9 @@ extension SettingsViewController: VKSdkDelegate {
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
+      
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 VKSdk.initializeWithDelegate(self, andAppId: "5128197")
