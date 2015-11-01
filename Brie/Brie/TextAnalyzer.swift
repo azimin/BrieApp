@@ -28,14 +28,27 @@ class TextAnalyzer {
                 return .Other
             }
         }
-        switch classifier.classify(text) {
-        case "uber":
+        for word in uberWords {
+            if text.rangeOfString(word) != nil {
                 return .Uber
-        default:
-                return .Food
+            }
         }
+        for word in foodWords {
+            if text.rangeOfString(word) != nil {
+                return .Food
+            }
+        }
+        return .Other
+//        switch classifier.classify(text) {
+//        case "uber":
+//                return .Uber
+//        default:
+//                return .Food
+//        }
     }
     
+    static let uberWords = ["забрать", "встретить", "ехать", "поезд", "самолет", "вылет", "съездить"]
+    static let foodWords = ["ужин", "завтрак", "обед", "ланч", "забронировать", "заказать"]
     static let stopWords = ["душ", "Душ", "велик", "Велосипед", "Бег", "бежать", "пробежка", "Пробежка", "велосипед", "сделать", "помедитировать", "Помедитировать", "Гулять", "Прогулка"]
     
     static let classifier = ParsimmonNaiveBayesClassifier()
