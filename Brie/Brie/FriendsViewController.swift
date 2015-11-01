@@ -12,7 +12,7 @@ class FriendsViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   
-  var newNoteTitle: String?
+  var newNoteTitle: [String] = []
   var updateObserverTimer: NSTimer?
   
   override func viewDidLoad() {
@@ -34,13 +34,13 @@ class FriendsViewController: UIViewController {
   
   func update() {
     DataContainer.sharedInstance.getNoteTitle { (title) -> () in
-      if let titleString = title where titleString.hasPrefix("!") == false {
-        self.newNoteTitle = title
+      if let titleString = title where (titleString.hasPrefix("!") == false && (self.newNoteTitle.last ?? "") != titleString) {
+        self.newNoteTitle.append(titleString)
         self.tableView.reloadData()
-      } else {
-        self.updateObserverTimer = NSTimer(timeInterval: 2.5, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
-        NSRunLoop.currentRunLoop().addTimer(self.updateObserverTimer!, forMode: NSRunLoopCommonModes)
-      }
+      } 
+      
+      self.updateObserverTimer = NSTimer(timeInterval: 2.5, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
+      NSRunLoop.currentRunLoop().addTimer(self.updateObserverTimer!, forMode: NSRunLoopCommonModes)
       
     }
   }
@@ -69,7 +69,7 @@ extension FriendsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
-      return 1 + ((newNoteTitle != nil) ? 1 : 0)
+      return 1 + newNoteTitle.count
     } else {
       return 1
     }
@@ -90,12 +90,17 @@ extension FriendsViewController: UITableViewDataSource {
       if indexPath.row == 0 {
         cell.eventLabel.text = "Running"
       } else {
-        cell.eventLabel.text = newNoteTitle
+        cell.eventLabel.text = newNoteTitle[indexPath.row - 1]
       }
     } else {
       cell.eventLabel.text = "Jogging"
     }
     
+    if indexPath.section == 0 && indexPath.row > 0 {
+      cell.avaImageView.image = UIImage(named: "ava_image_2")
+    } else {
+      cell.avaImageView.image = UIImage(named: "ava_image")
+    }
     
     return cell
   }
@@ -103,7 +108,9 @@ extension FriendsViewController: UITableViewDataSource {
 
 extension FriendsViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return FriendEventTimeHeaderFooterView()
+    let cell = FriendEventTimeHeaderFooterView()
+    cell.timeLabel.text = section == 0 ? "07:00 - 08:00" : "13:00 - 14:00"
+    return cell
   }
   
   func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

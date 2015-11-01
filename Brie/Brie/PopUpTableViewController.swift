@@ -8,6 +8,8 @@
 
 import UIKit
 import MBProgressHUD
+import Alamofire
+import SwiftyJSON
 
 var providerType: PopUpProviderType = .Uber
 
