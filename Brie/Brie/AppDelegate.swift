@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         print(url)
         print(sourceApplication)
+      
         if sourceApplication != nil {
             VKSdk.processOpenURL(url, fromApplication: sourceApplication)
             UberKit.sharedInstance().redirectURL = "action"
@@ -29,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //loadTestEvents()
+    
+    TextAnalyzer.trainer()
+    UberAuth.setUp()
     
     return true
   }

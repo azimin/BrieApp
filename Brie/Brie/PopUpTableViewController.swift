@@ -61,13 +61,15 @@ class PopUpTableViewController: UIViewController {
 
   func updateItems() {
     items = []
-    for (key, value) in item.infoDictionary {
-      items.append(PopUpItemInfo(title: key, info: value))
+    values = []
+    
+    for (key, dicValue) in item.infoDictionary {
+      values.append((key, dicValue))
     }
     
     for value in item.actions {
       items.append(PopUpItemAction(title: value, action: { () -> () in
-        print(value)
+        TAWindowShower.sharedInstance.closeTopWindow()
       }))
     }
     
@@ -84,6 +86,7 @@ class PopUpTableViewController: UIViewController {
   }
 
 
+  var values: [(key: String, value: String)] = []
 }
 
 
@@ -99,7 +102,7 @@ extension PopUpTableViewController: UITableViewDataSource {
     if section == 0 {
       return actionItems.count
     } else {
-      return infoItems.count
+      return item.infoDictionary.count
     }
   }
   
@@ -114,10 +117,10 @@ extension PopUpTableViewController: UITableViewDataSource {
       return cell
     } else {
       let cell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath: indexPath) as! PopUpInfoTableViewCell
-      let infoItem = infoItems[indexPath.row]
-      
-      cell.infoTitleLabel.text = infoItem.title
-      cell.infoLabel.text = infoItem.info
+      //let infoItem = infoItems[indexPath.row]
+
+      cell.infoTitleLabel.text = values[indexPath.row].key
+      cell.infoLabel.text = values[indexPath.row].value
       cell.showTopIfNeeded(indexPath)
       cell.userInteractionEnabled = false
       

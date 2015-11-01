@@ -100,41 +100,57 @@ class UberAuth {
         UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(dropOffName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
     }
     
-    class func priceForRide(from: CLLocation, to: CLLocation) {
+  class func priceForRide(from: CLLocation, to: CLLocation, isEndLocation: Bool) {
         let uber = PopUpProviderItem()
         PopUpHelper.sharedInstance.item = uber
-        
+      
+    
+    ETATOLocation(from, completion: { (value) -> () in
+      
+      if isEndLocation {
         UberKit.sharedInstance().getPriceForTripWithStartLocation(from, endLocation: to) { (price, response, error) -> Void in
-            if error == nil {
-                if price.count > 0 {
-                    let obj = price[0] as? UberPrice
-                    uber.infoDictionary.setObjectIfNeeded("\(obj!.duration)", forKey: "Waiting time")
-                    uber.infoDictionary.setObjectIfNeeded(obj?.estimate, forKey: "Price")
-                    uber.infoDictionary.setObjectIfNeeded("\(CGFloat(obj!.distance))", forKey: "Distance")
-                  uber.actions = ["Cancel"]
-                }
+          if error == nil {
+            if price.count > 0 {
+              if let obj = price[0] as? UberPrice {
+                uber.infoDictionary["Trip time"] = "\(Int(round(Float(obj.duration) / 60))) min"
+                uber.infoDictionary["Price"] = "\(obj.estimate)"
+                uber.infoDictionary["Distance"] = "\(obj.distance)"
+              }
             }
+          }
           
-          
-            uber.isLoading = false
+          uber.isLoading = false
         }
+      }
+      
+      
+      
+      if let value = value {
+        uber.infoDictionary.setObjectIfNeeded("\(Int(round(value / 60))) min", forKey: "Waiting time")
+        uber.actions = ["Request"]
+      }
+      
+      uber.isLoading = isEndLocation
+    })
     }
     
-    class func ETATOLocation(location: CLLocation) {
+  class func ETATOLocation(location: CLLocation, completion: (value: Float?) -> ()) {
         UberKit.sharedInstance().getTimeForProductArrivalWithLocation(location) { (products, response, error) -> Void in
             if error != nil {
                 print(error)
+              completion(value: nil)
             } else {
                 print(products)
-                for product in products {
-                    if let product = product as? UberTime {
+                if let product = products.first as? UberTime {
                         print("ID: \(product.productID)")
                         print("Name: \(product.displayName)")
                         print("Estimate: \(product.estimate)")
                         print("—————")
-                    }
-                }
-            }
+                      completion(value: product.estimate)
+                } else {
+                  completion(value: nil)
+              }
+            } 
         }
     }
     

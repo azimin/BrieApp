@@ -13,7 +13,10 @@ class PopUpProviderItem {
   var isLoading: Bool = true {
     didSet {
       dispatch_async(dispatch_get_main_queue(),{
-         NSNotificationCenter.defaultCenter().postNotificationName("UpdatePopUp", object: nil)
+        if !self.isLoading {
+          NSNotificationCenter.defaultCenter().postNotificationName("UpdatePopUp", object: nil)
+        }
+      
       })
     }
   }

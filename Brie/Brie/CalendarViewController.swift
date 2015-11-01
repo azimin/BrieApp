@@ -166,7 +166,12 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
 
     let entity = (cell as! EventTableViewCell).entity
     
-    UberAuth.priceForRide(myCoord, to: CLLocation(latitude: entity.location?.coordinate.latitude ?? 0.0, longitude: entity.location?.coordinate.longitude ?? 0.0))
+    if let location = entity.location {
+      UberAuth.priceForRide(myCoord, to: CLLocation(latitude: location.coordinate.latitude ?? 0.0, longitude: location.coordinate.longitude ?? 0.0), isEndLocation: true)
+    } else {
+      UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
+    }
+    
     TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
      return true
   }
