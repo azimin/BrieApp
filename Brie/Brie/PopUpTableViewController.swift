@@ -133,6 +133,12 @@ extension PopUpTableViewController: UITableViewDelegate {
       let entity = EventEntity(name: item.actions[indexPath.row], date: (helperValue as! SpaceEntity).date, duration: 60, type: 1, location: nil, isPrivate: true)
       DataContainer.sharedInstance.events.append(entity)
       NSNotificationCenter.defaultCenter().postNotificationName("UpdateEvents", object: nil)
+    } else {
+      if let entity = (helperValue as? EventEntity) {
+        let location = myCoord
+        UberAuth.openApp(Float(entity.location?.location.coordinate.latitude ?? location.coordinate.latitude), longitude: Float(entity.location?.location.coordinate.longitude ?? location.coordinate.longitude), dropOffName: entity.locationValue)
+      }
+      
     }
     
     TAWindowShower.sharedInstance.closeTopWindow()

@@ -109,7 +109,8 @@ class VKAuth {
 
 class UberAuth {
   
-  class func openApp(latitude: Float, longitude: Float, dropOffName: String) {
+  class func openApp(latitude: Float, longitude: Float, var dropOffName: String) {
+    dropOffName = dropOffName.stringByReplacingOccurrencesOfString(" ", withString: "+")
     UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(dropOffName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
   }
   

@@ -198,6 +198,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
         PopUpHelper.sharedInstance.item = PopUpProviderItem()
       }
       
+      helperValue = entity
       
       TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
       return true
