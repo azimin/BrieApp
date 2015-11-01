@@ -101,28 +101,6 @@ class VKAuth {
         return VKRequest(method: "friends.getLists", andParameters: ["return_system": "0"], andHttpMethod: "GET")
     }
 
-  class func addToList(id: String, ids: [Int]) -> VKRequest {
-    return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
-      "add_user_ids": ids], andHttpMethod: "GET")
-  }
-  
-  class func createList(name: String) -> VKRequest {
-    return VKRequest(method: "friends.addList", andParameters: ["name": name], andHttpMethod: "GET")
-  }
-  
-  class func getFriends() -> VKRequest {
-    return VKRequest(method: "friends.get", andParameters: ["order": "name"], andHttpMethod: "GET")
-  }
-  
-  
-  class func getFriendsByList(id: String) -> VKRequest {
-    return VKRequest(method: "friends.get", andParameters: ["order": "name", "list_id": id], andHttpMethod: "GET")
-  }
-  
-  class func getFriendsLists() -> VKRequest {
-    return VKRequest(method: "friends.getLists", andParameters: ["return_system": "0"], andHttpMethod: "GET")
-  }
-
 }
 
 class UberAuth {
