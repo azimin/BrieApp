@@ -98,6 +98,8 @@ class SocialNetworksAuthViewController: UIViewController {
         }
     }
     
+    
+    
     func getFriendsByList(id: String) {
         let request = VKAuth.getFriendsByList(id)
         request.executeWithResultBlock({ (response) -> Void in

@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class SettingsViewController: UIViewController {
 
+    let idsOfFriends = [
+        8796171,
+        33399749,
+        10731954,
+        212846399,
+        140382302,
+        21273568
+    ] // FOR TEST ONLY
+    
+    func VKAuthtorize() {
+        VKSdk.authorize([VK_PER_OFFLINE, VK_PER_WALL, VK_PER_FRIENDS, VK_PER_NOTES], revokeAccess: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
       self.title = "Settings"
 
         // Do any additional setup after loading the view.
@@ -95,7 +109,73 @@ extension SettingsViewController: UITableViewDataSource {
   }
 }
 
+extension SettingsViewController: VKSdkDelegate {
+    func vkSdkNeedCaptchaEnter(captchaError: VKError) {
+        print("Need captcha")
+    }
+    
+    func vkSdkTokenHasExpired(expiredToken: VKAccessToken) {
+        print("Token has exp")
+    }
+    
+    func vkSdkUserDeniedAccess(authorizationError: VKError) {
+        print("Access denied")
+    }
+    
+    func vkSdkShouldPresentViewController(controller: UIViewController) {
+        print("Should present VC")
+        presentViewController(controller, animated: true) { () -> Void in
+            print("Success!")
+        }
+    }
+    
+    func addNote() {
+        let request = VKAuth.createNoteWithData("text")
+        request.executeWithResultBlock({ (response) -> Void in
+            NSUserDefaults.standardUserDefaults().setObject(response.json, forKey: "noteID")
+            }, errorBlock: { (error) -> Void in
+                print(error)
+        })
+    }
+    
+    func printNote() {
+        let request = VKAuth.getNotesByURL()
+        request.executeWithResultBlock({ (response) -> Void in
+            if let resp = JSON(response.json).dictionary {
+                let text = resp["items"]?.arrayValue[0].dictionaryValue["text"] ?? ""
+                print(text)
+            }
+            }) { (error) -> Void in
+                print(error)
+        }
+
+    }
+    
+    func vkSdkReceivedNewToken(newToken: VKAccessToken) {
+        print("Succesfully authorized! User ID:")
+        print(VKSdk.getAccessToken().userId)
+        
+        addNote()
+    }
+}
+
 extension SettingsViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                VKSdk.initializeWithDelegate(self, andAppId: "5128197")
+                if VKSdk.wakeUpSession() {
+                    print("AUTHORIZED AND READY TO GO")
+                    addNote()
+                    printNote()
+                } else {
+                    print("LET'S AUTHORIZE")
+                    VKAuthtorize()
+                }
+            }
+        }
+    }
+    
   func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let view = FriendEventTimeHeaderFooterView()
     
@@ -107,8 +187,6 @@ extension SettingsViewController: UITableViewDelegate {
     default:
       view.timeLabel.text = "Advanced"
     }
-    
-    
     
     return view
   }
