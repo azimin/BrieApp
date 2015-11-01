@@ -101,19 +101,21 @@ class UberAuth {
     }
     
     class func priceForRide(from: CLLocation, to: CLLocation) {
-        let uber = PopUpHelper.sharedInstance
-        uber.item = PopUpProviderUber()
+        let uber = PopUpProviderItem()
+        PopUpHelper.sharedInstance.item = uber
         
         UberKit.sharedInstance().getPriceForTripWithStartLocation(from, endLocation: to) { (price, response, error) -> Void in
             if error == nil {
                 if price.count > 0 {
                     let obj = price[0] as? UberPrice
-                    uber.item.waitingTime = obj?.duration
-                    uber.item.price = obj?.estimate
-                    uber.item.distance = obj?.distance
+                    uber.infoDictionary.setObjectIfNeeded("\(obj!.duration)", forKey: "Waiting time")
+                    uber.infoDictionary.setObjectIfNeeded(obj?.estimate, forKey: "Price")
+                    uber.infoDictionary.setObjectIfNeeded("\(CGFloat(obj!.distance))", forKey: "Distance")
                 }
             }
-            uber.item.isLoading = false
+          
+          
+            uber.isLoading = false
         }
     }
     

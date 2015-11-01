@@ -40,5 +40,5 @@ class PopUpHelper {
   static let sharedInstance = PopUpHelper()
   
   var type: PopUpProviderType = .Uber
-  var item: PopUpProviderItemType!
+  var item: PopUpProviderItem!
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Timepiece
 import MGSwipeTableCell
+import MapKit
 
 class CalendarViewController: UIViewController {
 
@@ -30,20 +31,9 @@ class CalendarViewController: UIViewController {
     
     PopUpHelper.sharedInstance.type = .Uber
     
-    let item = PopUpProviderUber()
-    item.actions = ["Cancel"]
-    PopUpHelper.sharedInstance.item = item
-    
-    self.performSelector(Selector("test"), withObject: nil, afterDelay: 4.0)
-
     // Do any additional setup after loading the view, typically from a nib.
   }
   
-  func test() {
-    let uberItem = PopUpHelper.sharedInstance.item as? PopUpProviderUber
-    uberItem?.waitingTime = 100
-    uberItem?.isLoading = false
-  }
   
 
   override func didReceiveMemoryWarning() {
@@ -173,7 +163,10 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
   }
   
   func swipeTableCell(cell: MGSwipeTableCell!, tappedButtonAtIndex index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
-    providerType = (cell as! EventTableViewCell).entity.provider ?? .Uber
+
+    let entity = (cell as! EventTableViewCell).entity
+    
+    UberAuth.priceForRide(myCoord, to: CLLocation(latitude: entity.location?.coordinate.latitude ?? 0.0, longitude: entity.location?.coordinate.longitude ?? 0.0))
     TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
      return true
   }

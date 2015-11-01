@@ -8,44 +8,24 @@
 
 import Foundation
 
-protocol PopUpProviderItemTypeDelegate {
-  func loadingValueChanged(newValue: Bool)
-}
 
-protocol PopUpProviderItemType {
-  var isLoading: Bool { get set }
-  var infoDictionary: [String: String] { get }
-  var actions: [String] { get set }
-  var delegate: PopUpProviderItemTypeDelegate? { get set }
-}
-
-class PopUpProviderUber: PopUpProviderItemType {
-  var isLoading = true {
+class PopUpProviderItem {
+  var isLoading: Bool = true {
     didSet {
-      delegate?.loadingValueChanged(isLoading)
+      dispatch_async(dispatch_get_main_queue(),{
+         NSNotificationCenter.defaultCenter().postNotificationName("UpdatePopUp", object: nil)
+      })
     }
   }
-  var waitingTime: Int?
-  var price: String?
-  var distance: CGFloat?
   
-  var delegate: PopUpProviderItemTypeDelegate? 
-  
+  var infoDictionary: [String: String] = [:]
   var actions: [String] = []
-  var infoDictionary: [String: String] {
-    var keys: [String: String] = [:]
-    if let waitingTime = waitingTime {
-      keys["Waiting time"] = "\(waitingTime / 60) min"
+}
+
+extension Dictionary {
+  mutating func setObjectIfNeeded(value: Value?, forKey key: Key) {
+    if let value = value {
+      self[key] = value
     }
-    
-    if let price = price {
-      keys["Price"] = "\(price)"
-    }
-    
-    if let distance = distance {
-      keys["Distance time"] = "\(distance / 1000) km"
-    }
-    
-    return keys
   }
 }

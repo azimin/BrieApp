@@ -43,15 +43,19 @@ class PopUpTableViewController: UIViewController {
     templateLabel.text = type.rawValue
       // Do any additional setup after loading the view.
     
-    
-    PopUpHelper.sharedInstance.item.delegate = self
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateItems", name: "UpdatePopUp", object: nil)
     
     updateItems()
     
   }
   
+  deinit {
+    print("Swag")
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+  
   var hudView: MBProgressHUD?
-  var item: PopUpProviderItemType {
+  var item: PopUpProviderItem {
     return PopUpHelper.sharedInstance.item
   }
 
@@ -67,7 +71,9 @@ class PopUpTableViewController: UIViewController {
       }))
     }
     
-    if PopUpHelper.sharedInstance.item.isLoading {
+    print(item.isLoading)
+    
+    if item.isLoading {
       hudView?.hide(true)
       hudView = MBProgressHUD.showHUDAddedTo(self.tableView, animated: true)
     } else {
@@ -77,13 +83,9 @@ class PopUpTableViewController: UIViewController {
     tableView.reloadData()
   }
 
+
 }
 
-extension PopUpTableViewController: PopUpProviderItemTypeDelegate {
-  func loadingValueChanged(newValue: Bool) {
-    updateItems()
-  }
-}
 
 extension PopUpTableViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {

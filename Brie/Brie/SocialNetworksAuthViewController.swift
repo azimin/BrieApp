@@ -12,6 +12,8 @@ import SwiftyJSON
 import Foundation
 import UberKit
 
+let myCoord = CLLocation(latitude: 59.95064370000001, longitude: 30.291187599999997)
+
 class SocialNetworksAuthViewController: UIViewController {
 
     let idsOfFriends = [
@@ -132,7 +134,7 @@ class SocialNetworksAuthViewController: UIViewController {
         UberAuth.setUp()
         UberKit.sharedInstance().delegate = self
         
-        let myCoord = CLLocation(latitude: 59.95064370000001, longitude: 30.291187599999997)
+        
         UberAuth.ETATOLocation(myCoord)
         UberAuth.openApp(59.9358, longitude: 30.3256, dropOffName: "VK+Office")
     }
