@@ -29,9 +29,20 @@ class CalendarViewController: UIViewController {
     self.navigationController?.navigationBarHidden = true
     
     PopUpHelper.sharedInstance.type = .Uber
-    PopUpHelper.sharedInstance.item = PopUpProviderUber()
+    
+    let item = PopUpProviderUber()
+    item.actions = ["Cancel"]
+    PopUpHelper.sharedInstance.item = item
+    
+    self.performSelector(Selector("test"), withObject: nil, afterDelay: 4.0)
 
     // Do any additional setup after loading the view, typically from a nib.
+  }
+  
+  func test() {
+    let uberItem = PopUpHelper.sharedInstance.item as? PopUpProviderUber
+    uberItem?.waitingTime = 100
+    uberItem?.isLoading = false
   }
   
 
