@@ -100,6 +100,22 @@ class UberAuth {
         UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(dropOffName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
     }
     
+    class func priceForRide(from: CLLocation, to: CLLocation, completion: (json: JSON) -> Void) {
+        UberKit.sharedInstance().getPriceForTripWithStartLocation(from, endLocation: to) { (price, response, error) -> Void in
+            if error == nil {
+                for element in price {
+                    let obj = element as? UberPrice
+                    print(obj?.distance)
+                    print(obj?.estimate)
+                    print(obj?.duration)
+                }
+                completion(json: JSON(price))
+            } else {
+                completion(json: JSON("error"))
+            }
+        }
+    }
+    
     class func ETATOLocation(location: CLLocation) {
         UberKit.sharedInstance().getTimeForProductArrivalWithLocation(location) { (products, response, error) -> Void in
             if error != nil {
