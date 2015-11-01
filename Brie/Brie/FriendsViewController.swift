@@ -12,12 +12,37 @@ class FriendsViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
   
+  var newNoteTitle: String?
+  var updateObserverTimer: NSTimer?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 45
     // Do any additional setup after loading the view, typically from a nib.
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    updateObserverTimer = NSTimer(timeInterval: 2.5, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
+    NSRunLoop.currentRunLoop().addTimer(updateObserverTimer!, forMode: NSRunLoopCommonModes)
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    updateObserverTimer?.invalidate()
+  }
+  
+  func update() {
+    DataContainer.sharedInstance.getNoteTitle { (title) -> () in
+      if let titleString = title where titleString.hasPrefix("!") == false {
+        self.newNoteTitle = title
+        self.tableView.reloadData()
+      } else {
+        self.updateObserverTimer = NSTimer(timeInterval: 2.5, target: self, selector: Selector("update"), userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(self.updateObserverTimer!, forMode: NSRunLoopCommonModes)
+      }
+      
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -39,11 +64,15 @@ class FriendsViewController: UIViewController {
 
 extension FriendsViewController: UITableViewDataSource {
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 3
+    return 2
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 3
+    if section == 0 {
+      return 1 + ((newNoteTitle != nil) ? 1 : 0)
+    } else {
+      return 1
+    }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -56,6 +85,17 @@ extension FriendsViewController: UITableViewDataSource {
     }
     
     cell.userInteractionEnabled = false
+    
+    if indexPath.section == 0 {
+      if indexPath.row == 0 {
+        cell.eventLabel.text = "Running"
+      } else {
+        cell.eventLabel.text = newNoteTitle
+      }
+    } else {
+      cell.eventLabel.text = "Jogging"
+    }
+    
     
     return cell
   }

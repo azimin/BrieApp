@@ -130,19 +130,19 @@ extension SettingsViewController: VKSdkDelegate {
     }
     
     func addNote() {
-        let request = VKAuth.createNoteWithData("text")
-        request.executeWithResultBlock({ (response) -> Void in
-            NSUserDefaults.standardUserDefaults().setObject(response.json, forKey: "noteID")
-            }, errorBlock: { (error) -> Void in
-                print(error)
-        })
+//        let request = VKAuth.createNoteWithData("text")
+//        request.executeWithResultBlock({ (response) -> Void in
+//            NSUserDefaults.standardUserDefaults().setObject(response.json, forKey: "noteID")
+//            }, errorBlock: { (error) -> Void in
+//                print(error)
+//        })
     }
     
     func printNote() {
         let request = VKAuth.getNotesByURL()
         request.executeWithResultBlock({ (response) -> Void in
             if let resp = JSON(response.json).dictionary {
-                let text = resp["items"]?.arrayValue[0].dictionaryValue["text"] ?? ""
+                let text = resp["items"]?.arrayValue[0].dictionaryValue["title"] ?? ""
                 print(text)
             }
             }) { (error) -> Void in

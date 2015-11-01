@@ -568,7 +568,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Running" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-Zc-B1h">
-                                                    <rect key="frame" x="16" y="16" width="512" height="0.0"/>
+                                                    <rect key="frame" x="16" y="16" width="512" height="2"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -602,13 +602,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QY-O1-fD1">
-                                                    <rect key="frame" x="16" y="36" width="67" height="24"/>
+                                                    <rect key="frame" x="16" y="34" width="67" height="26"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="67" id="Cep-zj-COV"/>
                                                     </constraints>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="20" image="ic_like">
+                                                    <state key="normal" title="0" image="ic_like">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -620,7 +620,7 @@
                                                         <constraint firstAttribute="height" constant="26" id="qh4-uB-l9w"/>
                                                     </constraints>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="20" image="ic_repost">
+                                                    <state key="normal" title="0" image="ic_repost">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -628,7 +628,7 @@
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="8QY-O1-fD1" firstAttribute="top" secondItem="4J7-Zc-B1h" secondAttribute="bottom" constant="20" id="3GH-qB-cf2"/>
+                                                <constraint firstItem="8QY-O1-fD1" firstAttribute="top" secondItem="4J7-Zc-B1h" secondAttribute="bottom" constant="16" id="3GH-qB-cf2"/>
                                                 <constraint firstItem="4J7-Zc-B1h" firstAttribute="leading" secondItem="5JL-Ye-ey5" secondAttribute="leadingMargin" constant="8" id="D5x-gb-qg1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4J7-Zc-B1h" secondAttribute="trailing" constant="30" id="FBu-uJ-1EP"/>
                                                 <constraint firstItem="oW5-Q2-MiV" firstAttribute="leading" secondItem="4J7-Zc-B1h" secondAttribute="trailing" constant="16" id="Gxn-H3-7uU"/>

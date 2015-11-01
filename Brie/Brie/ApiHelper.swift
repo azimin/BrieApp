@@ -71,35 +71,39 @@ class IikoAuth {
 }
 
 class VKAuth {
-    class func getNotesByURL() -> VKRequest {
-        return VKRequest(method: "notes.get", andParameters: ["note_ids": NSUserDefaults.standardUserDefaults().integerForKey("noteID")], andHttpMethod: "GET")
-    }
+  class func getNotesByURL() -> VKRequest {
+      return VKRequest(method: "notes.get", andParameters: ["note_ids": "11700692"], andHttpMethod: "GET")
+  }
+  
+  class func changeNoteTitleToName(name: String) -> VKRequest {
+    return VKRequest(method: "notes.edit", andParameters: ["note_id": "11700692", "title": name, "text": "0.1"], andHttpMethod: "GET")
+  }
     
-    class func createNoteWithData(data: String) -> VKRequest {
-        return VKRequest(method: "notes.add", andParameters: ["title": "BrieApp", "text": data], andHttpMethod: "GET")
-    }
-    
-    class func addToList(id: String, ids: [Int]) -> VKRequest {
-        return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
-                                                                    "add_user_ids": ids], andHttpMethod: "GET")
-    }
-    
-    class func createList(name: String) -> VKRequest {
-        return VKRequest(method: "friends.addList", andParameters: ["name": name], andHttpMethod: "GET")
-    }
-    
-    class func getFriends() -> VKRequest {
-        return VKRequest(method: "friends.get", andParameters: ["order": "name"], andHttpMethod: "GET")
-    }
-    
-    
-    class func getFriendsByList(id: String) -> VKRequest {
-        return VKRequest(method: "friends.get", andParameters: ["order": "name", "list_id": id], andHttpMethod: "GET")
-    }
-    
-    class func getFriendsLists() -> VKRequest {
-        return VKRequest(method: "friends.getLists", andParameters: ["return_system": "0"], andHttpMethod: "GET")
-    }
+  class func createNoteWithData(data: String) -> VKRequest {
+      return VKRequest(method: "notes.add", andParameters: ["title": "BrieApp", "text": data], andHttpMethod: "GET")
+  }
+  
+  class func addToList(id: String, ids: [Int]) -> VKRequest {
+      return VKRequest(method: "friends.editList", andParameters: ["list_id": id,
+                                                                  "add_user_ids": ids], andHttpMethod: "GET")
+  }
+  
+  class func createList(name: String) -> VKRequest {
+      return VKRequest(method: "friends.addList", andParameters: ["name": name], andHttpMethod: "GET")
+  }
+  
+  class func getFriends() -> VKRequest {
+      return VKRequest(method: "friends.get", andParameters: ["order": "name"], andHttpMethod: "GET")
+  }
+  
+  
+  class func getFriendsByList(id: String) -> VKRequest {
+      return VKRequest(method: "friends.get", andParameters: ["order": "name", "list_id": id], andHttpMethod: "GET")
+  }
+  
+  class func getFriendsLists() -> VKRequest {
+      return VKRequest(method: "friends.getLists", andParameters: ["return_system": "0"], andHttpMethod: "GET")
+  }
 
 }
 

@@ -17,7 +17,8 @@ func nsdateToUnix(date: NSDate) -> Int {
 }
 
 //let myCoord = CLLocation(latitude: 37.7833, longitude: -122.4167)
-let myCoord = CLLocation(latitude: 59.95064370000001, longitude: 30.291187599999997)
+// 59.92723673,+30.33866553
+let myCoord = CLLocation(latitude: 59.92723673, longitude: 30.33866553)
 
 class SocialNetworksAuthViewController: UIViewController {
 
