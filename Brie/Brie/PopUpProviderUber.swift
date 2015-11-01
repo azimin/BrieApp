@@ -26,7 +26,7 @@ class PopUpProviderUber: PopUpProviderItemType {
     }
   }
   var waitingTime: Int?
-  var price: Int?
+  var price: String?
   var distance: CGFloat?
   
   var delegate: PopUpProviderItemTypeDelegate? 
@@ -39,7 +39,7 @@ class PopUpProviderUber: PopUpProviderItemType {
     }
     
     if let price = price {
-      keys["Price"] = "\(price) $"
+      keys["Price"] = "\(price)"
     }
     
     if let distance = distance {
