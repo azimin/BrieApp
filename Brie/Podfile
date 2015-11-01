@@ -9,7 +9,7 @@ inhibit_all_warnings!
 pod 'FrameAccessor'
 pod 'Timepiece'
 pod 'ChameleonFramework'
-pod 'SVProgressHUD'
+pod 'MBProgressHUD'
 pod 'MGSwipeTableCell'
 pod 'InfinitePagingView'
 pod 'pop'

@@ -7,36 +7,9 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 var providerType: PopUpProviderType = .Uber
-
-enum PopUpProviderType: String {
-  case KudaGo
-  case Uber
-  case Iiko
-  
-  var image: UIImage {
-    switch self {
-    case .KudaGo:
-      return UIImage(named: "logo_KudaGO")!
-    case .Iiko:
-      return UIImage(named: "logo_Iiko")!
-    case .Uber:
-      return UIImage(named: "logo_Uber")!
-    }
-  }
-  
-  var color: UIColor {
-    switch self {
-    case .KudaGo:
-      return UIColor(hexString: "D25143")
-    case .Iiko:
-      return UIColor(hexString: "91C696")
-    case .Uber:
-      return UIColor.blackColor()
-    }
-  }
-}
 
 class PopUpTableViewController: UIViewController {
 
@@ -44,7 +17,9 @@ class PopUpTableViewController: UIViewController {
   @IBOutlet weak var templateLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   
-  var type: PopUpProviderType = providerType
+  var type: PopUpProviderType {
+    return PopUpHelper.sharedInstance.type
+  }
   
   var items: [PopUpItemType] = []
   
@@ -68,14 +43,43 @@ class PopUpTableViewController: UIViewController {
     templateLabel.text = type.rawValue
       // Do any additional setup after loading the view.
     
-    items = [PopUpItemAction(title: "Cancel", action: { () -> () in
-      print("Cancel")
-    }),
-    PopUpItemInfo(title: "Name", info: "Alex")]
+    
+    PopUpHelper.sharedInstance.item.delegate = self
+    
+    updateItems()
     
   }
+  
+  var hudView: MBProgressHUD?
 
+  func updateItems() {
+    items = []
+    for (key, value) in PopUpHelper.sharedInstance.item.infoDictionary {
+      items.append(PopUpItemInfo(title: key, info: value))
+    }
+    
+    for value in PopUpHelper.sharedInstance.item.actions {
+      items.append(PopUpItemAction(title: value, action: { () -> () in
+        print(value)
+      }))
+    }
+    
+    if PopUpHelper.sharedInstance.item.isLoading {
+      hudView?.hide(true)
+      hudView = MBProgressHUD.showHUDAddedTo(self.tableView, animated: true)
+    } else {
+      hudView?.hide(true)
+    }
+    
+    tableView.reloadData()
+  }
 
+}
+
+extension PopUpTableViewController: PopUpProviderItemTypeDelegate {
+  func loadingValueChanged(newValue: Bool) {
+    updateItems()
+  }
 }
 
 extension PopUpTableViewController: UITableViewDataSource {

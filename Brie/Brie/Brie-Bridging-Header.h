@@ -7,7 +7,7 @@
 #import <ChameleonFramework/Chameleon.h>
 #import <InfinitePagingView/InfinitePagingView.h>
 #import <pop/POP.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "UCRoundedView.h"
 #import "ActionSheetPicker.h"
 #import <MGSwipeTableCell/MGSwipeTableCell.h>

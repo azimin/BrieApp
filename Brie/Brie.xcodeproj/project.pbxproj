@@ -11,7 +11,7 @@
 		820088941BE4C34F00D9CE83 /* VKSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820088901BE4C25E00D9CE83 /* VKSdk.framework */; };
 		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
 		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
-		826663281BE551950010643F /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826663271BE551950010643F /* TextAnalyzer.swift */; settings = {ASSET_TAGS = (); }; };
+		826663281BE551950010643F /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826663271BE551950010643F /* TextAnalyzer.swift */; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
 		9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* CalendarViewController.swift */; };
 		9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* FriendsViewController.swift */; };
@@ -27,6 +27,8 @@
 		92442D431BE4BF19005B29F0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D421BE4BF19005B29F0 /* Image.swift */; };
 		92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92442D491BE4C1D1005B29F0 /* UCRoundedView.m */; };
 		92442D4E1BE4C2BB005B29F0 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */; };
+		926A59571BE58B4800B910DB /* PopUpProviderUber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A59561BE58B4800B910DB /* PopUpProviderUber.swift */; };
+		926A59591BE58DD200B910DB /* PopUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A59581BE58DD200B910DB /* PopUpHelper.swift */; };
 		928934901BE550030053AB25 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9289348F1BE550030053AB25 /* EventEntity.swift */; };
 		92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */; };
 		92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */; };
@@ -93,6 +95,8 @@
 		92442D481BE4C1D1005B29F0 /* UCRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UCRoundedView.h; sourceTree = "<group>"; };
 		92442D491BE4C1D1005B29F0 /* UCRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UCRoundedView.m; sourceTree = "<group>"; };
 		92442D4D1BE4C2BB005B29F0 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		926A59561BE58B4800B910DB /* PopUpProviderUber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpProviderUber.swift; sourceTree = "<group>"; };
+		926A59581BE58DD200B910DB /* PopUpHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpHelper.swift; sourceTree = "<group>"; };
 		9289348F1BE550030053AB25 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
 		92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 		9204069E1BE4B2DF00B5D337 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				926A59581BE58DD200B910DB /* PopUpHelper.swift */,
 				92F0A8F71BE547AA00EFCBFD /* PopUpItem */,
 				92F0A88B1BE4DB8F00EFCBFD /* TAWindowShower.swift */,
 				92F0A8B01BE5093A00EFCBFD /* CalendarType.swift */,
@@ -433,6 +438,7 @@
 				826663271BE551950010643F /* TextAnalyzer.swift */,
 				9289348F1BE550030053AB25 /* EventEntity.swift */,
 				92F0A8FA1BE5518C00EFCBFD /* DataContainer.swift */,
+				926A59561BE58B4800B910DB /* PopUpProviderUber.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				92F0A8FD1BE5576800EFCBFD /* Random.swift in Sources */,
 				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
 				92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */,
+				926A59591BE58DD200B910DB /* PopUpHelper.swift in Sources */,
 				9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */,
 				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				92F0A8911BE4EE2300EFCBFD /* EventNameFieldTableViewCell.swift in Sources */,
@@ -680,6 +687,7 @@
 				92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */,
 				92F0A8AA1BE4FE3100EFCBFD /* ActionSheetDistancePicker.m in Sources */,
 				92F0A88F1BE4EE1300EFCBFD /* EventFieldTableViewCell.swift in Sources */,
+				926A59571BE58B4800B910DB /* PopUpProviderUber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

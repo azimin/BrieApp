@@ -118,7 +118,7 @@ class SpaceEntity: CalendarEventType, Comparable {
       return results
     }
     
-    if (events.count > 0 && events.last!.date.hour <= 7) {
+    if (events.count > 0 && events.last!.date.hour < 7) {
       for element in events {
         results.append(element)
       }

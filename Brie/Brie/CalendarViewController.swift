@@ -27,6 +27,9 @@ class CalendarViewController: UIViewController {
     tableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 0, right: 0)
     
     self.navigationController?.navigationBarHidden = true
+    
+    PopUpHelper.sharedInstance.type = .Uber
+    PopUpHelper.sharedInstance.item = PopUpProviderUber()
 
     // Do any additional setup after loading the view, typically from a nib.
   }
