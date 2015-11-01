@@ -111,6 +111,7 @@ class UberAuth {
                     uber.infoDictionary.setObjectIfNeeded("\(obj!.duration)", forKey: "Waiting time")
                     uber.infoDictionary.setObjectIfNeeded(obj?.estimate, forKey: "Price")
                     uber.infoDictionary.setObjectIfNeeded("\(CGFloat(obj!.distance))", forKey: "Distance")
+                  uber.actions = ["Cancel"]
                 }
             }
           
