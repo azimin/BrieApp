@@ -196,6 +196,10 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
       } else {
         PopUpHelper.sharedInstance.type = .Foursquare
         PopUpHelper.sharedInstance.item = PopUpProviderItem()
+        IikoAuth.getRestaurantMenu({ (restaurants) in
+          PopUpHelper.sharedInstance.item.actions = restaurants
+          PopUpHelper.sharedInstance.item.isLoading = false
+        })
       }
       
       helperValue = entity

@@ -38,23 +38,10 @@ extension String {
 
 class IikoAuth {
   
-  // Untested
-  class func getRestaurantMenu(completion: (restaurants: [JSON]) -> Void) {
-    let token = NSUserDefaults.standardUserDefaults().objectForKey("iiko_auth_token") as! String
-    Alamofire.request(.GET, "https://iiko.biz:9900/api/0/nomenclature/e47efbb3-8b80-4727-9f8b-3600d0b4c5d8?access_token=\(token)").responseString { (response) -> Void in
-      switch response.result {
-      case .Success(let data):
-        completion(restaurants: JSON(data).dictionaryValue["products"]?.arrayValue ?? [JSON("error")])
-        // Iterate for "name", "description", "price",
-        break
-      case .Failure(let error):
-        completion(restaurants: [JSON("\(error)")])
-        break
-      }
-    }
+  class func getRestaurantMenu(completion: (restaurants: [String]) -> Void) {
+    completion(restaurants: ["Open Foursquare App", "Open Delivery Club App"])
   }
   
-  // Untested
   class func getToken(completion: (token: String) -> Void) {
     Alamofire.request(.GET, "https://iiko.biz:9900/api/0/auth/access_token?user_id=hakatonVk&user_secret=hakatonTest").responseString { (response) -> Void in
       switch response.result {
