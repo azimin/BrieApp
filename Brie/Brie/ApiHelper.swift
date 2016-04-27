@@ -198,16 +198,13 @@ class UberAuth {
 
 class KudaGoAuth {
   class func eventsInRange(start: Int, end: Int, completion: (json: JSON) -> Void) {
-    let base = "http://kudago.com/public-api/v1/events/"
-    let location = "spb"
-    let is_free = 1
-    let categories = "exhibition,concert"
-    
-    let parameters: [String: AnyObject] = ["location": location, "actual_since": start, "actual_until": end, "is_free": is_free, "categories": categories]
+    let base = "https://www.eventbriteapi.com/v3/events/search/"
+    let parameters: [String: AnyObject] = ["popular": true, "venue.city": "San Francisco", "token": "4BVYE6VW5FLFMAUWQONW"]
     
     Alamofire.request(.GET, base, parameters: parameters, encoding: ParameterEncoding.URL, headers: nil).responseJSON { (response) -> Void in
       switch response.result {
       case .Success(let data):
+        print(data)
         completion(json: JSON(data))
       case .Failure(let error):
         completion(json: JSON(["error": error.localizedDescription]))

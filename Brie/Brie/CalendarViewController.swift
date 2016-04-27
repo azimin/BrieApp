@@ -216,19 +216,10 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
       KudaGoAuth.eventsInRange(startUnix, end: endUnix) { (json) -> Void in
         print(json)
         
-        
-//        var infos: [String: String] = [:]
-//        
-//        for element in json["results"].arrayValue {
-//          infos[element["title"].stringValue] = "4.4"
-//        }
-//        
-//        kudaGo.infoDictionary = infos
-        
         var action: [String] = []
         
-        for element in json["results"].arrayValue {
-          action.append(element["title"].stringValue)
+        for element in json["events"].arrayValue {
+          action.append(element["name"].dictionaryValue["text"]?.stringValue ?? "")
         }
         
         kudaGo.actions = action
