@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //loadTestEvents()
     
-    TextAnalyzer.trainer()
     UberAuth.setUp()
     
     return true

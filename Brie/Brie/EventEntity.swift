@@ -258,16 +258,19 @@ class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   }
   
   var provider: PopUpProviderType? {
-    let type = TextAnalyzer.classifier.classify(self.name)
+    let type = TextAnalyzer.checkText(self.name)
     
-    if type == "uber" {
-      return .Uber
-    } else if type == "food" {
-      return .Foursquare
-    } else if type == "fun" {
-      return .Eventbrite
-    } else {
+    if type == .Other {
       return nil
+    } else {
+      switch type {
+      case .Uber:
+        return .Uber
+      case .Food:
+        return .Foursquare
+      default:
+        return .Eventbrite
+      }
     }
   }
 }
