@@ -16,8 +16,8 @@ enum Category {
 }
 
 class TextAnalyzer {
-    class func checkText(var text: String) -> Category {
-        text = text.lowercaseString
+    class func checkText(originalText: String) -> Category {
+        let text = originalText.lowercaseString
         let tokens = lemmatize(text)
         for token in tokens {
             if stopWords.contains(token as! String) {

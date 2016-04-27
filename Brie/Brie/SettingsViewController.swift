@@ -53,11 +53,11 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return 3
+      return 4
     case 1:
       return 2
     case 2:
-      return 2
+      return 3
     case 3:
       return 1
     default:
@@ -70,7 +70,7 @@ extension SettingsViewController: UITableViewDataSource {
     let label = cell.viewWithTag(10) as! UILabel
     label.text = title(indexPath)
     
-    if indexPath.row == 0 && indexPath.section == 0 {
+    if (indexPath.row == 0 && indexPath.section == 0) || ((indexPath.row == 0) && (indexPath.section == 2)) {
       label.alpha = 1.0
       cell.userInteractionEnabled = true
     } else {
@@ -95,6 +95,8 @@ extension SettingsViewController: UITableViewDataSource {
         return "VK"
       case 1:
         return "Twitter"
+      case 2:
+        return "Facebook"
       default:
         return "Uber"
       }
@@ -108,6 +110,8 @@ extension SettingsViewController: UITableViewDataSource {
     } else if indexPath.section == 2 {
       switch indexPath.row {
       case 0:
+        return "About the author"
+      case 1:
         return "Common events"
       default:
         return "Daytime"
@@ -169,6 +173,7 @@ extension SettingsViewController: VKSdkDelegate {
 }
 
 extension SettingsViewController: UITableViewDelegate {
+  
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
       
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -185,7 +190,9 @@ extension SettingsViewController: UITableViewDelegate {
                     VKAuthtorize()
                 }
             }
-        }
+        } else {
+          performSegueWithIdentifier("Show Authors CV Segue", sender: nil)
+      }
     }
     
   func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

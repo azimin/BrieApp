@@ -1,16 +1,16 @@
 PODS:
-  - Alamofire (3.1.1)
-  - ChameleonFramework (2.0.4):
-    - ChameleonFramework/Default (= 2.0.4)
-  - ChameleonFramework/Default (2.0.4)
+  - Alamofire (3.3.1)
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - FrameAccessor (2.0)
   - InfinitePagingView (0.0.1)
-  - MBProgressHUD (0.9.1)
-  - MGSwipeTableCell (1.5.1)
-  - OAuthSwift (0.4.6)
+  - MBProgressHUD (0.9.2)
+  - MGSwipeTableCell (1.5.5)
+  - OAuthSwift (0.5.2)
   - Parsimmon (0.3.4)
-  - pop (1.0.8)
-  - SwiftyJSON (2.3.1)
+  - pop (1.0.9)
+  - SwiftyJSON (2.3.2)
   - Timepiece (0.4.2)
   - UberKit (0.2)
 
@@ -29,16 +29,16 @@ DEPENDENCIES:
   - UberKit
 
 SPEC CHECKSUMS:
-  Alamofire: 9b0a7188b961a03914a99304488bd226b0e46c0e
-  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FrameAccessor: 443a13e58e23a10ff22180da0897b28c3f6abf66
   InfinitePagingView: 2d9876c6171274b59d7128c0fcacb4ab492313f2
-  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  MGSwipeTableCell: a51fa670c01f0aa048f12af040acebf315223137
-  OAuthSwift: 8c738cc56c942a541f5c6d0362a892cb149d10b1
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MGSwipeTableCell: bafeb5f351124544c9364ecbdf24c7b06a37d340
+  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   Parsimmon: 48ca7a7c78261b34b215c17d1a13543d4f72cc51
-  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
   UberKit: 3c4767f8c2b317be450c3de48acbe6b632306004
 

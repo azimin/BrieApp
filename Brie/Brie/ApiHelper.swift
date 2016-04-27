@@ -27,7 +27,7 @@ extension String {
     get {
       let startIndex = self.startIndex.advancedBy(r.startIndex)
       let endIndex = startIndex.advancedBy(r.endIndex - r.startIndex)
-      return self[Range(start: startIndex, end: endIndex)]
+      return self[startIndex..<endIndex]
     }
   }
   
@@ -62,7 +62,7 @@ class IikoAuth {
         completion(token: data)
         NSUserDefaults.standardUserDefaults().setObject(data, forKey: "iiko_auth_token")
         break
-      case .Failure(let error):
+      case .Failure(_):
         completion(token: "error")
         break
       }
@@ -109,9 +109,9 @@ class VKAuth {
 
 class UberAuth {
   
-  class func openApp(latitude: Float, longitude: Float, var dropOffName: String) {
-    dropOffName = dropOffName.stringByReplacingOccurrencesOfString(" ", withString: "+")
-    UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(dropOffName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
+  class func openApp(latitude: Float, longitude: Float, dropOffName: String) {
+    let splittedName = dropOffName.stringByReplacingOccurrencesOfString(" ", withString: "+")
+    UIApplication.sharedApplication().openURL(NSURL(string: "uber://?action=setPickup&pickup=my_location&pickup[nickname]=Your+place&dropoff[latitude]=\(latitude)&dropoff[longitude]=\(longitude)&dropoff[nickname]=\(splittedName)&product_id=2733b11e-2060-401b-954b-01b41ff51999")!)
   }
   
   class func priceForRide(from: CLLocation, to: CLLocation, isEndLocation: Bool) {

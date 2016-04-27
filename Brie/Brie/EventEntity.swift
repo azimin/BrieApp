@@ -108,9 +108,9 @@ class SpaceEntity: CalendarEventType, Comparable {
         self.duration = duration
     }
   
-  class func findSpacesBetweenEvents(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
+  class func findSpacesBetweenEvents(date: NSDate, unsortedEvents: [EventEntity]) -> [CalendarEventType] {
     var results = [CalendarEventType]()
-    events.sortInPlace()
+    let events = unsortedEvents.sort()
     let today = date.createDate(7)
     
     if (events.count == 0) {
@@ -164,9 +164,9 @@ class SpaceEntity: CalendarEventType, Comparable {
     return results
   }
     
-    class func findSpacesBetweenEvents2(date: NSDate, var events: [EventEntity]) -> [CalendarEventType] {
+    class func findSpacesBetweenEvents2(date: NSDate, unsortedEvents: [EventEntity]) -> [CalendarEventType] {
         var results = [CalendarEventType]()
-        events.sortInPlace()
+        let events = unsortedEvents.sort()
         let today = date.createDate(7)
         if events.count == 0 {
             results.append(SpaceEntity(date: today, duration: 16 * 60)) // Till 23:00

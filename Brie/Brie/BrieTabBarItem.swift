@@ -11,7 +11,7 @@ import UIKit
 class BrieTabBarItem: AZTabBarItemView {
   enum BrieTabBarItemType: String {
     case Calendar = "img_calendar_icon"
-    case Friends = "img_friends_icon"
+//    case Friends = "img_friends_icon"
     case Setting = "img_settings_icon"
     
     var image: UIImage {

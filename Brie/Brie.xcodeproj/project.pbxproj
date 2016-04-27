@@ -12,9 +12,10 @@
 		8258B2C71BE4B2FF001685E1 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */; };
 		8258B2C91BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */; };
 		826663281BE551950010643F /* TextAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826663271BE551950010643F /* TextAnalyzer.swift */; };
+		828F0A091CCF748800AB1F59 /* FriendEventTimeHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F0A081CCF748800AB1F59 /* FriendEventTimeHeaderFooterView.swift */; };
+		828F0A0B1CCF791C00AB1F59 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F0A0A1CCF791C00AB1F59 /* AboutViewController.swift */; };
 		920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406871BE4B12500B5D337 /* AppDelegate.swift */; };
 		9204068A1BE4B12500B5D337 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920406891BE4B12500B5D337 /* CalendarViewController.swift */; };
-		9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204068B1BE4B12500B5D337 /* FriendsViewController.swift */; };
 		9204068F1BE4B12500B5D337 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9204068D1BE4B12500B5D337 /* Main.storyboard */; };
 		920406911BE4B12500B5D337 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920406901BE4B12500B5D337 /* Assets.xcassets */; };
 		920406941BE4B12500B5D337 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920406921BE4B12500B5D337 /* LaunchScreen.storyboard */; };
@@ -33,8 +34,6 @@
 		92E884AE1BE5BA2600FC3BD6 /* StatisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E884AD1BE5BA2600FC3BD6 /* StatisViewController.swift */; };
 		92F0A87D1BE4C5E200EFCBFD /* AddEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */; };
 		92F0A8801BE4C72600EFCBFD /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */; };
-		92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */; };
-		92F0A8871BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8861BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift */; };
 		92F0A88A1BE4DA6300EFCBFD /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A8891BE4DA6300EFCBFD /* EventViewController.swift */; };
 		92F0A88C1BE4DB8F00EFCBFD /* TAWindowShower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A88B1BE4DB8F00EFCBFD /* TAWindowShower.swift */; };
 		92F0A88F1BE4EE1300EFCBFD /* EventFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0A88E1BE4EE1300EFCBFD /* EventFieldTableViewCell.swift */; };
@@ -76,10 +75,11 @@
 		8258B2C61BE4B2FF001685E1 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworksAuthViewController.swift; sourceTree = "<group>"; };
 		826663271BE551950010643F /* TextAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAnalyzer.swift; sourceTree = "<group>"; };
+		828F0A081CCF748800AB1F59 /* FriendEventTimeHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendEventTimeHeaderFooterView.swift; sourceTree = "<group>"; };
+		828F0A0A1CCF791C00AB1F59 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		920406841BE4B12500B5D337 /* Brie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		920406871BE4B12500B5D337 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		920406891BE4B12500B5D337 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9204068B1BE4B12500B5D337 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		9204068E1BE4B12500B5D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		920406901BE4B12500B5D337 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		920406931BE4B12500B5D337 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,8 +102,6 @@
 		92E884AD1BE5BA2600FC3BD6 /* StatisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisViewController.swift; sourceTree = "<group>"; };
 		92F0A87C1BE4C5E200EFCBFD /* AddEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventTableViewCell.swift; sourceTree = "<group>"; };
 		92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
-		92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrindEventTableViewCell.swift; sourceTree = "<group>"; };
-		92F0A8861BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendEventTimeHeaderFooterView.swift; sourceTree = "<group>"; };
 		92F0A8891BE4DA6300EFCBFD /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		92F0A88B1BE4DB8F00EFCBFD /* TAWindowShower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAWindowShower.swift; sourceTree = "<group>"; };
 		92F0A88E1BE4EE1300EFCBFD /* EventFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,6 +161,7 @@
 		9204067B1BE4B12500B5D337 = {
 			isa = PBXGroup;
 			children = (
+				828F0A0A1CCF791C00AB1F59 /* AboutViewController.swift */,
 				920406861BE4B12500B5D337 /* Sources */,
 				9204069C1BE4B1A700B5D337 /* Resources */,
 				920406851BE4B12500B5D337 /* Products */,
@@ -199,7 +198,6 @@
 			children = (
 				92F0A8EB1BE53BF300EFCBFD /* PopUp */,
 				92442D441BE4C068005B29F0 /* CalendarTab */,
-				92442D451BE4C06F005B29F0 /* FrinedsTab */,
 				92442D461BE4C074005B29F0 /* SettingsTab */,
 				8258B2C81BE4B3F3001685E1 /* SocialNetworksAuthViewController.swift */,
 			);
@@ -299,17 +297,10 @@
 			name = CalendarTab;
 			sourceTree = "<group>";
 		};
-		92442D451BE4C06F005B29F0 /* FrinedsTab */ = {
-			isa = PBXGroup;
-			children = (
-				92F0A8811BE4CB5600EFCBFD /* FirendsEvents */,
-			);
-			name = FrinedsTab;
-			sourceTree = "<group>";
-		};
 		92442D461BE4C074005B29F0 /* SettingsTab */ = {
 			isa = PBXGroup;
 			children = (
+				828F0A081CCF748800AB1F59 /* FriendEventTimeHeaderFooterView.swift */,
 				92F71DE41BE4BA9C0087E969 /* SettingsViewController.swift */,
 			);
 			name = SettingsTab;
@@ -358,32 +349,6 @@
 				92F0A87F1BE4C72600EFCBFD /* BaseTableViewCell.swift */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		92F0A8811BE4CB5600EFCBFD /* FirendsEvents */ = {
-			isa = PBXGroup;
-			children = (
-				92F0A8851BE4D1F000EFCBFD /* Header */,
-				92F0A8821BE4CB6400EFCBFD /* Cell */,
-				9204068B1BE4B12500B5D337 /* FriendsViewController.swift */,
-			);
-			name = FirendsEvents;
-			sourceTree = "<group>";
-		};
-		92F0A8821BE4CB6400EFCBFD /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				92F0A8831BE4CBA900EFCBFD /* FrindEventTableViewCell.swift */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		92F0A8851BE4D1F000EFCBFD /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				92F0A8861BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift */,
-			);
-			name = Header;
 			sourceTree = "<group>";
 		};
 		92F0A8881BE4DA5300EFCBFD /* Event */ = {
@@ -676,9 +641,9 @@
 				92442D3B1BE4BD86005B29F0 /* Color.swift in Sources */,
 				92442D4A1BE4C1D1005B29F0 /* UCRoundedView.m in Sources */,
 				926A59591BE58DD200B910DB /* PopUpHelper.swift in Sources */,
-				9204068C1BE4B12500B5D337 /* FriendsViewController.swift in Sources */,
 				92442D411BE4BE7B005B29F0 /* BaseNavigationController.swift in Sources */,
 				92F0A8911BE4EE2300EFCBFD /* EventNameFieldTableViewCell.swift in Sources */,
+				828F0A091CCF748800AB1F59 /* FriendEventTimeHeaderFooterView.swift in Sources */,
 				92F0A8AD1BE4FE3100EFCBFD /* ActionSheetStringPicker.m in Sources */,
 				92F0A8F41BE546AE00EFCBFD /* PopUpInfoTableViewCell.swift in Sources */,
 				920406881BE4B12500B5D337 /* AppDelegate.swift in Sources */,
@@ -692,11 +657,10 @@
 				92F0A8A71BE4FE3100EFCBFD /* AbstractActionSheetPicker.m in Sources */,
 				92F0A88C1BE4DB8F00EFCBFD /* TAWindowShower.swift in Sources */,
 				92F0A8C61BE51B3F00EFCBFD /* InfinityScrollDayItem.swift in Sources */,
-				92F0A8841BE4CBA900EFCBFD /* FrindEventTableViewCell.swift in Sources */,
 				92F0A8A81BE4FE3100EFCBFD /* ActionSheetCustomPicker.m in Sources */,
 				928934901BE550030053AB25 /* EventEntity.swift in Sources */,
-				92F0A8871BE4D25D00EFCBFD /* FriendEventTimeHeaderFooterView.swift in Sources */,
 				92F71DE51BE4BA9C0087E969 /* SettingsViewController.swift in Sources */,
+				828F0A0B1CCF791C00AB1F59 /* AboutViewController.swift in Sources */,
 				92F0A8AA1BE4FE3100EFCBFD /* ActionSheetDistancePicker.m in Sources */,
 				92F0A88F1BE4EE1300EFCBFD /* EventFieldTableViewCell.swift in Sources */,
 				926A59571BE58B4800B910DB /* PopUpProviderUber.swift in Sources */,
