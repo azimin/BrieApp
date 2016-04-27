@@ -98,8 +98,6 @@ class SpaceEntity: CalendarEventType, Comparable {
     var timeValue: String {
         let startHour = date.hour
         let endHour = date.increaseByHours(duration / 60).hour
-        
-      print("\(startHour), \(endHour)")
       return "\(parseToString(startHour, minutes: 0)) — \(parseToString(endHour, minutes: 0))"
     }
     
@@ -227,7 +225,7 @@ class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   
   var location: Location?
   var locationValue: String {
-    return location == nil ? "Location not selected" : location?.name ?? location?.address ?? "Location"
+    return location == nil ? "Location is not selected" : location?.name ?? location?.address ?? "Location"
   }
   
   internal func encodeWithCoder(aCoder: NSCoder) {
@@ -260,12 +258,14 @@ class EventEntity: NSObject, NSCoding, Comparable, CalendarEventType {
   }
   
   var provider: PopUpProviderType? {
-    let type = TextAnalyzer.checkText(self.name)
+    let type = TextAnalyzer.classifier.classify(self.name)
     
-    if type == .Uber {
+    if type == "uber" {
       return .Uber
-    } else if type == .Food {
-      return .Iiko
+    } else if type == "food" {
+      return .Foursquare
+    } else if type == "fun" {
+      return .Eventbrite
     } else {
       return nil
     }

@@ -26,7 +26,7 @@ class EventNameFieldTableViewCell: BaseTableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("close"), name: "HideClipboard", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventNameFieldTableViewCell.close), name: "HideClipboard", object: nil)
     // Initialization code
   }
   

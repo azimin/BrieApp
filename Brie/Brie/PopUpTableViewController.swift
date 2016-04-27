@@ -35,14 +35,13 @@ class PopUpTableViewController: UIViewController {
     templateLabel.text = type.rawValue
       // Do any additional setup after loading the view.
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateItems", name: "UpdatePopUp", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PopUpTableViewController.updateItems), name: "UpdatePopUp", object: nil)
     
     updateItems()
     
   }
   
   deinit {
-    print("Swag")
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
@@ -129,7 +128,7 @@ extension PopUpTableViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     
-    if type == .KudaGo {
+    if type == .Eventbrite {
       let entity = EventEntity(name: item.actions[indexPath.row], date: (helperValue as! SpaceEntity).date, duration: 60, type: 1, location: nil, isPrivate: true)
       DataContainer.sharedInstance.events.append(entity)
       NSNotificationCenter.defaultCenter().postNotificationName("UpdateEvents", object: nil)

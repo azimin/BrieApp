@@ -11,15 +11,15 @@ import Foundation
 var helperValue: AnyObject?
 
 enum PopUpProviderType: String {
-  case KudaGo
+  case Eventbrite
   case Uber
-  case Iiko
+  case Foursquare
   
   var image: UIImage {
     switch self {
-    case .KudaGo:
+    case .Eventbrite:
       return UIImage(named: "logo_KudaGO")!
-    case .Iiko:
+    case .Foursquare:
       return UIImage(named: "logo_Iiko")!
     case .Uber:
       return UIImage(named: "logo_Uber")!
@@ -28,10 +28,10 @@ enum PopUpProviderType: String {
   
   var color: UIColor {
     switch self {
-    case .KudaGo:
-      return UIColor(hexString: "D25143")
-    case .Iiko:
-      return UIColor(hexString: "91C696")
+    case .Eventbrite:
+      return UIColor(hexString: "FF8000")
+    case .Foursquare:
+      return UIColor(hexString: "F94877")
     case .Uber:
       return UIColor.blackColor()
     }

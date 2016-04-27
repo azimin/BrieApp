@@ -110,7 +110,7 @@ public class LocationPickerViewController: UIViewController {
 			button.layer.cornerRadius = 16
 			let bundle = NSBundle(forClass: LocationPickerViewController.self)
 			button.setImage(UIImage(named: "geolocation", inBundle: bundle, compatibleWithTraitCollection: nil), forState: .Normal)
-			button.addTarget(self, action: "currentLocationPressed", forControlEvents: .TouchUpInside)
+			button.addTarget(self, action: #selector(LocationPickerViewController.currentLocationPressed), forControlEvents: .TouchUpInside)
 			view.addSubview(button)
 			locationButton = button
 		}
@@ -124,7 +124,7 @@ public class LocationPickerViewController: UIViewController {
 		searchBar.delegate = self
 		
 		// gesture recognizer for adding by tap
-		mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: "addLocation:"))
+		mapView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(LocationPickerViewController.addLocation(_:))))
 		
 		// search
 		navigationItem.titleView = searchBar
@@ -229,7 +229,7 @@ extension LocationPickerViewController: UISearchResultsUpdating {
 			showItemsForSearchResult(nil)
 			
 			searchTimer = NSTimer.scheduledTimerWithTimeInterval(0.2,
-				target: self, selector: "searchFromTimer:",
+				target: self, selector: #selector(LocationPickerViewController.searchFromTimer(_:)),
 				userInfo: [LocationPickerViewController.SearchTermKey: searchTerm],
 				repeats: false)
 		}
@@ -318,7 +318,7 @@ extension LocationPickerViewController: MKMapViewDelegate {
 		if annotation is MKUserLocation { return nil }
 		
 		let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-		pin.pinColor = .Green
+		pin.pinTintColor = MKPinAnnotationView.greenPinColor()
 		// drop only on long press gesture
 		let fromLongPress = annotation is MKPointAnnotation
 		pin.animatesDrop = fromLongPress

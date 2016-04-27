@@ -31,7 +31,7 @@ class CalendarViewController: UIViewController {
     
     PopUpHelper.sharedInstance.type = .Uber
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateData", name: "UpdateEvents", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.updateData), name: "UpdateEvents", object: nil)
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -64,7 +64,7 @@ class CalendarViewController: UIViewController {
   
   var eventsItself = DataContainer.sharedInstance.eventsOnTheDay(NSDate()) {
     didSet {
-      events = SpaceEntity.findSpacesBetweenEvents(date, events: eventsItself)
+      events = SpaceEntity.findSpacesBetweenEvents(date, unsortedEvents: eventsItself)
     }
   }
   var events: [CalendarEventType] = []
@@ -103,10 +103,10 @@ extension CalendarViewController: UITableViewDataSource {
       cell.timeLabel.text = spaceEntity.timeValue ?? "--:--"
       
       if (interestinEventIndexPath == nil && spaceEntity.date.increaseByHours(spaceEntity.duration / 60).hour > 17) || interestinEventIndexPath == indexPath {
-        cell.leftButtons = [MGSwipeButton(title: PopUpProviderType.KudaGo.rawValue, backgroundColor: PopUpProviderType.KudaGo.color, insets: UIEdgeInsetsMake(0, 16, 0, 16))]
+        cell.leftButtons = [MGSwipeButton(title: PopUpProviderType.Eventbrite.rawValue, backgroundColor: PopUpProviderType.Eventbrite.color, insets: UIEdgeInsetsMake(0, 16, 0, 16))]
         interestinEventIndexPath = indexPath
         cell.actionWidthConstraint.constant = 28
-        cell.actionView.backgroundColor = PopUpProviderType.KudaGo.color
+        cell.actionView.backgroundColor = PopUpProviderType.Eventbrite.color
       } else {
         cell.leftButtons = nil
         cell.actionWidthConstraint.constant = 0
@@ -194,7 +194,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
           UberAuth.priceForRide(myCoord, to: myCoord, isEndLocation: false)
         }
       } else {
-        PopUpHelper.sharedInstance.type = .Iiko
+        PopUpHelper.sharedInstance.type = .Foursquare
         PopUpHelper.sharedInstance.item = PopUpProviderItem()
       }
       
@@ -203,7 +203,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
       TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
       return true
     } else if let entity = (cell as? AddEventTableViewCell)?.entity {
-      PopUpHelper.sharedInstance.type = .KudaGo
+      PopUpHelper.sharedInstance.type = .Eventbrite
       
       let startUnix = nsdateToUnix(entity.date)
       let endUnix = nsdateToUnix(entity.date.increaseByHours(entity.duration / 60))

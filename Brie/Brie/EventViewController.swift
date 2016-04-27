@@ -37,7 +37,7 @@ class EventViewController: UIViewController {
     
     self.title = isNew ? "New event" : "Editing"
     
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: isNew ? "Add" : "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("save"))
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: isNew ? "Add" : "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(EventViewController.save))
     self.navigationItem.rightBarButtonItem?.enabled = entity.name.characters.count > 0
   }
   
@@ -94,8 +94,8 @@ class EventViewController: UIViewController {
   }
   
   func registerForKeyboardNotifications() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventViewController.keyboardWasShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EventViewController.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
   }
   
   func deregisterFromKeyboardNotifications() {
@@ -116,7 +116,7 @@ extension EventViewController: UITableViewDataSource {
     case 1:
       return 3
     case 2:
-      return 4
+      return 2
     default:
       return 0
     }
@@ -139,7 +139,7 @@ extension EventViewController: UITableViewDataSource {
             cell.selectedValueLabel.text = entity.date.novemberize()
         case 1:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
-            cell.titleLabel.text = "Time"
+            cell.titleLabel.text = "Starts at"
             cell.selectedValueLabel.text = entity.timeValue
         default:
             cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
@@ -160,28 +160,13 @@ extension EventViewController: UITableViewDataSource {
         cell.selectedValueLabel.text = entity.typeValue.stringValue
         cell.roundView.backgroundColor = entity.typeValue.color
         cell.roundView.hidden = false
-      case 1:
+      default:
         cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
         cell.titleLabel.text = "Location"
         cell.selectedValueLabel.text = entity.locationValue
         cell.selectedValueLabel.textColor = entity.location == nil ? UIColor(hexString: "CBCBCB") : UIColor.blackColor()
-      case 2:
-        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
-        cell.titleLabel.text = "Privacy"
-        cell.selectedValueLabel.text = entity.isPrivate ? "Event is private" : "Event is public"
-        cell.categorySwitch.hidden = false
-        cell.categorySwitch.on = entity.isPrivate
-      default:
-        cell = tableView.dequeueReusableCellWithIdentifier("EventFieldCell", forIndexPath: indexPath) as! EventFieldTableViewCell
-        cell.titleLabel.text = "Statistic"
-        cell.selectedValueLabel.text = entity.name.hasPrefix("Принимать") || entity.name.hasSuffix("shower") ? "3 interactions" : "0 interactions"
-        cell.alpha = entity.isPrivate ? 0.5 : 1.0
       }
-      
       cell.entity = entity
-      cell.showTopIfNeeded(indexPath)
-      
-      
       return cell
     }
     
@@ -227,8 +212,8 @@ extension EventViewController: UITableViewDelegate {
           showTypePicker()
         } else if indexPath.row == 1 {
           let placePicker = LocationPickerViewController()
-          let location = CLLocation(latitude: 59.9358, longitude: 30.3256)
-          let initialLocation = entity.location ?? Location(name: "VK Office", location: location, placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: [:]))
+          let location = CLLocation(latitude: 37.7780333, longitude: -122.417447)
+          let initialLocation = entity.location ?? Location(name: "WWDC 2016 Keynote", location: location, placemark: MKPlacemark(coordinate: location.coordinate, addressDictionary: [:]))
           placePicker.location = initialLocation
           
           placePicker.completion = {

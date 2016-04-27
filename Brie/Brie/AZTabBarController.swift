@@ -107,7 +107,7 @@ class AZTabBarController: UITabBarController {
     viewContainer.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(viewContainer)
     
-    let tapGesture = UITapGestureRecognizer(target: self, action: "tapHandler:")
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AZTabBarController.tapHandler(_:)))
     tapGesture.numberOfTouchesRequired = 1
     viewContainer.addGestureRecognizer(tapGesture)
     
