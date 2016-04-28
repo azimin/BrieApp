@@ -11,6 +11,27 @@ import Timepiece
 import MGSwipeTableCell
 import MapKit
 
+extension CalendarViewController: UIViewControllerPreviewingDelegate {
+  
+  func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    if let indexPath = tableView.indexPathForRowAtPoint(location) {
+      if let vc = storyboard?.instantiateViewControllerWithIdentifier("EventViewController") as? EventViewController, event = events[indexPath.row] as? EventEntity {
+        vc.entity = event
+        vc.preferredContentSize = CGSize(width: 300, height: 300)
+        if let frame = tableView.cellForRowAtIndexPath(indexPath)?.frame {
+          previewingContext.sourceRect = frame
+        }
+        return vc
+      }
+    }
+    return nil
+  }
+  
+  func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    navigationController?.pushViewController(viewControllerToCommit, animated: true)
+  }
+}
+
 class CalendarViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
@@ -30,6 +51,10 @@ class CalendarViewController: UIViewController {
     self.navigationController?.navigationBarHidden = true
     
     PopUpHelper.sharedInstance.type = .Uber
+    
+    if traitCollection.forceTouchCapability == .Available {
+      registerForPreviewingWithDelegate(self, sourceView: tableView)
+    }
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.updateData), name: "UpdateEvents", object: nil)
     // Do any additional setup after loading the view, typically from a nib.

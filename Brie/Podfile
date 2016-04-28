@@ -22,3 +22,5 @@ pod 'Alamofire'
 pod 'Parsimmon', '~> 0.3.4'
 pod 'SwiftyJSON'
 pod 'UberKit'
+# Simulate 3D Touch :-/
+pod 'FLEX', '~> 2.0', :configurations => ['Debug']

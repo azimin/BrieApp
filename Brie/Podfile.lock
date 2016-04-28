@@ -3,6 +3,7 @@ PODS:
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
+  - FLEX (2.3.0)
   - FrameAccessor (2.0)
   - InfinitePagingView (0.0.1)
   - MBProgressHUD (0.9.2)
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ChameleonFramework
+  - FLEX (~> 2.0)
   - FrameAccessor
   - InfinitePagingView
   - MBProgressHUD
@@ -31,6 +33,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FLEX: ba80ea13d2c784e85e616137fd4eff164781e364
   FrameAccessor: 443a13e58e23a10ff22180da0897b28c3f6abf66
   InfinitePagingView: 2d9876c6171274b59d7128c0fcacb4ab492313f2
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

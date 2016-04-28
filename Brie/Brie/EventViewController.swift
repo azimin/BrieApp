@@ -19,6 +19,16 @@ class EventViewController: UIViewController {
   var selectedRowForType: Int = 0
   var entity: EventEntity!
   
+  override func previewActionItems() -> [UIPreviewActionItem] {
+    let regularAction = UIPreviewAction(title: "Edit Event", style: .Default) { (action: UIPreviewAction, vc: UIViewController) -> Void in
+      
+    }
+    let destructiveAction = UIPreviewAction(title: "Remove Event", style: .Destructive) { (action: UIPreviewAction, vc: UIViewController) -> Void in
+      
+    }
+    return [regularAction, destructiveAction]
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
