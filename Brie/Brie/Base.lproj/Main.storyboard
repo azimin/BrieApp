@@ -330,7 +330,7 @@
         <!--Event View Controller-->
         <scene sceneID="2eY-8c-kUd">
             <objects>
-                <viewController id="JXn-TR-SNl" customClass="EventViewController" customModule="Brie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JXn-TR-SNl" customClass="EventViewController" customModule="Brie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kms-Zn-N1a"/>
                         <viewControllerLayoutGuide type="bottom" id="0yu-yA-yoQ"/>

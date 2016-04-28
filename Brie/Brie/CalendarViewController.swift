@@ -35,7 +35,32 @@ class CalendarViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
   }
   
-  
+  func showEvents(entity: SpaceEntity) {
+    PopUpHelper.sharedInstance.type = .Eventbrite
+    
+    let startUnix = nsdateToUnix(entity.date)
+    let endUnix = nsdateToUnix(entity.date.increaseByHours(entity.duration / 60))
+    
+    let kudaGo = PopUpProviderItem()
+    PopUpHelper.sharedInstance.item = kudaGo
+    
+    helperValue = entity
+    
+    KudaGoAuth.eventsInRange(startUnix, end: endUnix) { (json) -> Void in
+      print(json)
+      
+      var action: [String] = []
+      
+      for element in json["events"].arrayValue {
+        action.append(element["name"].dictionaryValue["text"]?.stringValue ?? "")
+      }
+      
+      kudaGo.actions = action
+      kudaGo.isLoading = false
+    }
+    
+    TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
+  }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -86,12 +111,6 @@ extension CalendarViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//    if indexPath.row % 4 == 0 {
-//      let cell = tableView.dequeueReusableCellWithIdentifier("AddCell", forIndexPath: indexPath) as! AddEventTableViewCell
-//      cell.showTopIfNeeded(indexPath)
-//      return cell
-//    }
-    
     let event = events[indexPath.row] 
     
     if let eventItself = event as? EventEntity {
@@ -207,30 +226,7 @@ extension CalendarViewController: MGSwipeTableCellDelegate {
       TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
       return true
     } else if let entity = (cell as? AddEventTableViewCell)?.entity {
-      PopUpHelper.sharedInstance.type = .Eventbrite
-      
-      let startUnix = nsdateToUnix(entity.date)
-      let endUnix = nsdateToUnix(entity.date.increaseByHours(entity.duration / 60))
-      
-      let kudaGo = PopUpProviderItem()
-      PopUpHelper.sharedInstance.item = kudaGo
-      
-      helperValue = entity
-      
-      KudaGoAuth.eventsInRange(startUnix, end: endUnix) { (json) -> Void in
-        print(json)
-        
-        var action: [String] = []
-        
-        for element in json["events"].arrayValue {
-          action.append(element["name"].dictionaryValue["text"]?.stringValue ?? "")
-        }
-        
-        kudaGo.actions = action
-        kudaGo.isLoading = false
-      }
-      
-      TAWindowShower.sharedInstance.presentViewController(self.storyboard!.instantiateViewControllerWithIdentifier("PopUp"), animationDataSource: nil)
+      showEvents(entity)
       return true
     }
     

@@ -13,27 +13,60 @@ import UberKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-    
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        print(url)
-        print(sourceApplication)
-      
-        if sourceApplication != nil {
-            VKSdk.processOpenURL(url, fromApplication: sourceApplication)
-            UberKit.sharedInstance().redirectURL = "action"
-            UberKit.sharedInstance().handleLoginRedirectFromUrl(url, sourceApplication: sourceApplication)
-        }
-      
-        return true
-        
+  var shortcutItem: UIApplicationShortcutItem?
+  
+  func createNewItem() {
+    let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+    let newItemVC = storyBoard.instantiateViewControllerWithIdentifier("EventViewController") as! EventViewController
+    window?.rootViewController?.navigationController?.presentViewController(newItemVC, animated: true, completion: nil)
+  }
+  
+  func findLocalEvents() {
+    let entity = SpaceEntity(date: NSDate(), duration: 60)
+    (window?.rootViewController as? CalendarViewController)?.showEvents(entity)
+  }
+  
+  func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+    var succeeded = false
+    if shortcutItem.type == "com.vadimandalex.brie.add-item" {
+      createNewItem()
+      succeeded = true
+    } else if shortcutItem.type == "com.vadimandalex.brie.find-events" {
+      findLocalEvents()
+      succeeded = true
     }
+    return succeeded
+  }
+  
+  func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    completionHandler(handleShortcut(shortcutItem))
+  }
+  
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    print(url)
+    print(sourceApplication)
+
+    if sourceApplication != nil {
+      VKSdk.processOpenURL(url, fromApplication: sourceApplication)
+      UberKit.sharedInstance().redirectURL = "action"
+      UberKit.sharedInstance().handleLoginRedirectFromUrl(url, sourceApplication: sourceApplication)
+    }
+    return true
+  }
     
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     //loadTestEvents()
     
     UberAuth.setUp()
+    var performShortcutDelegate = true
     
-    return true
+    if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsShortcutItemKey] as? UIApplicationShortcutItem {
+      print("Application launched via shortcut")
+      self.shortcutItem = shortcutItem
+      performShortcutDelegate = false
+    }
+    
+    return performShortcutDelegate
   }
 
   func applicationWillResignActive(application: UIApplication) {
@@ -51,7 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationDidBecomeActive(application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    guard let shortcut = shortcutItem else { return }
+    handleShortcut(shortcut)
+    self.shortcutItem = nil
   }
 
   func applicationWillTerminate(application: UIApplication) {
