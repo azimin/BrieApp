@@ -24,7 +24,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
   // MARK: - Timeline Configuration
     
     func getSupportedTimeTravelDirectionsForComplication(complication: CLKComplication, withHandler handler: (CLKComplicationTimeTravelDirections) -> Void) {
-        handler([.Forward])
+        handler([])
     }
     
     func getTimelineStartDateForComplication(complication: CLKComplication, withHandler handler: (NSDate?) -> Void) {
@@ -60,14 +60,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     func getTimelineEntriesForComplication(complication: CLKComplication, afterDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
-      var timeLineEntryArray = [CLKComplicationTimelineEntry]()
-      var nextDate = NSDate(timeIntervalSinceNow: 1 * 60 * 60)
-      for index in 1...2 {
-        let entry = createTimeLineEntry(lines[index], date: nextDate)
-        timeLineEntryArray.append(entry)
-        nextDate = nextDate.dateByAddingTimeInterval(1 * 60 * 60)
-      }
-      handler(timeLineEntryArray)
+        handler(nil)
     }
     
     // MARK: - Update Scheduling

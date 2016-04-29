@@ -57,6 +57,7 @@ class CalendarViewController: UIViewController {
     }
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.updateData), name: "UpdateEvents", object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarViewController.showDetails(_:)), name: "ShowDetails", object: nil)
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -197,8 +198,12 @@ extension CalendarViewController: UITableViewDataSource {
     } else if let space = event as? SpaceEntity  {
       self.performSegueWithIdentifier("EventScreen", sender: space)
     }
-    
-    
+  }
+  
+  func showDetails(notification: NSNotification) {
+    let userInfo = notification.userInfo as! [String: EventEntity]
+    let entity = userInfo["entity"]
+    self.performSegueWithIdentifier("EventScreen", sender: entity)
   }
 }
 

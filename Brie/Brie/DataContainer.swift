@@ -123,5 +123,9 @@ class DataContainerVkDelegateHolder: NSObject, VKSdkDelegate {
 
 func loadTestEvents() {
   let event = EventEntity(name: "Cold shower", date: NSDate(), duration: 75, type: 1, location: nil, isPrivate: true)
+  let event2 = EventEntity(name: "Theater", date: NSDate().dateByAddingTimeInterval(NSTimeInterval(60*60*5)), duration: 60, type: 1, location: nil, isPrivate: true)
+  let event3 = EventEntity(name: "Meeting with friends", date: NSDate().dateByAddingTimeInterval(NSTimeInterval(60*60*2)), duration: 60, type: 0, location: nil, isPrivate: true)
   DataContainer.sharedInstance.events.append(event)
+  DataContainer.sharedInstance.events.append(event2)
+  DataContainer.sharedInstance.events.append(event3)
 }

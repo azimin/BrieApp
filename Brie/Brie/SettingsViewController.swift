@@ -191,7 +191,7 @@ extension SettingsViewController: UITableViewDelegate {
                 }
             }
         } else {
-          performSegueWithIdentifier("Show Authors CV Segue", sender: nil)
+          performSegueWithIdentifier("Show about segue", sender: nil)
       }
     }
     

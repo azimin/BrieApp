@@ -21,7 +21,7 @@ class EventViewController: UIViewController {
   
   override func previewActionItems() -> [UIPreviewActionItem] {
     let regularAction = UIPreviewAction(title: "Edit Event", style: .Default) { (action: UIPreviewAction, vc: UIViewController) -> Void in
-      
+      NSNotificationCenter.defaultCenter().postNotificationName("ShowDetails", object: nil, userInfo: ["entity": self.entity])
     }
     let destructiveAction = UIPreviewAction(title: "Remove Event", style: .Destructive) { (action: UIPreviewAction, vc: UIViewController) -> Void in
       

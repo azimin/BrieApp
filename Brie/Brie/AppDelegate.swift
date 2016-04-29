@@ -14,6 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var shortcutItem: UIApplicationShortcutItem?
+  var notFirstLaunch: Bool {
+    let value = NSUserDefaults.standardUserDefaults().boolForKey("notFirstLaunch")
+    if value {
+      return true
+    } else {
+      NSUserDefaults.standardUserDefaults().setBool(true, forKey: "notFirstLaunch")
+      return false
+    }
+  }
   
   func createNewItem() {
     let storyBoard = UIStoryboard(name: "Main", bundle:nil)
@@ -55,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
     
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    //loadTestEvents()
+    if !notFirstLaunch {
+      loadTestEvents()
+    }
     
     UberAuth.setUp()
     var performShortcutDelegate = true

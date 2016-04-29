@@ -4,7 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Calendar View Controller-->
@@ -540,12 +539,6 @@
                                                 <constraint firstItem="M5H-bz-Se5" firstAttribute="trailing" secondItem="Scl-Se-Du6" secondAttribute="trailingMargin" constant="-8" id="eGI-tU-3wI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="MtG-zO-1CG" kind="show" identifier="Show Authors CV Segue" id="Nsr-I0-fP7">
-                                                <segue key="commit" inheritsFrom="parent" id="bk2-SP-eoo"/>
-                                                <segue key="preview" destination="MtG-zO-1CG" identifier="Show Authors CV Segue" id="m4F-2f-h3r"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -563,6 +556,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KMk-RB-f2a"/>
+                    <connections>
+                        <segue destination="MtG-zO-1CG" kind="show" identifier="Show about segue" id="HQa-1Z-6Np"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bD-cd-cWW" sceneMemberID="firstResponder"/>
             </objects>
@@ -839,7 +835,4 @@
         <image name="img_back_button" width="11" height="18"/>
         <image name="logo_KudaGO" width="767" height="224"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nsr-I0-fP7"/>
-    </inferredMetricsTieBreakers>
 </document>
